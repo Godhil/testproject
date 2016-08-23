@@ -36,6 +36,17 @@ public class Requests {
     @Column(name = "ads_construction_id")
     private Integer adsConstructionId;
 
+    @Column(name = "actual")
+    private Boolean actual;
+
+    public Boolean getActual() {
+        return actual;
+    }
+
+    public void setActual(Boolean actual) {
+        this.actual = actual;
+    }
+
     @Column(name = "rejected")
     private String rejected;
 
@@ -131,6 +142,7 @@ public class Requests {
                 ", version=" + version +
                 ", adsPlaceId=" + adsPlaceId +
                 ", adsConstructionId=" + adsConstructionId +
+                ", actual=" + actual +
                 ", rejected='" + rejected + '\'' +
                 '}';
     }
