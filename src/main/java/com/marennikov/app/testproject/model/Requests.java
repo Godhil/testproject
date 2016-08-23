@@ -39,6 +39,9 @@ public class Requests {
     @Column(name = "actual")
     private Boolean actual;
 
+    @Column(name = "rejected")
+    private String rejected;
+
     public Boolean getActual() {
         return actual;
     }
@@ -47,8 +50,6 @@ public class Requests {
         this.actual = actual;
     }
 
-    @Column(name = "rejected")
-    private String rejected;
 
     public Integer getId() {
         return id;
