@@ -32,6 +32,9 @@ public class Municipality {
 
     @Override
     public String toString() {
-        return "Municipality: { " + getId() + ", " + getName() + "}";
+        return "Municipality{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
