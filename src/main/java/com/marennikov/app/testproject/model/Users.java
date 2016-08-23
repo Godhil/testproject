@@ -96,9 +96,17 @@ public class Users {
 //        this.municipalityId = municipalityId;
 //    }
 
+
     @Override
     public String toString() {
-        return "User: { " + getSurname() + ", " + getFirstName() +
-                ", role: " + getRole()+ ", municipality: "  + "}";
+        return "Users{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password=" + password +
+                ", surname='" + surname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", role=" + role +
+                '}';
     }
 }
