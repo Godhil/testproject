@@ -1,4 +1,4 @@
-package com.marennikov.app.testproject.model;
+package com.marennikov.app.testproject.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

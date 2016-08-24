@@ -1,4 +1,4 @@
-package com.marennikov.app.testproject.model;
+package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
 import java.util.List;

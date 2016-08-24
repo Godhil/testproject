@@ -1,24 +1,27 @@
-package com.marennikov.app.testproject.model;
+package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "requests")
-public class Requests {
+@Table(name = "requests_archive")
+public class RequestsArchive {
 
     @Column(name = "id")
     private Integer id;
 
+    @OneToMany(mappedBy = "requestsArchive")
+    private List<Requests> requestsId;
+
     @Column(name = "status")
     private String status;
 
-    @OneToMany(mappedBy = "requestRequester")
-    private List<Users> requester;
+    @Column(name = "requester")
+    private Integer requester;
 
-    @OneToMany(mappedBy = "requestAssignee")
-    private List<Users> assignee;
+    @Column(name = "assignee")
+    private Integer assignee;
 
     @Column(name = "create_date")
     private Date createDate;
@@ -29,11 +32,11 @@ public class Requests {
     @Column(name = "version")
     private Integer version;
 
-    @OneToOne(mappedBy = "requestAdsPlace")
-    private AdsPlace adsPlaceId;
+    @Column(name = "ads_place_id")
+    private Integer adsPlaceId;
 
-    @OneToOne(mappedBy = "requestAdsConstruction")
-    private AdsConstruction adsConstructionId;
+    @Column(name = "ads_construction_id")
+    private Integer adsConstructionId;
 
     @Column(name = "actual")
     private Boolean actual;
@@ -41,29 +44,20 @@ public class Requests {
     @Column(name = "rejected")
     private String rejected;
 
-    @ManyToOne
-    @JoinColumn(name = "requests_id")
-    private Photo photo;
-
-    @ManyToOne
-    @JoinColumn(name = "requests_id")
-    private RequestsArchive requestsArchive;
-
-    public Boolean getActual() {
-        return actual;
-    }
-
-    public void setActual(Boolean actual) {
-        this.actual = actual;
-    }
-
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<Requests> getRequestsId() {
+        return requestsId;
+    }
+
+    public void setRequestsId(List<Requests> requestsId) {
+        this.requestsId = requestsId;
     }
 
     public String getStatus() {
@@ -74,19 +68,19 @@ public class Requests {
         this.status = status;
     }
 
-    public List<Users> getRequester() {
+    public Integer getRequester() {
         return requester;
     }
 
-    public void setRequester(List<Users> requester) {
+    public void setRequester(Integer requester) {
         this.requester = requester;
     }
 
-    public List<Users> getAssignee() {
+    public Integer getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(List<Users> assignee) {
+    public void setAssignee(Integer assignee) {
         this.assignee = assignee;
     }
 
@@ -114,20 +108,28 @@ public class Requests {
         this.version = version;
     }
 
-    public AdsPlace getAdsPlaceId() {
+    public Integer getAdsPlaceId() {
         return adsPlaceId;
     }
 
-    public void setAdsPlaceId(AdsPlace adsPlaceId) {
+    public void setAdsPlaceId(Integer adsPlaceId) {
         this.adsPlaceId = adsPlaceId;
     }
 
-    public AdsConstruction getAdsConstructionId() {
+    public Integer getAdsConstructionId() {
         return adsConstructionId;
     }
 
-    public void setAdsConstructionId(AdsConstruction adsConstructionId) {
+    public void setAdsConstructionId(Integer adsConstructionId) {
         this.adsConstructionId = adsConstructionId;
+    }
+
+    public Boolean getActual() {
+        return actual;
+    }
+
+    public void setActual(Boolean actual) {
+        this.actual = actual;
     }
 
     public String getRejected() {
@@ -138,26 +140,11 @@ public class Requests {
         this.rejected = rejected;
     }
 
-    public Photo getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Photo photo) {
-        this.photo = photo;
-    }
-
-    public RequestsArchive getRequestsArchive() {
-        return requestsArchive;
-    }
-
-    public void setRequestsArchive(RequestsArchive requestsArchive) {
-        this.requestsArchive = requestsArchive;
-    }
-
     @Override
     public String toString() {
-        return "Requests{" +
+        return "RequestsArchive{" +
                 "id=" + id +
+                ", requestsId=" + requestsId +
                 ", status='" + status + '\'' +
                 ", requester=" + requester +
                 ", assignee=" + assignee +
