@@ -1,8 +1,6 @@
 package com.marennikov.app.testproject.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -12,8 +10,8 @@ public class RequestsArchive {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "requests_id")
-    private Integer requestsId;
+    @OneToMany(mappedBy = "requestsArchive")
+    private Requests requestsId;
 
     @Column(name = "status")
     private String status;
@@ -53,11 +51,11 @@ public class RequestsArchive {
         this.id = id;
     }
 
-    public Integer getRequestsId() {
+    public Requests getRequestsId() {
         return requestsId;
     }
 
-    public void setRequestsId(Integer requestsId) {
+    public void setRequestsId(Requests requestsId) {
         this.requestsId = requestsId;
     }
 

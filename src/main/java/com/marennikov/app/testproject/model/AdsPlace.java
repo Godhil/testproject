@@ -1,13 +1,14 @@
 package com.marennikov.app.testproject.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ads_place")
 public class AdsPlace {
 
+    @Id
+    @GeneratedValue
     @Column(name = "id")
     private Integer id;
 
@@ -17,8 +18,16 @@ public class AdsPlace {
     @Column(name = "owner")
     private String owner;
 
-    @Column(name = "municipality_id")
-    private Integer municipalityId;
+    @OneToMany(mappedBy = "adsPlace")
+    private List<Municipality> municipalityId;
+
+    @OneToOne
+    @JoinColumn(name = "ads_place_id")
+    private AdsConstruction adsConstruction;
+
+    @OneToOne
+    @JoinColumn(name = "ads_place_id")
+    private Requests requestAdsPlace;
 
     public Integer getId() {
         return id;
@@ -44,12 +53,28 @@ public class AdsPlace {
         this.owner = owner;
     }
 
-    public Integer getMunicipalityId() {
+    public List<Municipality> getMunicipalityId() {
         return municipalityId;
     }
 
-    public void setMunicipalityId(Integer municipalityId) {
+    public void setMunicipalityId(List<Municipality> municipalityId) {
         this.municipalityId = municipalityId;
+    }
+
+    public AdsConstruction getAdsConstruction() {
+        return adsConstruction;
+    }
+
+    public void setAdsConstruction(AdsConstruction adsConstruction) {
+        this.adsConstruction = adsConstruction;
+    }
+
+    public Requests getRequestAdsPlace() {
+        return requestAdsPlace;
+    }
+
+    public void setRequestAdsPlace(Requests requestAdsPlace) {
+        this.requestAdsPlace = requestAdsPlace;
     }
 
     @Override

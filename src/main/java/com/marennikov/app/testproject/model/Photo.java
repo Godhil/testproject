@@ -2,6 +2,7 @@ package com.marennikov.app.testproject.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,8 +15,8 @@ public class Photo {
     @Column(name = "path")
     private String path;
 
-    @Column(name = "requests_id")
-    private Integer requestsId;
+    @OneToMany(mappedBy = "photo")
+    private Requests requestsId;
 
     public Integer getId() {
         return id;
@@ -33,11 +34,11 @@ public class Photo {
         this.path = path;
     }
 
-    public Integer getRequestsId() {
+    public Requests getRequestsId() {
         return requestsId;
     }
 
-    public void setRequestsId(Integer requestsId) {
+    public void setRequestsId(Requests requestsId) {
         this.requestsId = requestsId;
     }
 

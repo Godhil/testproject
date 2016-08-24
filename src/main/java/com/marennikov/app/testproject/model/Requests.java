@@ -1,8 +1,6 @@
 package com.marennikov.app.testproject.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -15,11 +13,11 @@ public class Requests {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "requester")
-    private Integer requester;
+    @OneToMany(mappedBy = "requestRequester")
+    private Users requester;
 
-    @Column(name = "assignee")
-    private Integer assignee;
+    @OneToMany(mappedBy = "requestAssignee")
+    private Users assignee;
 
     @Column(name = "create_date")
     private Date createDate;
@@ -30,17 +28,25 @@ public class Requests {
     @Column(name = "version")
     private Integer version;
 
-    @Column(name = "ads_place_id")
-    private Integer adsPlaceId;
+    @OneToOne(mappedBy = "requestAdsPlace")
+    private AdsPlace adsPlaceId;
 
-    @Column(name = "ads_construction_id")
-    private Integer adsConstructionId;
+    @OneToOne(mappedBy = "requestAdsConstruction")
+    private AdsConstruction adsConstructionId;
 
     @Column(name = "actual")
     private Boolean actual;
 
     @Column(name = "rejected")
     private String rejected;
+
+    @ManyToOne
+    @JoinColumn(name = "requests_id")
+    private Photo photo;
+
+    @ManyToOne
+    @JoinColumn(name = "requests_id")
+    private RequestsArchive requestsArchive;
 
     public Boolean getActual() {
         return actual;
@@ -67,19 +73,19 @@ public class Requests {
         this.status = status;
     }
 
-    public Integer getRequester() {
+    public Users getRequester() {
         return requester;
     }
 
-    public void setRequester(Integer requester) {
+    public void setRequester(Users requester) {
         this.requester = requester;
     }
 
-    public Integer getAssignee() {
+    public Users getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(Integer assignee) {
+    public void setAssignee(Users assignee) {
         this.assignee = assignee;
     }
 
@@ -107,19 +113,19 @@ public class Requests {
         this.version = version;
     }
 
-    public Integer getAdsPlaceId() {
+    public AdsPlace getAdsPlaceId() {
         return adsPlaceId;
     }
 
-    public void setAdsPlaceId(Integer adsPlaceId) {
+    public void setAdsPlaceId(AdsPlace adsPlaceId) {
         this.adsPlaceId = adsPlaceId;
     }
 
-    public Integer getAdsConstructionId() {
+    public AdsConstruction getAdsConstructionId() {
         return adsConstructionId;
     }
 
-    public void setAdsConstructionId(Integer adsConstructionId) {
+    public void setAdsConstructionId(AdsConstruction adsConstructionId) {
         this.adsConstructionId = adsConstructionId;
     }
 
@@ -129,6 +135,22 @@ public class Requests {
 
     public void setRejected(String rejected) {
         this.rejected = rejected;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
+    }
+
+    public RequestsArchive getRequestsArchive() {
+        return requestsArchive;
+    }
+
+    public void setRequestsArchive(RequestsArchive requestsArchive) {
+        this.requestsArchive = requestsArchive;
     }
 
     @Override

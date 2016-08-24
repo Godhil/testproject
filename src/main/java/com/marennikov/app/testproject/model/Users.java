@@ -1,8 +1,7 @@
 package com.marennikov.app.testproject.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -28,9 +27,17 @@ public class Users {
 
     @Column(name = "role")
     private Integer role;
-// принадлежность к муниципальному образованию
-//    @Column(name = "")
-//    private Integer municipalityId;
+
+    @ManyToMany(mappedBy = "users")
+    private List<Municipality> municipalityId;
+
+    @ManyToOne()
+    @JoinColumn(name = "requester")
+    private Requests requestRequester;
+
+    @ManyToOne()
+    @JoinColumn(name = "assignee")
+    private Requests requestAssignee;
 
     public Integer getId() {
         return id;
@@ -88,14 +95,29 @@ public class Users {
         this.role = role;
     }
 
-//    public Integer getMunicipalityId() {
-//        return municipalityId;
-//    }
-//
-//    public void setMunicipalityId(Integer municipalityId) {
-//        this.municipalityId = municipalityId;
-//    }
+    public List<Municipality> getMunicipalityId() {
+        return municipalityId;
+    }
 
+    public void setMunicipalityId(List<Municipality> municipalityId) {
+        this.municipalityId = municipalityId;
+    }
+
+    public Requests getRequestRequester() {
+        return requestRequester;
+    }
+
+    public void setRequestRequester(Requests requestRequester) {
+        this.requestRequester = requestRequester;
+    }
+
+    public Requests getRequestAssignee() {
+        return requestAssignee;
+    }
+
+    public void setRequestAssignee(Requests requestAssignee) {
+        this.requestAssignee = requestAssignee;
+    }
 
     @Override
     public String toString() {
@@ -107,6 +129,7 @@ public class Users {
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", role=" + role +
+                ", municipalityId=" + municipalityId +
                 '}';
     }
 }

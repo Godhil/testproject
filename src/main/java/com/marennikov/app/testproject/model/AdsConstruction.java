@@ -1,8 +1,6 @@
 package com.marennikov.app.testproject.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -27,8 +25,12 @@ public class AdsConstruction {
     @Column(name = "create_date")
     private Date date;
 
-    @Column(name = "ads_place_id")
-    private Integer adsPlaceId;
+    @OneToOne(mappedBy = "adsConstruction")
+    private AdsPlace adsPlaceId;
+
+    @OneToOne
+    @JoinColumn(name = "ads_construction_id")
+    private Requests requestAdsConstruction;
 
     public Integer getId() {
         return id;
@@ -78,12 +80,20 @@ public class AdsConstruction {
         this.date = date;
     }
 
-    public Integer getAdsPlaceId() {
+    public AdsPlace getAdsPlaceId() {
         return adsPlaceId;
     }
 
-    public void setAdsPlaceId(Integer adsPlaceId) {
+    public void setAdsPlaceId(AdsPlace adsPlaceId) {
         this.adsPlaceId = adsPlaceId;
+    }
+
+    public Requests getRequestAdsConstruction() {
+        return requestAdsConstruction;
+    }
+
+    public void setRequestAdsConstruction(Requests requestAdsConstruction) {
+        this.requestAdsConstruction = requestAdsConstruction;
     }
 
     @Override
