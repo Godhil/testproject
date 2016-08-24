@@ -2,6 +2,7 @@ package com.marennikov.app.testproject.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "requests_archive")
@@ -11,7 +12,7 @@ public class RequestsArchive {
     private Integer id;
 
     @OneToMany(mappedBy = "requestsArchive")
-    private Requests requestsId;
+    private List<Requests> requestsId;
 
     @Column(name = "status")
     private String status;
@@ -51,11 +52,11 @@ public class RequestsArchive {
         this.id = id;
     }
 
-    public Requests getRequestsId() {
+    public List<Requests> getRequestsId() {
         return requestsId;
     }
 
-    public void setRequestsId(Requests requestsId) {
+    public void setRequestsId(List<Requests> requestsId) {
         this.requestsId = requestsId;
     }
 

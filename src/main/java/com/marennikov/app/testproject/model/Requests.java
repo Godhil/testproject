@@ -2,6 +2,7 @@ package com.marennikov.app.testproject.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "requests")
@@ -14,10 +15,10 @@ public class Requests {
     private String status;
 
     @OneToMany(mappedBy = "requestRequester")
-    private Users requester;
+    private List<Users> requester;
 
     @OneToMany(mappedBy = "requestAssignee")
-    private Users assignee;
+    private List<Users> assignee;
 
     @Column(name = "create_date")
     private Date createDate;
@@ -73,19 +74,19 @@ public class Requests {
         this.status = status;
     }
 
-    public Users getRequester() {
+    public List<Users> getRequester() {
         return requester;
     }
 
-    public void setRequester(Users requester) {
+    public void setRequester(List<Users> requester) {
         this.requester = requester;
     }
 
-    public Users getAssignee() {
+    public List<Users> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(Users assignee) {
+    public void setAssignee(List<Users> assignee) {
         this.assignee = assignee;
     }
 

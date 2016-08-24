@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "photo")
@@ -16,7 +17,7 @@ public class Photo {
     private String path;
 
     @OneToMany(mappedBy = "photo")
-    private Requests requestsId;
+    private List<Requests> requestsId;
 
     public Integer getId() {
         return id;
@@ -34,11 +35,11 @@ public class Photo {
         this.path = path;
     }
 
-    public Requests getRequestsId() {
+    public List<Requests> getRequestsId() {
         return requestsId;
     }
 
-    public void setRequestsId(Requests requestsId) {
+    public void setRequestsId(List<Requests> requestsId) {
         this.requestsId = requestsId;
     }
 
