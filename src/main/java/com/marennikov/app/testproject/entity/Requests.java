@@ -44,11 +44,11 @@ public class Requests {
     private String rejected;
 
     @ManyToOne
-    @JoinColumn(name = "requests_id")
+    @JoinColumn(name = "requests_id", insertable = false, updatable = false)
     private Photo photo;
 
     @ManyToOne
-    @JoinColumn(name = "requests_id")
+    @JoinColumn(name = "requests_id", insertable = false, updatable = false)
     private RequestsArchive requestsArchive;
 
     public Boolean getActual() {
