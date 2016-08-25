@@ -22,7 +22,7 @@ public class AdsPlace {
     private List<Municipality> municipalityId;
 
     @OneToOne
-    @JoinColumn(name = "ads_place_id")
+    @JoinColumn(name = "ads_place_id", insertable = false, updatable = false)
     private AdsConstruction adsConstruction;
 
     @OneToOne
