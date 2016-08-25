@@ -1,7 +1,7 @@
 package com.marennikov.app.testproject.repository;
 
 import com.marennikov.app.testproject.entity.Photo;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IPhotoRepository extends CrudRepository<Photo, Integer> {
+public interface IPhotoRepository extends JpaRepository<Photo, Integer> {
 }
