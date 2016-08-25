@@ -7,6 +7,8 @@ import java.util.List;
 @Table(name = "municipality")
 public class Municipality {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

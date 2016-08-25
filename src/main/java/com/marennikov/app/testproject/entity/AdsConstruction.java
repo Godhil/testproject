@@ -7,6 +7,8 @@ import java.sql.Date;
 @Table(name = "ads_construction")
 public class AdsConstruction {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

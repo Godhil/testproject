@@ -8,6 +8,8 @@ import java.util.List;
 @Table(name = "requests_archive")
 public class RequestsArchive {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
