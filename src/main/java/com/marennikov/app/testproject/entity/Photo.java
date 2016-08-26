@@ -1,5 +1,7 @@
 package com.marennikov.app.testproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,7 +17,8 @@ public class Photo {
     @Column(name = "path")
     private String path;
 
-    @OneToMany(mappedBy = "photo")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "photo")
     private List<Requests> requestsId;
 
     public Integer getId() {
