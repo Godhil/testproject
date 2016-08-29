@@ -1,5 +1,7 @@
 package com.marennikov.app.testproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,7 +11,7 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Integer id;
 
     @Column(name = "login")
@@ -30,16 +32,9 @@ public class Users {
     @Column(name = "role")
     private Integer role;
 
-    @ManyToMany(mappedBy = "users")
-    private List<Municipality> municipalityId;
-
-    @ManyToOne()
-    @JoinColumn(name = "requester")
-    private Requests requestRequester;
-
-    @ManyToOne()
-    @JoinColumn(name = "assignee")
-    private Requests requestAssignee;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private List<Municipality> municipality;
 
     public Integer getId() {
         return id;
@@ -97,28 +92,12 @@ public class Users {
         this.role = role;
     }
 
-    public List<Municipality> getMunicipalityId() {
-        return municipalityId;
+    public List<Municipality> getMunicipality() {
+        return municipality;
     }
 
-    public void setMunicipalityId(List<Municipality> municipalityId) {
-        this.municipalityId = municipalityId;
-    }
-
-    public Requests getRequestRequester() {
-        return requestRequester;
-    }
-
-    public void setRequestRequester(Requests requestRequester) {
-        this.requestRequester = requestRequester;
-    }
-
-    public Requests getRequestAssignee() {
-        return requestAssignee;
-    }
-
-    public void setRequestAssignee(Requests requestAssignee) {
-        this.requestAssignee = requestAssignee;
+    public void setMunicipality(List<Municipality> municipality) {
+        this.municipality = municipality;
     }
 
     @Override
@@ -131,7 +110,7 @@ public class Users {
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", role=" + role +
-                ", municipalityId=" + municipalityId +
+                ", municipality=" + municipality +
                 '}';
     }
 }

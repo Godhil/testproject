@@ -2,7 +2,6 @@ package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "requests_archive")
@@ -13,8 +12,9 @@ public class RequestsArchive {
     @Column(name = "id")
     private Integer id;
 
-    @OneToMany(mappedBy = "requestsArchive")
-    private List<Requests> requestsId;
+    @OneToOne
+    @JoinColumn(name = "request_id", referencedColumnName = "request_id")
+    private Requests requests;
 
     @Column(name = "status")
     private String status;
@@ -28,8 +28,8 @@ public class RequestsArchive {
     @Column(name = "create_date")
     private Date createDate;
 
-    @Column(name = "progressing_date")
-    private Date progressingDate;
+    @Column(name = "processing_date")
+    private Date processingDate;
 
     @Column(name = "version")
     private Integer version;
@@ -54,13 +54,22 @@ public class RequestsArchive {
         this.id = id;
     }
 
-    public List<Requests> getRequestsId() {
-        return requestsId;
+    public Requests getRequests() {
+        return requests;
     }
 
-    public void setRequestsId(List<Requests> requestsId) {
-        this.requestsId = requestsId;
+    public void setRequests(Requests requests) {
+        this.requests = requests;
     }
+
+    //
+//    public List<Requests> getRequestsId() {
+//        return requestsId;
+//    }
+//
+//    public void setRequestsId(List<Requests> requestsId) {
+//        this.requestsId = requestsId;
+//    }
 
     public String getStatus() {
         return status;
@@ -94,12 +103,12 @@ public class RequestsArchive {
         this.createDate = createDate;
     }
 
-    public Date getProgressingDate() {
-        return progressingDate;
+    public Date getProcessingDate() {
+        return processingDate;
     }
 
-    public void setProgressingDate(Date progressingDate) {
-        this.progressingDate = progressingDate;
+    public void setProcessingDate(Date processingDate) {
+        this.processingDate = processingDate;
     }
 
     public Integer getVersion() {
@@ -146,12 +155,12 @@ public class RequestsArchive {
     public String toString() {
         return "RequestsArchive{" +
                 "id=" + id +
-                ", requestsId=" + requestsId +
+                ", requests=" + requests +
                 ", status='" + status + '\'' +
                 ", requester=" + requester +
                 ", assignee=" + assignee +
                 ", createDate=" + createDate +
-                ", progressingDate=" + progressingDate +
+                ", processingDate=" + processingDate +
                 ", version=" + version +
                 ", adsPlaceId=" + adsPlaceId +
                 ", adsConstructionId=" + adsConstructionId +

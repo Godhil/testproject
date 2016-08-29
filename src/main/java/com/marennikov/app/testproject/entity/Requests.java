@@ -2,7 +2,6 @@ package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "requests")
@@ -10,31 +9,35 @@ public class Requests {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "request_id")
     private Integer id;
 
     @Column(name = "status")
     private String status;
 
-    @OneToMany(mappedBy = "requestRequester")
-    private List<Users> requester;
+    @ManyToOne
+    @JoinColumn(name = "requester", referencedColumnName = "user_id")
+    private Users requester;
 
-    @OneToMany(mappedBy = "requestAssignee")
-    private List<Users> assignee;
+    @ManyToOne
+    @JoinColumn(name = "assignee", referencedColumnName = "user_id")
+    private Users assignee;
 
     @Column(name = "create_date")
     private Date createDate;
 
-    @Column(name = "progressing_date")
-    private Date progressingDate;
+    @Column(name = "processing_date")
+    private Date processingDate;
 
     @Column(name = "version")
     private Integer version;
 
-    @OneToOne(mappedBy = "requestAdsPlace")
+    @OneToOne
+    @JoinColumn(name = "ads_place_id")
     private AdsPlace adsPlaceId;
 
-    @OneToOne(mappedBy = "requestAdsConstruction")
+    @OneToOne
+    @JoinColumn(name = "ads_construction_id")
     private AdsConstruction adsConstructionId;
 
     @Column(name = "actual")
@@ -42,14 +45,6 @@ public class Requests {
 
     @Column(name = "rejected")
     private String rejected;
-
-    @ManyToOne
-    @JoinColumn(name = "requests_id", insertable = false, updatable = false)
-    private Photo photo;
-
-    @ManyToOne
-    @JoinColumn(name = "requests_id", insertable = false, updatable = false)
-    private RequestsArchive requestsArchive;
 
     public Boolean getActual() {
         return actual;
@@ -76,19 +71,19 @@ public class Requests {
         this.status = status;
     }
 
-    public List<Users> getRequester() {
+    public Users getRequester() {
         return requester;
     }
 
-    public void setRequester(List<Users> requester) {
+    public void setRequester(Users requester) {
         this.requester = requester;
     }
 
-    public List<Users> getAssignee() {
+    public Users getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(List<Users> assignee) {
+    public void setAssignee(Users assignee) {
         this.assignee = assignee;
     }
 
@@ -100,12 +95,12 @@ public class Requests {
         this.createDate = createDate;
     }
 
-    public Date getProgressingDate() {
-        return progressingDate;
+    public Date getProcessingDate() {
+        return processingDate;
     }
 
-    public void setProgressingDate(Date progressingDate) {
-        this.progressingDate = progressingDate;
+    public void setProcessingDate(Date processingDate) {
+        this.processingDate = processingDate;
     }
 
     public Integer getVersion() {
@@ -140,21 +135,6 @@ public class Requests {
         this.rejected = rejected;
     }
 
-    public Photo getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Photo photo) {
-        this.photo = photo;
-    }
-
-    public RequestsArchive getRequestsArchive() {
-        return requestsArchive;
-    }
-
-    public void setRequestsArchive(RequestsArchive requestsArchive) {
-        this.requestsArchive = requestsArchive;
-    }
 
     @Override
     public String toString() {
@@ -164,7 +144,7 @@ public class Requests {
                 ", requester=" + requester +
                 ", assignee=" + assignee +
                 ", createDate=" + createDate +
-                ", progressingDate=" + progressingDate +
+                ", processingDate=" + processingDate +
                 ", version=" + version +
                 ", adsPlaceId=" + adsPlaceId +
                 ", adsConstructionId=" + adsConstructionId +

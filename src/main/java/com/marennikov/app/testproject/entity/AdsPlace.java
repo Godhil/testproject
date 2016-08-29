@@ -9,7 +9,7 @@ public class AdsPlace {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "ads_place_id")
     private Integer id;
 
     @Column(name = "address")
@@ -18,16 +18,9 @@ public class AdsPlace {
     @Column(name = "owner")
     private String owner;
 
-    @OneToMany(mappedBy = "adsPlace")
-    private List<Municipality> municipalityId;
-
-    @OneToOne
-    @JoinColumn(name = "ads_place_id", insertable = false, updatable = false)
-    private AdsConstruction adsConstruction;
-
-    @OneToOne
-    @JoinColumn(name = "ads_place_id")
-    private Requests requestAdsPlace;
+    @ManyToOne
+    @JoinColumn(name = "municipality_id", referencedColumnName = "id")
+    private Municipality municipality;
 
     public Integer getId() {
         return id;
@@ -53,28 +46,12 @@ public class AdsPlace {
         this.owner = owner;
     }
 
-    public List<Municipality> getMunicipalityId() {
-        return municipalityId;
+    public Municipality getMunicipality() {
+        return municipality;
     }
 
-    public void setMunicipalityId(List<Municipality> municipalityId) {
-        this.municipalityId = municipalityId;
-    }
-
-    public AdsConstruction getAdsConstruction() {
-        return adsConstruction;
-    }
-
-    public void setAdsConstruction(AdsConstruction adsConstruction) {
-        this.adsConstruction = adsConstruction;
-    }
-
-    public Requests getRequestAdsPlace() {
-        return requestAdsPlace;
-    }
-
-    public void setRequestAdsPlace(Requests requestAdsPlace) {
-        this.requestAdsPlace = requestAdsPlace;
+    public void setMunicipality(Municipality municipality) {
+        this.municipality = municipality;
     }
 
     @Override
@@ -83,7 +60,7 @@ public class AdsPlace {
                 "id=" + id +
                 ", address='" + address + '\'' +
                 ", owner='" + owner + '\'' +
-                ", municipalityId=" + municipalityId +
+                ", municipality=" + municipality +
                 '}';
     }
 }

@@ -11,15 +11,16 @@ public class Photo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "photo_id")
     private Integer id;
 
     @Column(name = "path")
     private String path;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "photo")
-    private List<Requests> requestsId;
+    @OneToOne
+    @JoinColumn(name = "requests_id", referencedColumnName = "request_id")
+    private Requests requests;
 
     public Integer getId() {
         return id;
@@ -37,12 +38,12 @@ public class Photo {
         this.path = path;
     }
 
-    public List<Requests> getRequestsId() {
-        return requestsId;
+    public Requests getRequests() {
+        return requests;
     }
 
-    public void setRequestsId(List<Requests> requestsId) {
-        this.requestsId = requestsId;
+    public void setRequests(Requests requests) {
+        this.requests = requests;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class Photo {
         return "Photo{" +
                 "id=" + id +
                 ", path='" + path + '\'' +
-                ", requestsId=" + requestsId +
+                ", requests=" + requests +
                 '}';
     }
 }

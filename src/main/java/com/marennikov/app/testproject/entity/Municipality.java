@@ -1,5 +1,7 @@
 package com.marennikov.app.testproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,14 +17,12 @@ public class Municipality {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "municipality_id")
-    private AdsPlace adsPlace;
-
-    @ManyToMany
-    @JoinTable(name="municipality_users",
-            joinColumns = @JoinColumn(name="municipality_id", referencedColumnName="id"),
-            inverseJoinColumns = @JoinColumn(name="users_id", referencedColumnName="id"))
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "municipality_users",
+            joinColumns = @JoinColumn(name = "municipality_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<Users> users;
 
     public Integer getId() {
@@ -39,14 +39,6 @@ public class Municipality {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public AdsPlace getAdsPlace() {
-        return adsPlace;
-    }
-
-    public void setAdsPlace(AdsPlace adsPlace) {
-        this.adsPlace = adsPlace;
     }
 
     public List<Users> getUsers() {

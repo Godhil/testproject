@@ -1,5 +1,7 @@
 package com.marennikov.app.testproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -9,7 +11,7 @@ public class AdsConstruction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "ads_construction_id")
     private Integer id;
 
     @Column(name = "owner")
@@ -27,12 +29,13 @@ public class AdsConstruction {
     @Column(name = "create_date")
     private Date date;
 
-    @OneToOne(mappedBy = "adsConstruction")
-    private AdsPlace adsPlaceId;
-
     @OneToOne
-    @JoinColumn(name = "ads_construction_id")
-    private Requests requestAdsConstruction;
+    @JoinColumn(name = "ads_place_id")
+    private AdsPlace adsPlaceId;
+//
+//    @OneToOne
+//    @JoinColumn(name = "ads_construction_id")
+//    private Requests requestAdsConstruction;
 
     public Integer getId() {
         return id;
@@ -90,13 +93,13 @@ public class AdsConstruction {
         this.adsPlaceId = adsPlaceId;
     }
 
-    public Requests getRequestAdsConstruction() {
-        return requestAdsConstruction;
-    }
-
-    public void setRequestAdsConstruction(Requests requestAdsConstruction) {
-        this.requestAdsConstruction = requestAdsConstruction;
-    }
+//    public Requests getRequestAdsConstruction() {
+//        return requestAdsConstruction;
+//    }
+//
+//    public void setRequestAdsConstruction(Requests requestAdsConstruction) {
+//        this.requestAdsConstruction = requestAdsConstruction;
+//    }
 
     @Override
     public String toString() {
