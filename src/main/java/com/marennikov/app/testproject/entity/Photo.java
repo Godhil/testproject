@@ -1,7 +1,5 @@
 package com.marennikov.app.testproject.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,13 +12,20 @@ public class Photo {
     @Column(name = "photo_id")
     private Integer id;
 
-    @Column(name = "path")
+    @Column(name = "path",  nullable = false)
     private String path;
 
-    @JsonIgnore
-    @OneToOne
-    @JoinColumn(name = "requests_id", referencedColumnName = "request_id")
-    private Requests requests;
+    @OneToMany(mappedBy = "photo")
+//    @JoinColumn(name = "request_id",  nullable = false)
+    private List<Request> requests;
+
+    public Photo() {
+    }
+
+    public Photo(String path, List<Request> requests) {
+        this.path = path;
+        this.requests = requests;
+    }
 
     public Integer getId() {
         return id;
@@ -38,13 +43,14 @@ public class Photo {
         this.path = path;
     }
 
-    public Requests getRequests() {
+    public List<Request> getRequests() {
         return requests;
     }
 
-    public void setRequests(Requests requests) {
+    public void setRequests(List<Request> requests) {
         this.requests = requests;
     }
+
 
     @Override
     public String toString() {
@@ -54,4 +60,6 @@ public class Photo {
                 ", requests=" + requests +
                 '}';
     }
+
+
 }

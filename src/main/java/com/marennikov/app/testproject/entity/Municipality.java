@@ -1,9 +1,6 @@
 package com.marennikov.app.testproject.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "municipality")
@@ -11,19 +8,15 @@ public class Municipality {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "municipality_id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name",  nullable = false)
     private String name;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "municipality_users",
-            joinColumns = @JoinColumn(name = "municipality_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<Users> users;
+    @ManyToOne
+    @JoinColumn(name = "municipality_id", insertable = false, updatable = false)
+    private User user;
 
     public Integer getId() {
         return id;
@@ -41,12 +34,19 @@ public class Municipality {
         this.name = name;
     }
 
-    public List<Users> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<Users> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Municipality() {
+    }
+
+    public Municipality(String name) {
+        this.name = name;
     }
 
     @Override

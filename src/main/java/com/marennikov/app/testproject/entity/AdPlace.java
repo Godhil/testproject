@@ -5,22 +5,31 @@ import java.util.List;
 
 @Entity
 @Table(name = "ads_place")
-public class AdsPlace {
+public class AdPlace {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ads_place_id")
     private Integer id;
 
-    @Column(name = "address")
+    @Column(name = "address",  nullable = false)
     private String address;
 
-    @Column(name = "owner")
+    @Column(name = "owner",  nullable = false)
     private String owner;
 
     @ManyToOne
-    @JoinColumn(name = "municipality_id", referencedColumnName = "id")
+    @JoinColumn(name = "municipality_id",  nullable = false)
     private Municipality municipality;
+
+    public AdPlace() {
+    }
+
+    public AdPlace(String address, String owner, Municipality municipality) {
+        this.address = address;
+        this.owner = owner;
+        this.municipality = municipality;
+    }
 
     public Integer getId() {
         return id;
@@ -56,7 +65,7 @@ public class AdsPlace {
 
     @Override
     public String toString() {
-        return "AdsPlace{" +
+        return "AdPlace{" +
                 "id=" + id +
                 ", address='" + address + '\'' +
                 ", owner='" + owner + '\'' +

@@ -1,40 +1,58 @@
 package com.marennikov.app.testproject.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
-public class Users {
+@Table(name = "user")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private Integer id;
 
-    @Column(name = "login")
+    @Column(name = "login",  nullable = false)
     private String login;
 
-    @Column(name = "password")
+    @Column(name = "password",  nullable = false)
     private Integer password;
 
-    @Column(name = "surname")
+    @Column(name = "surname",  nullable = false)
     private String surname;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name",  nullable = false)
     private String firstName;
 
-    @Column(name = "second_name")
+    @Column(name = "second_name",  nullable = false)
     private String secondName;
 
-    @Column(name = "role")
+    @Column(name = "role",  nullable = false)
     private Integer role;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user")
+//    @JoinColumn(name = "municipality_id",  nullable = false)
     private List<Municipality> municipality;
+
+    public User() {
+    }
+
+    public User(
+            String login,
+            Integer password,
+            String surname,
+            String firstName,
+            String secondName,
+            Integer role,
+            List<Municipality> municipality) {
+        this.login = login;
+        this.password = password;
+        this.surname = surname;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.role = role;
+        this.municipality = municipality;
+    }
 
     public Integer getId() {
         return id;
@@ -102,7 +120,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users{" +
+        return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password=" + password +

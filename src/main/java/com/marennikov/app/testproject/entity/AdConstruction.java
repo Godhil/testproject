@@ -1,41 +1,53 @@
 package com.marennikov.app.testproject.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
 @Table(name = "ads_construction")
-public class AdsConstruction {
+public class AdConstruction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ads_construction_id")
     private Integer id;
 
-    @Column(name = "owner")
+    @Column(name = "owner",  nullable = false)
     private String owner;
 
-    @Column(name = "number")
+    @Column(name = "number",  nullable = false)
     private Integer number;
 
-    @Column(name = "type")
+    @Column(name = "type",  nullable = false)
     private String type;
 
-    @Column(name = "status")
+    @Column(name = "status",  nullable = false)
     private String status;
 
-    @Column(name = "create_date")
+    @Column(name = "create_date",  nullable = false)
     private Date date;
 
     @OneToOne
-    @JoinColumn(name = "ads_place_id")
-    private AdsPlace adsPlaceId;
-//
-//    @OneToOne
-//    @JoinColumn(name = "ads_construction_id")
-//    private Requests requestAdsConstruction;
+    @JoinColumn(name = "ads_place_id",  nullable = false)
+    private AdPlace adPlaceId;
+
+    public AdConstruction() {
+    }
+
+    public AdConstruction(
+            String owner,
+            Integer number,
+            String type,
+            String status,
+            Date date,
+            AdPlace adPlaceId) {
+        this.owner = owner;
+        this.number = number;
+        this.type = type;
+        this.status = status;
+        this.date = date;
+        this.adPlaceId = adPlaceId;
+    }
 
     public Integer getId() {
         return id;
@@ -85,32 +97,24 @@ public class AdsConstruction {
         this.date = date;
     }
 
-    public AdsPlace getAdsPlaceId() {
-        return adsPlaceId;
+    public AdPlace getAdPlaceId() {
+        return adPlaceId;
     }
 
-    public void setAdsPlaceId(AdsPlace adsPlaceId) {
-        this.adsPlaceId = adsPlaceId;
+    public void setAdPlaceId(AdPlace adPlaceId) {
+        this.adPlaceId = adPlaceId;
     }
-
-//    public Requests getRequestAdsConstruction() {
-//        return requestAdsConstruction;
-//    }
-//
-//    public void setRequestAdsConstruction(Requests requestAdsConstruction) {
-//        this.requestAdsConstruction = requestAdsConstruction;
-//    }
 
     @Override
     public String toString() {
-        return "AdsConstruction{" +
+        return "AdConstruction{" +
                 "id=" + id +
                 ", owner='" + owner + '\'' +
                 ", number=" + number +
                 ", type='" + type + '\'' +
                 ", status='" + status + '\'' +
                 ", date=" + date +
-                ", adsPlaceId=" + adsPlaceId +
+                ", adPlaceId=" + adPlaceId +
                 '}';
     }
 }

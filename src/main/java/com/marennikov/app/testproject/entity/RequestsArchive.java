@@ -13,38 +13,67 @@ public class RequestsArchive {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "request_id", referencedColumnName = "request_id")
-    private Requests requests;
+    @JoinColumn(name = "request_id", referencedColumnName = "request_id",  nullable = false)
+    private Request request;
 
-    @Column(name = "status")
+    @Column(name = "status",  nullable = false)
     private String status;
 
-    @Column(name = "requester")
+    @Column(name = "requester",  nullable = false)
     private Integer requester;
 
-    @Column(name = "assignee")
+    @Column(name = "assignee",  nullable = false)
     private Integer assignee;
 
-    @Column(name = "create_date")
+    @Column(name = "create_date",  nullable = false)
     private Date createDate;
 
     @Column(name = "processing_date")
     private Date processingDate;
 
-    @Column(name = "version")
+    @Column(name = "version",  nullable = false)
     private Integer version;
 
-    @Column(name = "ads_place_id")
+    @Column(name = "ads_place_id",  nullable = false)
     private Integer adsPlaceId;
 
-    @Column(name = "ads_construction_id")
+    @Column(name = "ads_construction_id",  nullable = false)
     private Integer adsConstructionId;
 
-    @Column(name = "actual")
+    @Column(name = "actual",  nullable = false)
     private Boolean actual;
 
     @Column(name = "rejected")
     private String rejected;
+
+
+    public RequestsArchive() {
+    }
+
+    public RequestsArchive(
+            Request request,
+            String status,
+            Integer requester,
+            Integer assignee,
+            Date createDate,
+            Date processingDate,
+            Integer version,
+            Integer adsPlaceId,
+            Integer adsConstructionId,
+            Boolean actual,
+            String rejected) {
+        this.request = request;
+        this.status = status;
+        this.requester = requester;
+        this.assignee = assignee;
+        this.createDate = createDate;
+        this.processingDate = processingDate;
+        this.version = version;
+        this.adsPlaceId = adsPlaceId;
+        this.adsConstructionId = adsConstructionId;
+        this.actual = actual;
+        this.rejected = rejected;
+    }
 
     public Integer getId() {
         return id;
@@ -54,22 +83,13 @@ public class RequestsArchive {
         this.id = id;
     }
 
-    public Requests getRequests() {
-        return requests;
+    public Request getRequest() {
+        return request;
     }
 
-    public void setRequests(Requests requests) {
-        this.requests = requests;
+    public void setRequest(Request request) {
+        this.request = request;
     }
-
-    //
-//    public List<Requests> getRequestsId() {
-//        return requestsId;
-//    }
-//
-//    public void setRequestsId(List<Requests> requestsId) {
-//        this.requestsId = requestsId;
-//    }
 
     public String getStatus() {
         return status;
@@ -155,7 +175,7 @@ public class RequestsArchive {
     public String toString() {
         return "RequestsArchive{" +
                 "id=" + id +
-                ", requests=" + requests +
+                ", request=" + request +
                 ", status='" + status + '\'' +
                 ", requester=" + requester +
                 ", assignee=" + assignee +
