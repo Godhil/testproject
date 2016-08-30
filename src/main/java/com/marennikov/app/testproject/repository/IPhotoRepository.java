@@ -7,6 +7,4 @@ import org.springframework.data.repository.query.Param;
 
 public interface IPhotoRepository extends JpaRepository<Photo, Integer> {
 
-    @Query("from Photo where requests_id = :id")
-    Iterable<Photo> findByRequestId(@Param("id") Integer id);
 }
