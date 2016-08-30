@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MunicipalityImpl implements IMunicipalityService {
 
+    @Autowired
     private IMunicipalityRepository municipalityRepository;
 
     @Autowired
@@ -18,17 +19,24 @@ public class MunicipalityImpl implements IMunicipalityService {
 
 
     @Override
+    public Municipality addMunicipality(Municipality municipality) {
+        Municipality addMunicipality = municipalityRepository.saveAndFlush(municipality);
+
+        return addMunicipality;
+    }
+
+    @Override
+    public void delete(Integer id) {
+        municipalityRepository.delete(id);
+    }
+
+    @Override
+    public Municipality editMunicipality(Municipality municipality) {
+        return municipalityRepository.saveAndFlush(municipality);
+    }
+
+    @Override
     public Iterable<Municipality> municipalityList() {
         return municipalityRepository.findAll();
-    }
-
-    @Override
-    public Municipality getMunicipalityById(Integer id) {
-        return municipalityRepository.findOne(id);
-    }
-
-    @Override
-    public Municipality saveMunicipality(Municipality municipality) {
-        return municipalityRepository.save(municipality);
     }
 }

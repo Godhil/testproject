@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PhotoImpl implements IPhotoService {
 
+    @Autowired
     private IPhotoRepository photoRepository;
 
     @Autowired
@@ -16,18 +17,25 @@ public class PhotoImpl implements IPhotoService {
         this.photoRepository = photoRepository;
     }
 
+
+    @Override
+    public Photo addPhoto(Photo photo) {
+        Photo addPhoto = photoRepository.saveAndFlush(photo);
+        return addPhoto;
+    }
+
+    @Override
+    public void delete(Integer id) {
+        photoRepository.delete(id);
+    }
+
+    @Override
+    public Photo editPhoto(Photo photo) {
+        return photoRepository.saveAndFlush(photo);
+    }
+
     @Override
     public Iterable<Photo> photoList() {
         return photoRepository.findAll();
-    }
-
-    @Override
-    public Photo getPhotoById(Integer id) {
-        return photoRepository.findOne(id);
-    }
-
-    @Override
-    public Photo savePhoto(Photo photo) {
-        return photoRepository.save(photo);
     }
 }
