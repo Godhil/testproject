@@ -1,7 +1,6 @@
 package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "ad_place")

@@ -13,7 +13,7 @@ public class RequestsArchive {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "request_id", referencedColumnName = "request_id",  nullable = false)
+    @JoinColumn(name = "request_id", nullable = false)
     private Request request;
 
     @Column(name = "status",  nullable = false)

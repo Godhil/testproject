@@ -2,7 +2,6 @@ package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "request")

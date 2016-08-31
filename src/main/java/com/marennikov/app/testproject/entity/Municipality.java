@@ -14,10 +14,6 @@ public class Municipality {
     @Column(name = "name",  nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "municipality_id", insertable = false, updatable = false)
-    private User user;
-
     public Integer getId() {
         return id;
     }
@@ -32,14 +28,6 @@ public class Municipality {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Municipality() {

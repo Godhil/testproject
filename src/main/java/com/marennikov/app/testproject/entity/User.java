@@ -1,7 +1,6 @@
 package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -30,9 +29,9 @@ public class User {
     @Column(name = "role",  nullable = false)
     private Integer role;
 
-    @OneToMany(mappedBy = "user")
-//    @JoinColumn(name = "municipality_id",  nullable = false)
-    private List<Municipality> municipality;
+    @ManyToOne
+    @JoinColumn(name = "municipality_id")
+    private Municipality municipality;
 
     public User() {
     }
@@ -44,7 +43,7 @@ public class User {
             String firstName,
             String secondName,
             Integer role,
-            List<Municipality> municipality) {
+            Municipality municipality) {
         this.login = login;
         this.password = password;
         this.surname = surname;
@@ -110,11 +109,11 @@ public class User {
         this.role = role;
     }
 
-    public List<Municipality> getMunicipality() {
+    public Municipality getMunicipality() {
         return municipality;
     }
 
-    public void setMunicipality(List<Municipality> municipality) {
+    public void setMunicipality(Municipality municipality) {
         this.municipality = municipality;
     }
 

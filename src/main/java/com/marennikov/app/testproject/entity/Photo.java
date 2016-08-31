@@ -1,7 +1,6 @@
 package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "photo")
@@ -15,14 +14,14 @@ public class Photo {
     @Column(name = "path",  nullable = false)
     private String path;
 
-    @OneToMany(mappedBy = "photo")
-//    @JoinColumn(name = "request_id",  nullable = false)
-    private List<Request> requests;
+    @ManyToOne
+    @JoinColumn(name = "request_id",  nullable = false)
+    private Request requests;
 
     public Photo() {
     }
 
-    public Photo(String path, List<Request> requests) {
+    public Photo(String path, Request requests) {
         this.path = path;
         this.requests = requests;
     }
@@ -43,11 +42,11 @@ public class Photo {
         this.path = path;
     }
 
-    public List<Request> getRequests() {
+    public Request getRequests() {
         return requests;
     }
 
-    public void setRequests(List<Request> requests) {
+    public void setRequests(Request requests) {
         this.requests = requests;
     }
 
