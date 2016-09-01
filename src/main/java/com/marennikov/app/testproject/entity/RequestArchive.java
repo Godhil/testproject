@@ -22,10 +22,10 @@ public class RequestArchive {
     private Integer assignee;
 
     @Column(nullable = false)
-    private Date createDate;
+    private String createDate;
 
     @Column
-    private Date processingDate;
+    private String processingDate;
 
     @Column(name = "version",  nullable = false)
     private Integer version;
@@ -51,8 +51,8 @@ public class RequestArchive {
             String status,
             Integer requester,
             Integer assignee,
-            Date createDate,
-            Date processingDate,
+            String createDate,
+            String processingDate,
             Integer version,
             Integer adPlaceId,
             Integer adsConstructionId,
@@ -102,19 +102,19 @@ public class RequestArchive {
         this.assignee = assignee;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
-    public Date getProcessingDate() {
+    public String getProcessingDate() {
         return processingDate;
     }
 
-    public void setProcessingDate(Date processingDate) {
+    public void setProcessingDate(String processingDate) {
         this.processingDate = processingDate;
     }
 

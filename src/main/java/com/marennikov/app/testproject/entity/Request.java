@@ -23,10 +23,10 @@ public class Request {
     private User assignee;
 
     @Column(nullable = false)
-    private Date createDate;
+    private String createDate;
 
     @Column(nullable = false)
-    private Date processingDate;
+    private String processingDate;
 
     @Column(nullable = false)
     private Integer version;
@@ -52,8 +52,8 @@ public class Request {
             String status,
             User requester,
             User assignee,
-            Date createDate,
-            Date processingDate,
+            String createDate,
+            String processingDate,
             Integer version,
             AdPlace adPlaceId,
             AdConstruction adConstruction,
@@ -112,19 +112,19 @@ public class Request {
         this.assignee = assignee;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
-    public Date getProcessingDate() {
+    public String getProcessingDate() {
         return processingDate;
     }
 
-    public void setProcessingDate(Date processingDate) {
+    public void setProcessingDate(String processingDate) {
         this.processingDate = processingDate;
     }
 
