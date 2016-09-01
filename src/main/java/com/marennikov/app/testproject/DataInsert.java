@@ -69,8 +69,18 @@ public class DataInsert implements ApplicationListener<ContextRefreshedEvent> {
                 user2.setRole(2);
                 user2.setMunicipality(municipality);
 
+                User user3 = new User();
+                user3.setLogin("Wop");
+                user3.setPassword(123456);
+                user3.setSurname("Wop");
+                user3.setFirstName("Pop");
+                user3.setSecondName("WOW");
+                user3.setRole(2);
+                user3.setMunicipality(municipality);
+
                 userService.addUser(user);
                 userService.addUser(user2);
+                userService.addUser(user3);
 
                 //AdPlace
                 AdPlace adPlace = new AdPlace();
