@@ -1,15 +1,15 @@
 package com.marennikov.app.testproject.service;
 
-import com.marennikov.app.testproject.entity.RequestsArchive;
+import com.marennikov.app.testproject.entity.RequestArchive;
 
 public interface IRequestsArchiveService {
 
-    RequestsArchive addRequestArchive(RequestsArchive requestsArchive);
+    RequestArchive addRequestArchive(RequestArchive requestArchive);
 
     void delete(Integer id);
 
-    RequestsArchive editRequestArhive(RequestsArchive requestsArchive);
+    RequestArchive editRequestArhive(RequestArchive requestArchive);
 
-    Iterable<RequestsArchive> requestsArchiveList();
+    Iterable<RequestArchive> requestsArchiveList();
 
 }
