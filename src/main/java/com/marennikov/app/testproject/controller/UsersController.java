@@ -1,26 +1,32 @@
 package com.marennikov.app.testproject.controller;
 
-import com.marennikov.app.testproject.entity.Users;
-import com.marennikov.app.testproject.service.IUsersService;
+import com.marennikov.app.testproject.entity.User;
+import com.marennikov.app.testproject.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UsersController {
 
-    private IUsersService usersService;
+    private IUserService usersService;
 
     @Autowired
-    public void setUsersService(IUsersService usersService) {
+    public void setUsersService(IUserService usersService) {
         this.usersService = usersService;
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public Iterable<Users> getUsersList(){
+    public Iterable<User> getUsersList(){
         return usersService.usersList();
     }
+
+    @RequestMapping(value = "/deluser/{id}", method = RequestMethod.GET)
+    public void delete(@PathVariable Integer id) {
+        usersService.delete(id);
+    }
+
+
 
 
 }

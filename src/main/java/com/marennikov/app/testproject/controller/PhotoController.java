@@ -1,12 +1,10 @@
 package com.marennikov.app.testproject.controller;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.marennikov.app.testproject.entity.Photo;
 import com.marennikov.app.testproject.service.IPhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PhotoController {
@@ -23,5 +21,8 @@ public class PhotoController {
         return photoService.photoList();
     }
 
-
+    @RequestMapping(value = "/delphoto/{id}", method = RequestMethod.GET)
+    public void deletePhoto(@PathVariable Integer id) {
+        photoService.delete(id);
+    }
 }
