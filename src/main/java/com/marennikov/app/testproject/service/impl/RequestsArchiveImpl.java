@@ -1,6 +1,6 @@
 package com.marennikov.app.testproject.service.impl;
 
-import com.marennikov.app.testproject.entity.RequestsArchive;
+import com.marennikov.app.testproject.entity.RequestArchive;
 import com.marennikov.app.testproject.repository.IRequestsArchiveRepository;
 import com.marennikov.app.testproject.service.IRequestsArchiveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +19,10 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
 
 
     @Override
-    public RequestsArchive addRequestArchive(RequestsArchive requestsArchive) {
-        RequestsArchive addRequestsArchive = requestsArchiveRepository.saveAndFlush(requestsArchive);
+    public RequestArchive addRequestArchive(RequestArchive requestArchive) {
+        RequestArchive addRequestArchive = requestsArchiveRepository.saveAndFlush(requestArchive);
 
-        return addRequestsArchive;
+        return addRequestArchive;
     }
 
     @Override
@@ -31,12 +31,12 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     }
 
     @Override
-    public RequestsArchive editRequestArhive(RequestsArchive requestsArchive) {
-        return requestsArchiveRepository.saveAndFlush(requestsArchive);
+    public RequestArchive editRequestArhive(RequestArchive requestArchive) {
+        return requestsArchiveRepository.saveAndFlush(requestArchive);
     }
 
     @Override
-    public Iterable<RequestsArchive> requestsArchiveList() {
+    public Iterable<RequestArchive> requestsArchiveList() {
         return requestsArchiveRepository.findAll();
     }
 }
