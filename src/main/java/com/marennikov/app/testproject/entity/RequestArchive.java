@@ -1,56 +1,52 @@
 package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
-@Table(name = "requests_archive")
-public class RequestsArchive {
+@Table(name = "request_archive")
+public class RequestArchive {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "request_id", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     private Request request;
 
-    @Column(name = "status",  nullable = false)
-    private String status;
-
-    @Column(name = "requester",  nullable = false)
+    @Column(nullable = false)
     private Integer requester;
 
-    @Column(name = "assignee",  nullable = false)
+    @Column(nullable = false)
     private Integer assignee;
 
-    @Column(name = "create_date",  nullable = false)
+    @Column(nullable = false)
     private Date createDate;
 
-    @Column(name = "processing_date")
+    @Column
     private Date processingDate;
 
     @Column(name = "version",  nullable = false)
     private Integer version;
 
-    @Column(name = "ads_place_id",  nullable = false)
-    private Integer adsPlaceId;
+    @Column(nullable = false)
+    private Integer adPlaceId;
 
-    @Column(name = "ads_construction_id",  nullable = false)
-    private Integer adsConstructionId;
+    @Column(nullable = false)
+    private Integer adConstructionId;
 
-    @Column(name = "actual",  nullable = false)
+    @Column(nullable = false)
     private Boolean actual;
 
-    @Column(name = "rejected")
+    @Column
     private String rejected;
 
 
-    public RequestsArchive() {
+    public RequestArchive() {
     }
 
-    public RequestsArchive(
+    public RequestArchive(
             Request request,
             String status,
             Integer requester,
@@ -58,19 +54,18 @@ public class RequestsArchive {
             Date createDate,
             Date processingDate,
             Integer version,
-            Integer adsPlaceId,
+            Integer adPlaceId,
             Integer adsConstructionId,
             Boolean actual,
             String rejected) {
         this.request = request;
-        this.status = status;
         this.requester = requester;
         this.assignee = assignee;
         this.createDate = createDate;
         this.processingDate = processingDate;
         this.version = version;
-        this.adsPlaceId = adsPlaceId;
-        this.adsConstructionId = adsConstructionId;
+        this.adPlaceId = adPlaceId;
+        this.adConstructionId = adsConstructionId;
         this.actual = actual;
         this.rejected = rejected;
     }
@@ -89,14 +84,6 @@ public class RequestsArchive {
 
     public void setRequest(Request request) {
         this.request = request;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Integer getRequester() {
@@ -139,20 +126,20 @@ public class RequestsArchive {
         this.version = version;
     }
 
-    public Integer getAdsPlaceId() {
-        return adsPlaceId;
+    public Integer getAdPlaceId() {
+        return adPlaceId;
     }
 
-    public void setAdsPlaceId(Integer adsPlaceId) {
-        this.adsPlaceId = adsPlaceId;
+    public void setAdPlaceId(Integer adPlaceId) {
+        this.adPlaceId = adPlaceId;
     }
 
-    public Integer getAdsConstructionId() {
-        return adsConstructionId;
+    public Integer getAdConstructionId() {
+        return adConstructionId;
     }
 
-    public void setAdsConstructionId(Integer adsConstructionId) {
-        this.adsConstructionId = adsConstructionId;
+    public void setAdConstructionId(Integer adConstructionId) {
+        this.adConstructionId = adConstructionId;
     }
 
     public Boolean getActual() {
@@ -173,17 +160,16 @@ public class RequestsArchive {
 
     @Override
     public String toString() {
-        return "RequestsArchive{" +
+        return "RequestArchive{" +
                 "id=" + id +
                 ", request=" + request +
-                ", status='" + status + '\'' +
                 ", requester=" + requester +
                 ", assignee=" + assignee +
                 ", createDate=" + createDate +
                 ", processingDate=" + processingDate +
                 ", version=" + version +
-                ", adsPlaceId=" + adsPlaceId +
-                ", adsConstructionId=" + adsConstructionId +
+                ", adPlaceId=" + adPlaceId +
+                ", adConstructionId=" + adConstructionId +
                 ", actual=" + actual +
                 ", rejected='" + rejected + '\'' +
                 '}';

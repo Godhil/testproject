@@ -8,14 +8,13 @@ public class Photo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "photo_id")
     private Integer id;
 
-    @Column(name = "path",  nullable = false)
+    @Column(nullable = false)
     private String path;
 
-    @ManyToOne
-    @JoinColumn(name = "request_id",  nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     private Request requests;
 
     public Photo() {

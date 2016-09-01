@@ -1,7 +1,7 @@
 package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name = "request")
@@ -9,46 +9,41 @@ public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "request_id")
     private Integer id;
 
-    @Column(name = "status",  nullable = false)
+    @Column(nullable = false)
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "requester", referencedColumnName = "user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     private User requester;
 
-    @ManyToOne
-    @JoinColumn(name = "assignee", referencedColumnName = "user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     private User assignee;
 
-    @Column(name = "create_date",  nullable = false)
+    @Column(nullable = false)
     private Date createDate;
 
-    @Column(name = "processing_date",  nullable = false)
+    @Column(nullable = false)
     private Date processingDate;
 
-    @Column(name = "version",  nullable = false)
+    @Column(nullable = false)
     private Integer version;
 
-    @OneToOne
-    @JoinColumn(name = "ads_place_id",  nullable = false)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     private AdPlace adPlaceId;
 
-    @OneToOne
-    @JoinColumn(name = "ads_construction_id",  nullable = false)
-    private AdConstruction adConstructionId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    private AdConstruction adConstruction;
 
-    @Column(name = "actual",  nullable = false)
+    @Column(nullable = false)
     private Boolean actual;
 
-    @Column(name = "rejected")
+    @Column
     private String rejected;
-
-    @ManyToOne
-    @JoinColumn(name = "photo_id")
-    private Photo photo;
 
     public Request() {
     }
@@ -61,10 +56,9 @@ public class Request {
             Date processingDate,
             Integer version,
             AdPlace adPlaceId,
-            AdConstruction adConstructionId,
+            AdConstruction adConstruction,
             Boolean actual,
-            String rejected,
-            Photo photo) {
+            String rejected) {
         this.status = status;
         this.requester = requester;
         this.assignee = assignee;
@@ -72,10 +66,9 @@ public class Request {
         this.processingDate = processingDate;
         this.version = version;
         this.adPlaceId = adPlaceId;
-        this.adConstructionId = adConstructionId;
+        this.adConstruction = adConstruction;
         this.actual = actual;
         this.rejected = rejected;
-        this.photo = photo;
     }
 
     public Boolean getActual() {
@@ -151,12 +144,12 @@ public class Request {
         this.adPlaceId = adPlaceId;
     }
 
-    public AdConstruction getAdConstructionId() {
-        return adConstructionId;
+    public AdConstruction getAdConstruction() {
+        return adConstruction;
     }
 
-    public void setAdConstructionId(AdConstruction adConstructionId) {
-        this.adConstructionId = adConstructionId;
+    public void setAdConstruction(AdConstruction adConstruction) {
+        this.adConstruction = adConstruction;
     }
 
     public String getRejected() {
@@ -179,7 +172,7 @@ public class Request {
                 ", processingDate=" + processingDate +
                 ", version=" + version +
                 ", adPlaceId=" + adPlaceId +
-                ", adConstructionId=" + adConstructionId +
+                ", adConstruction=" + adConstruction +
                 ", actual=" + actual +
                 ", rejected='" + rejected + '\'' +
                 '}';

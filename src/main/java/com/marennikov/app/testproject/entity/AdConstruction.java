@@ -1,7 +1,6 @@
 package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity
 @Table(name = "ad_construction")
@@ -9,27 +8,26 @@ public class AdConstruction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ads_construction_id")
     private Integer id;
 
-    @Column(name = "owner",  nullable = false)
+    @Column(nullable = false)
     private String owner;
 
-    @Column(name = "number",  nullable = false)
+    @Column(nullable = false)
     private Integer number;
 
-    @Column(name = "type",  nullable = false)
+    @Column(nullable = false)
     private String type;
 
-    @Column(name = "status",  nullable = false)
+    @Column(nullable = false)
     private String status;
 
-    @Column(name = "create_date",  nullable = false)
-    private Date date;
+    @Column(nullable = false)
+    private String date;
 
-    @OneToOne
-    @JoinColumn(name = "ads_place_id",  nullable = false)
-    private AdPlace adPlaceId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    private AdPlace adPlace;
 
     public AdConstruction() {
     }
@@ -39,14 +37,14 @@ public class AdConstruction {
             Integer number,
             String type,
             String status,
-            Date date,
-            AdPlace adPlaceId) {
+            String date,
+            AdPlace adPlace) {
         this.owner = owner;
         this.number = number;
         this.type = type;
         this.status = status;
         this.date = date;
-        this.adPlaceId = adPlaceId;
+        this.adPlace = adPlace;
     }
 
     public Integer getId() {
@@ -89,20 +87,20 @@ public class AdConstruction {
         this.status = status;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public AdPlace getAdPlaceId() {
-        return adPlaceId;
+    public AdPlace getAdPlace() {
+        return adPlace;
     }
 
-    public void setAdPlaceId(AdPlace adPlaceId) {
-        this.adPlaceId = adPlaceId;
+    public void setAdPlace(AdPlace adPlace) {
+        this.adPlace = adPlace;
     }
 
     @Override
@@ -114,7 +112,7 @@ public class AdConstruction {
                 ", type='" + type + '\'' +
                 ", status='" + status + '\'' +
                 ", date=" + date +
-                ", adPlaceId=" + adPlaceId +
+                ", adPlace=" + adPlace +
                 '}';
     }
 }

@@ -8,29 +8,28 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
     private Integer id;
 
-    @Column(name = "login",  nullable = false)
+    @Column(nullable = false)
     private String login;
 
-    @Column(name = "password",  nullable = false)
+    @Column(nullable = false)
     private Integer password;
 
-    @Column(name = "surname",  nullable = false)
+    @Column( nullable = false)
     private String surname;
 
-    @Column(name = "first_name",  nullable = false)
+    @Column(nullable = false)
     private String firstName;
 
-    @Column(name = "second_name",  nullable = false)
+    @Column(nullable = false)
     private String secondName;
 
-    @Column(name = "role",  nullable = false)
+    @Column(nullable = false)
     private Integer role;
 
-    @ManyToOne
-    @JoinColumn(name = "municipality_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     private Municipality municipality;
 
     public User() {

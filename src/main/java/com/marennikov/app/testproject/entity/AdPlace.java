@@ -8,17 +8,16 @@ public class AdPlace {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ads_place_id")
     private Integer id;
 
-    @Column(name = "address",  nullable = false)
+    @Column(nullable = false)
     private String address;
 
-    @Column(name = "owner",  nullable = false)
+    @Column(nullable = false)
     private String owner;
 
-    @ManyToOne
-    @JoinColumn(name = "municipality_id",  nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     private Municipality municipality;
 
     public AdPlace() {

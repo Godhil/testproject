@@ -8,10 +8,9 @@ public class Municipality {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "municipality_id")
     private Integer id;
 
-    @Column(name = "name",  nullable = false)
+    @Column(nullable = false)
     private String name;
 
     public Integer getId() {
