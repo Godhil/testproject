@@ -38,4 +38,9 @@ public class UserImpl implements IUserService {
     public Iterable<User> usersList() {
         return userRepository.findAll();
     }
+
+    @Override
+    public User getUserById(Integer id) {
+        return userRepository.getOne(id);
+    }
 }

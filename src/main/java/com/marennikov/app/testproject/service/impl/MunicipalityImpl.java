@@ -39,4 +39,9 @@ public class MunicipalityImpl implements IMunicipalityService {
     public Iterable<Municipality> municipalityList() {
         return municipalityRepository.findAll();
     }
+
+    @Override
+    public Municipality getById(Integer id) {
+        return municipalityRepository.findOne(id);
+    }
 }
