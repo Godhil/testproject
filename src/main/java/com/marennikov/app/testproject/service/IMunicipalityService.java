@@ -1,6 +1,5 @@
 package com.marennikov.app.testproject.service;
 
-import com.marennikov.app.testproject.entity.AdConstruction;
 import com.marennikov.app.testproject.entity.Municipality;
 
 public interface IMunicipalityService {
@@ -12,4 +11,6 @@ public interface IMunicipalityService {
     Municipality editMunicipality(Municipality municipality);
 
     Iterable<Municipality> municipalityList();
+
+    Municipality getById(Integer id);
 }

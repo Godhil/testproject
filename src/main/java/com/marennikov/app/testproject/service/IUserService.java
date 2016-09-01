@@ -12,4 +12,5 @@ public interface IUserService {
 
     Iterable<User> usersList();
 
+    User getUserById(Integer id);
 }
