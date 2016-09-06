@@ -39,4 +39,9 @@ public class AdConstructionImpl implements IAdConstructionService {
         return adConstructionRepository.findAll();
     }
 
+    @Override
+    public AdConstruction getById(Integer id) {
+        return adConstructionRepository.findOne(id);
+    }
+
 }

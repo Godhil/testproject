@@ -39,4 +39,9 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     public Iterable<RequestArchive> requestsArchiveList() {
         return requestsArchiveRepository.findAll();
     }
+
+    @Override
+    public RequestArchive getRequestArchiveById(Integer id) {
+        return requestsArchiveRepository.findOne(id);
+    }
 }

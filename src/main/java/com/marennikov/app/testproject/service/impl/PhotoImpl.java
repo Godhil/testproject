@@ -38,4 +38,9 @@ public class PhotoImpl implements IPhotoService {
     public Iterable<Photo> photoList() {
         return photoRepository.findAll();
     }
+
+    @Override
+    public Photo gePhotoById(Integer id) {
+        return photoRepository.findOne(id);
+    }
 }

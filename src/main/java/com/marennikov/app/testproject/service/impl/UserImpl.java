@@ -40,7 +40,7 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public User getUserById(Integer id) {
-        return userRepository.getOne(id);
+    public User getById(Integer id) {
+        return userRepository.findOne(id);
     }
 }

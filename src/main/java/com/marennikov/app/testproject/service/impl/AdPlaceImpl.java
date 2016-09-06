@@ -39,4 +39,9 @@ public class AdPlaceImpl implements IAdPlaceService {
     public Iterable<AdPlace> adPlaceList() {
         return adPlaceRepository.findAll();
     }
+
+    @Override
+    public AdPlace getById(Integer id) {
+        return adPlaceRepository.findOne(id);
+    }
 }

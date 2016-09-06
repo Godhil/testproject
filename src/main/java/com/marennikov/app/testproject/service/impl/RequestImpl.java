@@ -39,4 +39,9 @@ public class RequestImpl implements IRequestService {
     public Iterable<Request> requestsList() {
         return requestsRepository.findAll();
     }
+
+    @Override
+    public Request getRequestById(Integer id) {
+        return requestsRepository.findOne(id);
+    }
 }
