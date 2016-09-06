@@ -11,4 +11,6 @@ public interface IAdPlaceService {
     AdPlace editAdPlace(AdPlace adPlace);
 
     Iterable<AdPlace> adPlaceList();
+
+    AdPlace getById(Integer id);
 }

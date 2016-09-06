@@ -12,4 +12,5 @@ public interface IAdConstructionService {
 
     Iterable<AdConstruction> adConstructionList();
 
+    AdConstruction getById(Integer id);
 }
