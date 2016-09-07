@@ -41,7 +41,7 @@ public class RequestImpl implements IRequestService {
     }
 
     @Override
-    public Request getRequestById(Integer id) {
+    public Request getById(Integer id) {
         return requestsRepository.findOne(id);
     }
 }

@@ -41,7 +41,7 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     }
 
     @Override
-    public RequestArchive getRequestArchiveById(Integer id) {
+    public RequestArchive getById(Integer id) {
         return requestsArchiveRepository.findOne(id);
     }
 }

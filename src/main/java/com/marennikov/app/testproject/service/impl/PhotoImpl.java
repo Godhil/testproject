@@ -40,7 +40,7 @@ public class PhotoImpl implements IPhotoService {
     }
 
     @Override
-    public Photo gePhotoById(Integer id) {
+    public Photo getById(Integer id) {
         return photoRepository.findOne(id);
     }
 }
