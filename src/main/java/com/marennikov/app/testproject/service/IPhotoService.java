@@ -12,6 +12,6 @@ public interface IPhotoService {
 
     Iterable<Photo> photoList();
 
-    Photo gePhotoById(Integer id);
+    Photo getById(Integer id);
 
 }

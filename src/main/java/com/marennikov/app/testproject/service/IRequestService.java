@@ -12,6 +12,6 @@ public interface IRequestService {
 
     Iterable<Request> requestsList();
 
-    Request getRequestById(Integer id);
+    Request getById(Integer id);
 
 }

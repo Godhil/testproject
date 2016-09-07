@@ -12,6 +12,6 @@ public interface IRequestsArchiveService {
 
     Iterable<RequestArchive> requestsArchiveList();
 
-    RequestArchive getRequestArchiveById(Integer id);
+    RequestArchive getById(Integer id);
 
 }
