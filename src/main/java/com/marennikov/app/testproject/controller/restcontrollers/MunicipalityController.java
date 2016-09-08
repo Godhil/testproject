@@ -27,7 +27,14 @@ public class MunicipalityController {
     @ResponseBody
     public String addMunicipality(Municipality municipality) {
         municipalityService.addMunicipality(municipality);
-        return "Saved municipality: " + municipality.toString();
+        return "Saved Municipality: " + municipality.toString();
+    }
+
+    @RequestMapping(value = "municipality/edit", method = RequestMethod.POST)
+    @ResponseBody
+    public String editMunicipality(Municipality municipality) {
+        municipalityService.editMunicipality(municipality);
+        return "Saved Municipality: " + municipality.toString();
     }
 
     @RequestMapping("municipality/{id}")

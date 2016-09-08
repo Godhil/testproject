@@ -29,14 +29,14 @@ public class UsersController {
     @ResponseBody
     public String addUser(User user) {
         userService.addUser(user);
-        return "Saved user: " + user.toString();
+        return "Saved User: " + user.toString();
     }
 
     @RequestMapping(value="user/edit", method=RequestMethod.POST)
     @ResponseBody
     public String editUser(User user) {
         userService.editUser(user);
-        return "Saved user: " + user.toString();
+        return "Saved User: " + user.toString();
     }
 
     @RequestMapping("user/{id}")

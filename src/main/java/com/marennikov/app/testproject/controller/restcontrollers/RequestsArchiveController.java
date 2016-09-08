@@ -27,7 +27,14 @@ public class RequestsArchiveController {
     @ResponseBody
     public String addRequestArchive(RequestArchive requestArchive) {
         requestsArchiveService.addRequestArchive(requestArchive);
-        return "Saved person: " + requestArchive.toString();
+        return "Saved Request Archive: " + requestArchive.toString();
+    }
+
+    @RequestMapping(value="requestarchive/edit", method=RequestMethod.POST)
+    @ResponseBody
+    public String editRequestArchive(RequestArchive requestArchive) {
+        requestsArchiveService.editRequestArhive(requestArchive);
+        return "Saved Request Archive: " + requestArchive.toString();
     }
 
     @RequestMapping("requestarchive/{id}")

@@ -29,7 +29,14 @@ public class AdsConstructionController {
     @ResponseBody
     public String addAdConstruction(AdConstruction adConstruction) {
         adConstructionService.addAdConstruction(adConstruction);
-        return "Saved person: " + adConstruction.toString();
+        return "Saved Ad Construction: " + adConstruction.toString();
+    }
+
+    @RequestMapping(value="adconstruction/edit", method=RequestMethod.POST)
+    @ResponseBody
+    public String editAdConstruction(AdConstruction adConstruction) {
+        adConstructionService.editAdConstruction(adConstruction);
+        return "Saved Ad Construction: " + adConstruction.toString();
     }
 
     @RequestMapping("adconstruction/{id}")

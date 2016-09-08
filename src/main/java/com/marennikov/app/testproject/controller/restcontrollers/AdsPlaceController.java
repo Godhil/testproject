@@ -27,7 +27,14 @@ public class AdsPlaceController {
     @ResponseBody
     public String addAdPlace(AdPlace adPlace) {
         adPlaceService.addAdPlace(adPlace);
-        return "Saved person: " + adPlace.toString();
+        return "Saved Ad Place: " + adPlace.toString();
+    }
+
+    @RequestMapping(value = "adplace/edit", method = RequestMethod.POST)
+    @ResponseBody
+    public String editAdPlace(AdPlace adPlace) {
+        adPlaceService.editAdPlace(adPlace);
+        return "Saved Ad Place: " + adPlace.toString();
     }
 
     @RequestMapping("adplace/{id}")

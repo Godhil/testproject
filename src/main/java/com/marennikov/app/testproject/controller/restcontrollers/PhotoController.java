@@ -28,7 +28,14 @@ public class PhotoController {
     @ResponseBody
     public String addPhoto(Photo photo) {
         photoService.addPhoto(photo);
-        return "Saved person: " + photoService.toString();
+        return "Saved Photo: " + photoService.toString();
+    }
+
+    @RequestMapping(value="photo/edit", method=RequestMethod.POST)
+    @ResponseBody
+    public String editPhoto(Photo photo) {
+        photoService.editPhoto(photo);
+        return "Saved Photo: " + photoService.toString();
     }
 
     @RequestMapping("photo/{id}")
