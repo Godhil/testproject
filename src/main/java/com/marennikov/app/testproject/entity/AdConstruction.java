@@ -29,6 +29,9 @@ public class AdConstruction {
     @JoinColumn(nullable = false)
     private AdPlace adPlace;
 
+    @Column
+    private String activeStatus;
+
     public AdConstruction() {
     }
 
@@ -38,13 +41,15 @@ public class AdConstruction {
             String type,
             String status,
             String date,
-            AdPlace adPlace) {
+            AdPlace adPlace,
+            String activeStatus) {
         this.owner = owner;
         this.number = number;
         this.type = type;
         this.status = status;
         this.date = date;
         this.adPlace = adPlace;
+        this.activeStatus = activeStatus;
     }
 
     public Integer getId() {
@@ -95,6 +100,14 @@ public class AdConstruction {
         this.date = date;
     }
 
+    public String getActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(String activeStatus) {
+        this.activeStatus = activeStatus;
+    }
+
     public AdPlace getAdPlace() {
         return adPlace;
     }
@@ -111,7 +124,8 @@ public class AdConstruction {
                 ", number=" + number +
                 ", type='" + type + '\'' +
                 ", status='" + status + '\'' +
-                ", date=" + date +
+                ", date='" + date + '\'' +
+                ", activeStatus='" + activeStatus + '\'' +
                 ", adPlace=" + adPlace +
                 '}';
     }

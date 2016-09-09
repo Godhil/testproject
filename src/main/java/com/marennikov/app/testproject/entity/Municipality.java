@@ -10,8 +10,11 @@ public class Municipality {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
+
+    @Column
+    private String activeStatus;
 
     public Integer getId() {
         return id;
@@ -29,11 +32,22 @@ public class Municipality {
         this.name = name;
     }
 
+    public String getActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(String activeStatus) {
+        this.activeStatus = activeStatus;
+    }
+
     public Municipality() {
     }
 
-    public Municipality(String name) {
+    public Municipality(
+            String name,
+            String activeStatus) {
         this.name = name;
+        this.activeStatus = activeStatus;
     }
 
     @Override
@@ -41,6 +55,7 @@ public class Municipality {
         return "Municipality{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", activeStatus='" + activeStatus + '\'' +
                 '}';
     }
 }

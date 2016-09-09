@@ -45,6 +45,9 @@ public class Request {
     @Column
     private String rejected;
 
+    @Column
+    private String activeStatus;
+
     public Request() {
     }
 
@@ -58,7 +61,8 @@ public class Request {
             AdPlace adPlaceId,
             AdConstruction adConstruction,
             Boolean actual,
-            String rejected) {
+            String rejected,
+            String activeStatus) {
         this.status = status;
         this.requester = requester;
         this.assignee = assignee;
@@ -69,6 +73,7 @@ public class Request {
         this.adConstruction = adConstruction;
         this.actual = actual;
         this.rejected = rejected;
+        this.activeStatus = activeStatus;
     }
 
     public Boolean getActual() {
@@ -160,6 +165,13 @@ public class Request {
         this.rejected = rejected;
     }
 
+    public String getActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(String activeStatus) {
+        this.activeStatus = activeStatus;
+    }
 
     @Override
     public String toString() {
@@ -168,13 +180,14 @@ public class Request {
                 ", status='" + status + '\'' +
                 ", requester=" + requester +
                 ", assignee=" + assignee +
-                ", createDate=" + createDate +
-                ", processingDate=" + processingDate +
+                ", createDate='" + createDate + '\'' +
+                ", processingDate='" + processingDate + '\'' +
                 ", version=" + version +
                 ", adPlaceId=" + adPlaceId +
                 ", adConstruction=" + adConstruction +
                 ", actual=" + actual +
                 ", rejected='" + rejected + '\'' +
+                ", activeStatus='" + activeStatus + '\'' +
                 '}';
     }
 }

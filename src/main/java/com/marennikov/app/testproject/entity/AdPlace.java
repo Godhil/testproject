@@ -20,13 +20,21 @@ public class AdPlace {
     @JoinColumn(nullable = false)
     private Municipality municipality;
 
+    @Column
+    private String activeStatus;
+
     public AdPlace() {
     }
 
-    public AdPlace(String address, String owner, Municipality municipality) {
+    public AdPlace(
+            String address,
+            String owner,
+            Municipality municipality,
+            String activeStatus) {
         this.address = address;
         this.owner = owner;
         this.municipality = municipality;
+        this.activeStatus = activeStatus;
     }
 
     public Integer getId() {
@@ -61,6 +69,14 @@ public class AdPlace {
         this.municipality = municipality;
     }
 
+    public String getActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(String activeStatus) {
+        this.activeStatus = activeStatus;
+    }
+
     @Override
     public String toString() {
         return "AdPlace{" +
@@ -68,6 +84,7 @@ public class AdPlace {
                 ", address='" + address + '\'' +
                 ", owner='" + owner + '\'' +
                 ", municipality=" + municipality +
+                ", activeStatus='" + activeStatus + '\'' +
                 '}';
     }
 }

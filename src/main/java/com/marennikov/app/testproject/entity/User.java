@@ -32,6 +32,9 @@ public class User {
     @JoinColumn(nullable = false)
     private Municipality municipality;
 
+    @Column
+    private String activeStatus;
+
     public User() {
     }
 
@@ -42,7 +45,8 @@ public class User {
             String firstName,
             String secondName,
             Integer role,
-            Municipality municipality) {
+            Municipality municipality,
+            String activeStatus) {
         this.login = login;
         this.password = password;
         this.surname = surname;
@@ -50,6 +54,7 @@ public class User {
         this.secondName = secondName;
         this.role = role;
         this.municipality = municipality;
+        this.activeStatus = activeStatus;
     }
 
     public Integer getId() {
@@ -116,17 +121,26 @@ public class User {
         this.municipality = municipality;
     }
 
+    public String getActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(String activeStatus) {
+        this.activeStatus = activeStatus;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
-                ", password=" + password +
+                ", password='" + password + '\'' +
                 ", surname='" + surname + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", role=" + role +
                 ", municipality=" + municipality +
+                ", activeStatus='" + activeStatus + '\'' +
                 '}';
     }
 }

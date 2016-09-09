@@ -17,12 +17,19 @@ public class Photo {
     @JoinColumn(nullable = false)
     private Request requests;
 
+    @Column
+    private String activeStatus;
+
     public Photo() {
     }
 
-    public Photo(String path, Request requests) {
+    public Photo(
+            String path,
+            Request requests,
+            String activeStatus) {
         this.path = path;
         this.requests = requests;
+        this.activeStatus = activeStatus;
     }
 
     public Integer getId() {
@@ -49,6 +56,13 @@ public class Photo {
         this.requests = requests;
     }
 
+    public String getActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(String activeStatus) {
+        this.activeStatus = activeStatus;
+    }
 
     @Override
     public String toString() {
@@ -56,6 +70,7 @@ public class Photo {
                 "id=" + id +
                 ", path='" + path + '\'' +
                 ", requests=" + requests +
+                ", activeStatus='" + activeStatus + '\'' +
                 '}';
     }
 

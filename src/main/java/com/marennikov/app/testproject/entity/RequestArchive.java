@@ -42,22 +42,24 @@ public class RequestArchive {
     @Column
     private String rejected;
 
+    @Column
+    private String activeStatus;
 
     public RequestArchive() {
     }
 
     public RequestArchive(
             Request request,
-            String status,
             Integer requester,
             Integer assignee,
             String createDate,
             String processingDate,
             Integer version,
             Integer adPlaceId,
-            Integer adsConstructionId,
+            Integer adConstructionId,
             Boolean actual,
-            String rejected) {
+            String rejected,
+            String activeStatus) {
         this.request = request;
         this.requester = requester;
         this.assignee = assignee;
@@ -65,9 +67,10 @@ public class RequestArchive {
         this.processingDate = processingDate;
         this.version = version;
         this.adPlaceId = adPlaceId;
-        this.adConstructionId = adsConstructionId;
+        this.adConstructionId = adConstructionId;
         this.actual = actual;
         this.rejected = rejected;
+        this.activeStatus = activeStatus;
     }
 
     public Integer getId() {
@@ -158,6 +161,14 @@ public class RequestArchive {
         this.rejected = rejected;
     }
 
+    public String getActiveStatus() {
+        return activeStatus;
+    }
+
+    public void setActiveStatus(String activeStatus) {
+        this.activeStatus = activeStatus;
+    }
+
     @Override
     public String toString() {
         return "RequestArchive{" +
@@ -165,13 +176,14 @@ public class RequestArchive {
                 ", request=" + request +
                 ", requester=" + requester +
                 ", assignee=" + assignee +
-                ", createDate=" + createDate +
-                ", processingDate=" + processingDate +
+                ", createDate='" + createDate + '\'' +
+                ", processingDate='" + processingDate + '\'' +
                 ", version=" + version +
                 ", adPlaceId=" + adPlaceId +
                 ", adConstructionId=" + adConstructionId +
                 ", actual=" + actual +
                 ", rejected='" + rejected + '\'' +
+                ", activeStatus='" + activeStatus + '\'' +
                 '}';
     }
 }
