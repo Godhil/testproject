@@ -4,8 +4,9 @@ import com.marennikov.app.testproject.entity.Photo;
 import com.marennikov.app.testproject.service.IPhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("api")
@@ -18,10 +19,16 @@ public class PhotoController {
         this.photoService = photoService;
     }
 
-    @RequestMapping("photolist")
+    @RequestMapping("photoListWithDelete")
     @ResponseBody
-    public Iterable<Photo> photoList() {
-        return photoService.photoList();
+    public Iterable<Photo> photoListWithDelete() {
+        return photoService.photoListWithDelete();
+    }
+
+    @RequestMapping("photoList")
+    @ResponseBody
+    public List<Photo> photoList(String activeStatus) {
+        return photoService.photoList(activeStatus);
     }
 
     @RequestMapping(value="photo", method=RequestMethod.POST)

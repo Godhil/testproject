@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("api")
 public class MunicipalityController {
@@ -17,10 +19,16 @@ public class MunicipalityController {
         this.municipalityService = municipalityService;
     }
 
+    @RequestMapping("municipalitylistwithdelete")
+    @ResponseBody
+    public Iterable<Municipality> municipalityListWithDelete() {
+        return municipalityService.municipalityListWithDelete();
+    }
+
     @RequestMapping("municipalitylist")
     @ResponseBody
-    public Iterable<Municipality> municipalityList() {
-        return municipalityService.municipalityList();
+    public List<Municipality> municipalityList(String activeStatus){
+        return municipalityService.municipalityList(activeStatus);
     }
 
     @RequestMapping(value="municipality", method=RequestMethod.POST)

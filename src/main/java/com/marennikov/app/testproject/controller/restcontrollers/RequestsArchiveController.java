@@ -3,8 +3,11 @@ package com.marennikov.app.testproject.controller.restcontrollers;
 import com.marennikov.app.testproject.entity.RequestArchive;
 import com.marennikov.app.testproject.service.IRequestsArchiveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.Lifecycle;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("api")
@@ -17,10 +20,16 @@ public class RequestsArchiveController {
         this.requestsArchiveService = requestsArchiveService;
     }
 
-    @RequestMapping("requestarchivelist")
+    @RequestMapping("requestArchiveListWithDelete")
     @ResponseBody
-    public Iterable<RequestArchive> requestArchiveList() {
-        return requestsArchiveService.requestsArchiveList();
+    public Iterable<RequestArchive> requestArchiveListWithDelete() {
+        return requestsArchiveService.requestsArchiveListWithDelete();
+    }
+
+    @RequestMapping("requestArchiveList")
+    @ResponseBody
+    public List<RequestArchive> requestArchiveList(String activeStatus) {
+        return requestsArchiveService.requestArchiveList(activeStatus);
     }
 
     @RequestMapping(value="requestarchive", method=RequestMethod.POST)

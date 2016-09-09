@@ -1,12 +1,12 @@
 package com.marennikov.app.testproject.controller.restcontrollers;
 
-import com.marennikov.app.testproject.entity.Municipality;
 import com.marennikov.app.testproject.entity.User;
 import com.marennikov.app.testproject.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("api")
@@ -19,10 +19,16 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @RequestMapping("userlist")
+    @RequestMapping("userListWithDelete")
     @ResponseBody
-    public Iterable<User> usersList() {
-        return userService.usersList();
+    public Iterable<User> usersListWithDelete() {
+        return userService.usersListWithDelete();
+    }
+
+    @RequestMapping("userList")
+    @ResponseBody
+    public List<User> userList(String activeStatus) {
+        return userService.userList(activeStatus);
     }
 
     @RequestMapping(value="user", method=RequestMethod.POST)

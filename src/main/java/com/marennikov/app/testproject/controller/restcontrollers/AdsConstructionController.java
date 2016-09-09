@@ -1,12 +1,12 @@
 package com.marennikov.app.testproject.controller.restcontrollers;
 
 import com.marennikov.app.testproject.entity.AdConstruction;
-import com.marennikov.app.testproject.entity.AdPlace;
 import com.marennikov.app.testproject.service.IAdConstructionService;
-import com.marennikov.app.testproject.service.IAdPlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("api")
@@ -19,10 +19,16 @@ public class AdsConstructionController {
         this.adConstructionService = adConstructionService;
     }
 
-    @RequestMapping("adconstructionlist")
+    @RequestMapping("adConstructionListWithDelete")
     @ResponseBody
-    public Iterable<AdConstruction> adConstructionList() {
-        return adConstructionService.adConstructionList();
+    public Iterable<AdConstruction> adConstructionListWithDelete() {
+        return adConstructionService.adConstructionListWithDelete();
+    }
+
+    @RequestMapping("adConstructionList")
+    @ResponseBody
+    public List<AdConstruction> adConstructionList(String activeStatus) {
+        return adConstructionService.adConstructionList(activeStatus);
     }
 
     @RequestMapping(value="adconstruction", method=RequestMethod.POST)

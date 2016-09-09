@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("api")
 public class RequestsController {
@@ -17,10 +19,16 @@ public class RequestsController {
         this.requestsService = requestsService;
     }
 
-    @RequestMapping("requestlist")
+    @RequestMapping("requestListWithDelete")
     @ResponseBody
-    public Iterable<Request> requestList() {
-        return requestsService.requestsList();
+    public Iterable<Request> requestListWithDelete() {
+        return requestsService.requestsListWithDelete();
+    }
+
+    @RequestMapping("requestList")
+    @ResponseBody
+    public List<Request> requestList(String activeStatus) {
+        return requestsService.requestList(activeStatus);
     }
 
     @RequestMapping(value="request", method=RequestMethod.POST)
