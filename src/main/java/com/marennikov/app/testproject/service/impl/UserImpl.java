@@ -6,6 +6,8 @@ import com.marennikov.app.testproject.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserImpl implements IUserService {
 
@@ -35,12 +37,17 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public Iterable<User> usersList() {
+    public Iterable<User> usersListWithDelete() {
         return userRepository.findAll();
     }
 
     @Override
     public User getById(Integer id) {
         return userRepository.findOne(id);
+    }
+
+    @Override
+    public List<User> userList(String activeStatus) {
+        return userRepository.findAllByActiveStatus(activeStatus);
     }
 }

@@ -6,6 +6,8 @@ import com.marennikov.app.testproject.service.IAdPlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdPlaceImpl implements IAdPlaceService {
 
@@ -36,12 +38,17 @@ public class AdPlaceImpl implements IAdPlaceService {
     }
 
     @Override
-    public Iterable<AdPlace> adPlaceList() {
+    public Iterable<AdPlace> adPlaceListWithDelete() {
         return adPlaceRepository.findAll();
     }
 
     @Override
     public AdPlace getById(Integer id) {
         return adPlaceRepository.findOne(id);
+    }
+
+    @Override
+    public List<AdPlace> adPlaceList(String activeStatus) {
+        return adPlaceRepository.findAllByActiveStatus(activeStatus);
     }
 }

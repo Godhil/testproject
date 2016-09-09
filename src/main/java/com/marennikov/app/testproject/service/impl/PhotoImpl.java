@@ -6,6 +6,8 @@ import com.marennikov.app.testproject.service.IPhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PhotoImpl implements IPhotoService {
 
@@ -35,12 +37,17 @@ public class PhotoImpl implements IPhotoService {
     }
 
     @Override
-    public Iterable<Photo> photoList() {
+    public Iterable<Photo> photoListWithDelete() {
         return photoRepository.findAll();
     }
 
     @Override
     public Photo getById(Integer id) {
         return photoRepository.findOne(id);
+    }
+
+    @Override
+    public List<Photo> photoList(String activeStatus) {
+        return photoRepository.findAllByActiveStatus(activeStatus);
     }
 }

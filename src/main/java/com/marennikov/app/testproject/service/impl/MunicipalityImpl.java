@@ -6,10 +6,12 @@ import com.marennikov.app.testproject.service.IMunicipalityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MunicipalityImpl implements IMunicipalityService {
 
-    @Autowired
+
     private IMunicipalityRepository municipalityRepository;
 
     @Autowired
@@ -36,8 +38,13 @@ public class MunicipalityImpl implements IMunicipalityService {
     }
 
     @Override
-    public Iterable<Municipality> municipalityList() {
+    public Iterable<Municipality> municipalityListWithDelete() {
         return municipalityRepository.findAll();
+    }
+
+    @Override
+    public List<Municipality> municipalityList(String activeStatus) {
+        return municipalityRepository.findAllByActiveStatus(activeStatus);
     }
 
     @Override

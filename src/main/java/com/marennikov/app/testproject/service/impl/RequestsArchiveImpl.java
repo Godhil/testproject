@@ -6,6 +6,8 @@ import com.marennikov.app.testproject.service.IRequestsArchiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RequestsArchiveImpl implements IRequestsArchiveService {
 
@@ -16,7 +18,6 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     public void setRequestsArchiveRepository(IRequestsArchiveRepository requestsArchiveRepository) {
         this.requestsArchiveRepository = requestsArchiveRepository;
     }
-
 
     @Override
     public RequestArchive addRequestArchive(RequestArchive requestArchive) {
@@ -36,8 +37,13 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     }
 
     @Override
-    public Iterable<RequestArchive> requestsArchiveList() {
+    public Iterable<RequestArchive> requestsArchiveListWithDelete() {
         return requestsArchiveRepository.findAll();
+    }
+
+    @Override
+    public List<RequestArchive> requestArchiveList(String activeStatus) {
+        return requestsArchiveRepository.findAllByActiveStatus(activeStatus);
     }
 
     @Override

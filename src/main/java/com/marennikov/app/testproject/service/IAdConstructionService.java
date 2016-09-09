@@ -2,6 +2,8 @@ package com.marennikov.app.testproject.service;
 
 import com.marennikov.app.testproject.entity.AdConstruction;
 
+import java.util.List;
+
 public interface IAdConstructionService {
 
     AdConstruction addAdConstruction(AdConstruction adConstruction);
@@ -10,7 +12,9 @@ public interface IAdConstructionService {
 
     AdConstruction editAdConstruction(AdConstruction adConstruction);
 
-    Iterable<AdConstruction> adConstructionList();
+    Iterable<AdConstruction> adConstructionListWithDelete();
+
+    List<AdConstruction> adConstructionList(String activeStatus);
 
     AdConstruction getById(Integer id);
 }

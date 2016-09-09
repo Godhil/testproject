@@ -6,6 +6,8 @@ import com.marennikov.app.testproject.service.IRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RequestImpl implements IRequestService {
 
@@ -36,12 +38,17 @@ public class RequestImpl implements IRequestService {
     }
 
     @Override
-    public Iterable<Request> requestsList() {
+    public Iterable<Request> requestsListWithDelete() {
         return requestsRepository.findAll();
     }
 
     @Override
     public Request getById(Integer id) {
         return requestsRepository.findOne(id);
+    }
+
+    @Override
+    public List<Request> requestList(String activeStatus) {
+        return requestsRepository.findAllByActiveStatus(activeStatus);
     }
 }

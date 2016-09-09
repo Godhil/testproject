@@ -6,6 +6,8 @@ import com.marennikov.app.testproject.service.IAdConstructionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdConstructionImpl implements IAdConstructionService {
 
@@ -35,8 +37,13 @@ public class AdConstructionImpl implements IAdConstructionService {
     }
 
     @Override
-    public Iterable<AdConstruction> adConstructionList() {
+    public Iterable<AdConstruction> adConstructionListWithDelete() {
         return adConstructionRepository.findAll();
+    }
+
+    @Override
+    public List<AdConstruction> adConstructionList(String activeStatus) {
+        return adConstructionRepository.findAllByActiveStatus(activeStatus);
     }
 
     @Override
