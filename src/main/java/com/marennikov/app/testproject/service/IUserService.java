@@ -8,8 +8,6 @@ public interface IUserService {
 
     User addUser(User user);
 
-    void delete(Integer id);
-
     User editUser(User user);
 
     Iterable<User> usersListWithDelete();

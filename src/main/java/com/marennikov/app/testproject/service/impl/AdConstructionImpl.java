@@ -25,12 +25,6 @@ public class AdConstructionImpl implements IAdConstructionService {
 
         return saveAdConstruction;
     }
-
-    @Override
-    public void delete(Integer id) {
-        adConstructionRepository.delete(id);
-    }
-
     @Override
     public AdConstruction editAdConstruction(AdConstruction adConstruction) {
         return adConstructionRepository.saveAndFlush(adConstruction);

@@ -8,8 +8,6 @@ public interface IMunicipalityService {
 
     Municipality addMunicipality(Municipality municipality);
 
-    void delete(Integer id);
-
     Municipality editMunicipality(Municipality municipality);
 
     Iterable<Municipality> municipalityListWithDelete();

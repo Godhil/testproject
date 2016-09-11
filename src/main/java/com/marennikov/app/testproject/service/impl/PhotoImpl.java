@@ -27,11 +27,6 @@ public class PhotoImpl implements IPhotoService {
     }
 
     @Override
-    public void delete(Integer id) {
-        photoRepository.delete(id);
-    }
-
-    @Override
     public Photo editPhoto(Photo photo) {
         return photoRepository.saveAndFlush(photo);
     }

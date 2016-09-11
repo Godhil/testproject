@@ -8,8 +8,6 @@ public interface IAdPlaceService {
 
     AdPlace addAdPlace(AdPlace adPlace);
 
-    void delete(Integer id);
-
     AdPlace editAdPlace(AdPlace adPlace);
 
     Iterable<AdPlace> adPlaceListWithDelete();

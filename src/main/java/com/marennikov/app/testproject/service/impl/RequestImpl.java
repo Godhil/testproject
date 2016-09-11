@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class RequestImpl implements IRequestService {
 
-    @Autowired
     private IRequestRepository requestsRepository;
 
     @Autowired
@@ -25,11 +24,6 @@ public class RequestImpl implements IRequestService {
         Request addRequest = requestsRepository.saveAndFlush(request);
 
         return addRequest;
-    }
-
-    @Override
-    public void delete(Integer id) {
-        requestsRepository.delete(id);
     }
 
     @Override

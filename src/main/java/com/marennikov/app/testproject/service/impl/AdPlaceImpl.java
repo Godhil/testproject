@@ -28,11 +28,6 @@ public class AdPlaceImpl implements IAdPlaceService {
     }
 
     @Override
-    public void delete(Integer id) {
-        adPlaceRepository.delete(id);
-    }
-
-    @Override
     public AdPlace editAdPlace(AdPlace adPlace) {
         return adPlaceRepository.saveAndFlush(adPlace);
     }

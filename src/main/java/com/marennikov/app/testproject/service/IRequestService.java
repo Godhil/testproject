@@ -8,8 +8,6 @@ public interface IRequestService {
 
     Request addRequest(Request request);
 
-    void delete(Integer id);
-
     Request editRequest(Request request);
 
     Iterable<Request> requestsListWithDelete();

@@ -8,8 +8,6 @@ public interface IAdConstructionService {
 
     AdConstruction addAdConstruction(AdConstruction adConstruction);
 
-    void delete(Integer id);
-
     AdConstruction editAdConstruction(AdConstruction adConstruction);
 
     Iterable<AdConstruction> adConstructionListWithDelete();

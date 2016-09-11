@@ -27,11 +27,6 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public void delete(Integer id) {
-        userRepository.delete(id);
-    }
-
-    @Override
     public User editUser(User user) {
         return userRepository.saveAndFlush(user);
     }

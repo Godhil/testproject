@@ -28,11 +28,6 @@ public class MunicipalityImpl implements IMunicipalityService {
     }
 
     @Override
-    public void delete(Integer id) {
-        municipalityRepository.delete(id);
-    }
-
-    @Override
     public Municipality editMunicipality(Municipality municipality) {
         return municipalityRepository.saveAndFlush(municipality);
     }

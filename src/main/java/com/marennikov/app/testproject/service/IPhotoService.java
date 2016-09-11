@@ -8,8 +8,6 @@ public interface IPhotoService {
 
     Photo addPhoto(Photo photo);
 
-    void delete(Integer id);
-
     Photo editPhoto(Photo photo);
 
     Iterable<Photo> photoListWithDelete();

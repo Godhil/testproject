@@ -27,11 +27,6 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     }
 
     @Override
-    public void delete(Integer id) {
-        requestsArchiveRepository.delete(id);
-    }
-
-    @Override
     public RequestArchive editRequestArhive(RequestArchive requestArchive) {
         return requestsArchiveRepository.saveAndFlush(requestArchive);
     }
