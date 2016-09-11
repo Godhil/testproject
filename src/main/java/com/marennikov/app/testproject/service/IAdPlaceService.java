@@ -16,4 +16,5 @@ public interface IAdPlaceService {
 
     List<AdPlace> adPlaceList(String activeStatus);
 
+    AdPlace setDeleteStatus(AdPlace adPlace);
 }

@@ -45,4 +45,10 @@ public class AdConstructionImpl implements IAdConstructionService {
         return adConstructionRepository.findOne(id);
     }
 
+    @Override
+    public AdConstruction setDeleteStatus(AdConstruction adConstruction) {
+        adConstruction.setActiveStatus("Delete");
+        return adConstructionRepository.saveAndFlush(adConstruction);
+    }
+
 }

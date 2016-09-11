@@ -46,4 +46,10 @@ public class MunicipalityImpl implements IMunicipalityService {
     public Municipality getById(Integer id) {
         return municipalityRepository.findOne(id);
     }
+
+    @Override
+    public Municipality setDeleteStatus(Municipality municipality) {
+        municipality.setActiveStatus("Delete");
+        return municipalityRepository.saveAndFlush(municipality);
+    }
 }

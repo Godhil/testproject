@@ -16,4 +16,5 @@ public interface IRequestService {
 
     List<Request> requestList(String activeStatus);
 
+    Request setDeleteStatus(Request request);
 }

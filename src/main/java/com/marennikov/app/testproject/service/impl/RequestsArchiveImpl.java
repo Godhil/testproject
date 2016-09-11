@@ -45,4 +45,10 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     public RequestArchive getById(Integer id) {
         return requestsArchiveRepository.findOne(id);
     }
+
+    @Override
+    public RequestArchive setDeleteStatus(RequestArchive requestArchive) {
+        requestArchive.setActiveStatus("Delete");
+        return requestsArchiveRepository.saveAndFlush(requestArchive);
+    }
 }

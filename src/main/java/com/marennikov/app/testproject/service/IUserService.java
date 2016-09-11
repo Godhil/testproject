@@ -15,4 +15,6 @@ public interface IUserService {
     User getById(Integer id);
 
     List<User> userList(String activeStatus);
+
+    User setDeleteStatus(User user);
 }

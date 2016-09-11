@@ -45,4 +45,10 @@ public class PhotoImpl implements IPhotoService {
     public List<Photo> photoList(String activeStatus) {
         return photoRepository.findAllByActiveStatus(activeStatus);
     }
+
+    @Override
+    public Photo setDeleteStatus(Photo photo) {
+        photo.setActiveStatus("Delete");
+        return photoRepository.saveAndFlush(photo);
+    }
 }

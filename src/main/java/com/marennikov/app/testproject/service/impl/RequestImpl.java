@@ -45,4 +45,10 @@ public class RequestImpl implements IRequestService {
     public List<Request> requestList(String activeStatus) {
         return requestsRepository.findAllByActiveStatus(activeStatus);
     }
+
+    @Override
+    public Request setDeleteStatus(Request request) {
+        request.setActiveStatus("Delete");
+        return requestsRepository.saveAndFlush(request);
+    }
 }

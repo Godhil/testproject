@@ -16,4 +16,5 @@ public interface IPhotoService {
 
     List<Photo> photoList(String activeStatus);
 
+    Photo setDeleteStatus(Photo photo);
 }

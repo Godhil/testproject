@@ -16,4 +16,5 @@ public interface IRequestsArchiveService {
 
     RequestArchive getById(Integer id);
 
+    RequestArchive setDeleteStatus(RequestArchive requestArchive);
 }

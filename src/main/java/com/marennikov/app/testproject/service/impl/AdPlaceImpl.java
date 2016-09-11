@@ -46,4 +46,10 @@ public class AdPlaceImpl implements IAdPlaceService {
     public List<AdPlace> adPlaceList(String activeStatus) {
         return adPlaceRepository.findAllByActiveStatus(activeStatus);
     }
+
+    @Override
+    public AdPlace setDeleteStatus(AdPlace adPlace) {
+        adPlace.setActiveStatus("Delete");
+        return adPlaceRepository.saveAndFlush(adPlace);
+    }
 }

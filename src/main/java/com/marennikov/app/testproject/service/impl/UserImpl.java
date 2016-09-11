@@ -45,4 +45,12 @@ public class UserImpl implements IUserService {
     public List<User> userList(String activeStatus) {
         return userRepository.findAllByActiveStatus(activeStatus);
     }
+
+    @Override
+    public User setDeleteStatus(User user) {
+        user.setActiveStatus("Delete");
+        return userRepository.saveAndFlush(user);
+    }
+
+
 }
