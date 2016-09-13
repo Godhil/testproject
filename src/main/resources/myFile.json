@@ -1,0 +1,404 @@
+{
+  "municipality": [
+    {
+      "id": 1,
+      "name": "Первое МО",
+      "activeStatus": null
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "login": "Qwerty",
+      "password": "123456",
+      "surname": "Иванов",
+      "firstName": "Иван",
+      "secondName": "Иванович",
+      "role": "User",
+      "municipality": {
+        "id": 1,
+        "name": "Первое МО",
+        "activeStatus": null
+      },
+      "activeStatus": null
+    },
+    {
+      "id": 2,
+      "login": "Asdfg",
+      "password": "123456",
+      "surname": "Васильев",
+      "firstName": "Василий",
+      "secondName": "Васильевич",
+      "role": "Admin",
+      "municipality": {
+        "id": 1,
+        "name": "Первое МО",
+        "activeStatus": null
+      },
+      "activeStatus": null
+    },
+    {
+      "id": 3,
+      "login": "Wop",
+      "password": "123456",
+      "surname": "Wop",
+      "firstName": "Pop",
+      "secondName": "WOW",
+      "role": "Admin",
+      "municipality": {
+        "id": 1,
+        "name": "Первое МО",
+        "activeStatus": null
+      },
+      "activeStatus": null
+    }
+  ],
+  "adPlace": [
+    {
+      "id": 1,
+      "address": "Lenina 25",
+      "owner": "Lenin V.I.",
+      "municipality": {
+        "id": 1,
+        "name": "Первое МО",
+        "activeStatus": null
+      },
+      "activeStatus": null
+    }
+  ],
+  "adConstruction": [
+    {
+      "id": 1,
+      "owner": "Loshkin A.A.",
+      "number": 1,
+      "type": "Banner",
+      "status": "Empty",
+      "date": "01/01/2016",
+      "adPlace": {
+        "id": 1,
+        "address": "Lenina 25",
+        "owner": "Lenin V.I.",
+        "municipality": {
+          "id": 1,
+          "name": "Первое МО",
+          "activeStatus": null
+        },
+        "activeStatus": null
+      },
+      "activeStatus": null
+    }
+  ],
+  "request": [
+    {
+      "id": 1,
+      "status": "Reject",
+      "requester": {
+        "id": 1,
+        "login": "Qwerty",
+        "password": "123456",
+        "surname": "Ivanov",
+        "firstName": "Ivan",
+        "secondName": "Ivanovich",
+        "role": "User",
+        "municipality": {
+          "id": 1,
+          "name": "Первое МО",
+          "activeStatus": null
+        },
+        "activeStatus": null
+      },
+      "assignee": {
+        "id": 2,
+        "login": "Asdfg",
+        "password": "123456",
+        "surname": "Pupkin",
+        "firstName": "Vasilii",
+        "secondName": "Vasilievich",
+        "role": "Admin",
+        "municipality": {
+          "id": 1,
+          "name": "Первое МО",
+          "activeStatus": null
+        },
+        "activeStatus": null
+      },
+      "createDate": "07/01/2016",
+      "processingDate": "08/01/2016",
+      "version": 1,
+      "adPlaceId": {
+        "id": 1,
+        "address": "Lenina 25",
+        "owner": "Lenin V.I.",
+        "municipality": {
+          "id": 1,
+          "name": "Первое МО",
+          "activeStatus": null
+        },
+        "activeStatus": null
+      },
+      "adConstruction": {
+        "id": 1,
+        "owner": "Loshkin A.A.",
+        "number": 1,
+        "type": "Banner",
+        "status": "Empty",
+        "date": "01/01/2016",
+        "adPlace": {
+          "id": 1,
+          "address": "Lenina 25",
+          "owner": "Lenin V.I.",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "activeStatus": null
+      },
+      "actual": false,
+      "rejected": "Все плохо",
+      "activeStatus": null
+    }
+  ],
+  "photo": [
+    {
+      "id": 1,
+      "path": "/photo/1",
+      "requests": {
+        "id": 1,
+        "status": "Reject",
+        "requester": {
+          "id": 1,
+          "login": "Qwerty",
+          "password": "123456",
+          "surname": "Ivanov",
+          "firstName": "Ivan",
+          "secondName": "Ivanovich",
+          "role": "User",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "assignee": {
+          "id": 2,
+          "login": "Asdfg",
+          "password": "123456",
+          "surname": "Pupkin",
+          "firstName": "Vasilii",
+          "secondName": "Vasilievich",
+          "role": "Admin",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "createDate": "07/01/2016",
+        "processingDate": "08/01/2016",
+        "version": 1,
+        "adPlaceId": {
+          "id": 1,
+          "address": "Lenina 25",
+          "owner": "Lenin V.I.",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "adConstruction": {
+          "id": 1,
+          "owner": "Loshkin A.A.",
+          "number": 1,
+          "type": "Banner",
+          "status": "Empty",
+          "date": "01/01/2016",
+          "adPlace": {
+            "id": 1,
+            "address": "Lenina 25",
+            "owner": "Lenin V.I.",
+            "municipality": {
+              "id": 1,
+              "name": "Первое МО",
+              "activeStatus": null
+            },
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "actual": false,
+        "rejected": "Все плохо",
+        "activeStatus": null
+      }
+    },
+    {
+      "id": 2,
+      "path": "/photo/2",
+      "requests": {
+        "id": 1,
+        "status": "Reject",
+        "requester": {
+          "id": 1,
+          "login": "Qwerty",
+          "password": "123456",
+          "surname": "Ivanov",
+          "firstName": "Ivan",
+          "secondName": "Ivanovich",
+          "role": "User",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "assignee": {
+          "id": 2,
+          "login": "Asdfg",
+          "password": "123456",
+          "surname": "Pupkin",
+          "firstName": "Vasilii",
+          "secondName": "Vasilievich",
+          "role": "Admin",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "createDate": "07/01/2016",
+        "processingDate": "08/01/2016",
+        "version": 1,
+        "adPlaceId": {
+          "id": 1,
+          "address": "Lenina 25",
+          "owner": "Lenin V.I.",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "adConstruction": {
+          "id": 1,
+          "owner": "Loshkin A.A.",
+          "number": 1,
+          "type": "Banner",
+          "status": "Empty",
+          "date": "01/01/2016",
+          "adPlace": {
+            "id": 1,
+            "address": "Lenina 25",
+            "owner": "Lenin V.I.",
+            "municipality": {
+              "id": 1,
+              "name": "Первое МО",
+              "activeStatus": null
+            },
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "actual": false,
+        "rejected": "Все плохо",
+        "activeStatus": null
+      }
+    }
+  ],
+  "requestArchive": [
+    {
+      "id": 1,
+      "request": {
+        "id": 1,
+        "status": "Reject",
+        "requester": {
+          "id": 1,
+          "login": "Qwerty",
+          "password": "123456",
+          "surname": "Ivanov",
+          "firstName": "Ivan",
+          "secondName": "Ivanovich",
+          "role": "User",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "assignee": {
+          "id": 2,
+          "login": "Asdfg",
+          "password": "123456",
+          "surname": "Pupkin",
+          "firstName": "Vasilii",
+          "secondName": "Vasilievich",
+          "role": "Admin",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "createDate": "07/01/2016",
+        "processingDate": "08/01/2016",
+        "version": 1,
+        "adPlaceId": {
+          "id": 1,
+          "address": "Lenina 25",
+          "owner": "Lenin V.I.",
+          "municipality": {
+            "id": 1,
+            "name": "Первое МО",
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "adConstruction": {
+          "id": 1,
+          "owner": "Loshkin A.A.",
+          "number": 1,
+          "type": "Banner",
+          "status": "Empty",
+          "date": "01/01/2016",
+          "adPlace": {
+            "id": 1,
+            "address": "Lenina 25",
+            "owner": "Lenin V.I.",
+            "municipality": {
+              "id": 1,
+              "name": "Первое МО",
+              "activeStatus": null
+            },
+            "activeStatus": null
+          },
+          "activeStatus": null
+        },
+        "actual": false,
+        "rejected": "Все плохо",
+        "activeStatus": null
+      },
+      "requester": 1,
+      "assignee": 2,
+      "createDate": "04/01/2016",
+      "processingDate": "05/01/2016",
+      "version": 1,
+      "adPlaceId": 3,
+      "adConstructionId": 3,
+      "actual": true,
+      "rejected": null,
+      "activeStatus": null
+    }
+  ]
+}
+
+
