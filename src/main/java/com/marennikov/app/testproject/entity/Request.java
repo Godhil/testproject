@@ -19,7 +19,7 @@ public class Request {
     private User requester;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false)
+    @JoinColumn()
     private User assignee;
 
     @Column(nullable = false)
