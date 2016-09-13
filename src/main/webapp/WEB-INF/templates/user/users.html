@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="eu"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список Пользователей</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/users">Список Пользователей</a></li>
+            <li><a href="/municipalities">Списк Муниципальных образований</a></li>
+            <li><a href="/places">Список РМ</a></li>
+            <li><a href="/constructions">Список РК</a></li>
+            <li><a href="/requests">Список Заявок</a></li>
+            <li><a href="#">Page 3</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+
+    <a href="/user" class="btn btn-info" role="button">Новый пользователь</a>
+
+    <div th:if="${not #lists.isEmpty(userList)}">
+        <table class="table table-striped">
+            <h2>Список Пользователей</h2>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Login</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Роль</th>
+                <th>Муниципальное образование</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user:${userList}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.login}"></td>
+                <td th:text="${user.surname}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.secondName}"></td>
+                <td th:text="${user.role}"></td>
+                <td th:text="${user.municipality.name}"></td>
+                <td><a th:href="${'/user/'+{user.id}}" class="btn btn-info">Редактировать</a></td>
+                <td>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Удалить</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Вы уверены?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="btn-group btn-group-justified">
+                                        <div class="btn-group">
+                                            <form action="#" th:action="@{'/user/delete/' + ${user.id}}" method="post">
+                                                <div>
+                                                    <button type="submit" class="btn btn-danger">Удалить</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
