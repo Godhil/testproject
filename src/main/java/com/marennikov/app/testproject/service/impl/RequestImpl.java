@@ -18,16 +18,8 @@ public class RequestImpl implements IRequestService {
         this.requestsRepository = requestsRepository;
     }
 
-
     @Override
-    public Request addRequest(Request request) {
-        Request addRequest = requestsRepository.saveAndFlush(request);
-
-        return addRequest;
-    }
-
-    @Override
-    public Request editRequest(Request request) {
+    public Request saveRequest(Request request) {
         return requestsRepository.saveAndFlush(request);
     }
 

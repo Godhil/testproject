@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface IMunicipalityService {
 
-    Municipality addMunicipality(Municipality municipality);
-
-    Municipality editMunicipality(Municipality municipality);
+    Municipality saveMunicipality(Municipality municipality);
 
     Iterable<Municipality> municipalityListWithDelete();
 

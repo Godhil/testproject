@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface IAdPlaceService {
 
-    AdPlace addAdPlace(AdPlace adPlace);
-
-    AdPlace editAdPlace(AdPlace adPlace);
+    AdPlace saveAdPlace(AdPlace adPlace);
 
     Iterable<AdPlace> adPlaceListWithDelete();
 

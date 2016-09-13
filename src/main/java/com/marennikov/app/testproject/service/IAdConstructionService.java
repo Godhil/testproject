@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface IAdConstructionService {
 
-    AdConstruction addAdConstruction(AdConstruction adConstruction);
-
-    AdConstruction editAdConstruction(AdConstruction adConstruction);
+    AdConstruction saveAdConstruction(AdConstruction adConstruction);
 
     Iterable<AdConstruction> adConstructionListWithDelete();
 

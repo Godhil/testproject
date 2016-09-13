@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class RequestsArchiveImpl implements IRequestsArchiveService {
 
-    @Autowired
     private IRequestsArchiveRepository requestsArchiveRepository;
 
     @Autowired
@@ -20,14 +19,7 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     }
 
     @Override
-    public RequestArchive addRequestArchive(RequestArchive requestArchive) {
-        RequestArchive addRequestArchive = requestsArchiveRepository.saveAndFlush(requestArchive);
-
-        return addRequestArchive;
-    }
-
-    @Override
-    public RequestArchive editRequestArhive(RequestArchive requestArchive) {
+    public RequestArchive saveRequestArchive(RequestArchive requestArchive) {
         return requestsArchiveRepository.saveAndFlush(requestArchive);
     }
 

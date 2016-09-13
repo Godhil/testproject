@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class AdConstructionImpl implements IAdConstructionService {
 
-    @Autowired
     private IAdConstructionRepository adConstructionRepository;
 
     @Autowired
@@ -20,13 +19,7 @@ public class AdConstructionImpl implements IAdConstructionService {
     }
 
     @Override
-    public AdConstruction addAdConstruction(AdConstruction adConstruction) {
-        AdConstruction saveAdConstruction = adConstructionRepository.saveAndFlush(adConstruction);
-
-        return saveAdConstruction;
-    }
-    @Override
-    public AdConstruction editAdConstruction(AdConstruction adConstruction) {
+    public AdConstruction saveAdConstruction(AdConstruction adConstruction) {
         return adConstructionRepository.saveAndFlush(adConstruction);
     }
 

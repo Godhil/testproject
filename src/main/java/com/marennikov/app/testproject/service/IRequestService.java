@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface IRequestService {
 
-    Request addRequest(Request request);
-
-    Request editRequest(Request request);
+    Request saveRequest(Request request);
 
     Iterable<Request> requestsListWithDelete();
 

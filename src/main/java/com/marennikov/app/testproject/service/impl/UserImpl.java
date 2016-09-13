@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class UserImpl implements IUserService {
 
-    @Autowired
     private IUserRepository userRepository;
 
     @Autowired
@@ -20,14 +19,7 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public User addUser(User user) {
-        User addUser = userRepository.saveAndFlush(user);
-
-        return addUser;
-    }
-
-    @Override
-    public User editUser(User user) {
+    public User saveUser(User user) {
         return userRepository.saveAndFlush(user);
     }
 
@@ -42,7 +34,7 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public List<User> userList(String activeStatus) {
+    public Iterable<User> userList(String activeStatus) {
         return userRepository.findAllByActiveStatus(activeStatus);
     }
 

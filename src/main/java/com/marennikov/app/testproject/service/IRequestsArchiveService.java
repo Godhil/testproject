@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface IRequestsArchiveService {
 
-    RequestArchive addRequestArchive(RequestArchive requestArchive);
-
-    RequestArchive editRequestArhive(RequestArchive requestArchive);
+    RequestArchive saveRequestArchive(RequestArchive requestArchive);
 
     Iterable<RequestArchive> requestsArchiveListWithDelete();
 

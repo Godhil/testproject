@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface IPhotoService {
 
-    Photo addPhoto(Photo photo);
-
-    Photo editPhoto(Photo photo);
+    Photo savePhoto(Photo photo);
 
     Iterable<Photo> photoListWithDelete();
 

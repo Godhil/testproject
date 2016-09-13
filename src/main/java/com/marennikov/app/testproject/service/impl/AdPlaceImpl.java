@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class AdPlaceImpl implements IAdPlaceService {
 
-    @Autowired
     private IAdPlaceRepository adPlaceRepository;
 
     @Autowired
@@ -21,14 +20,7 @@ public class AdPlaceImpl implements IAdPlaceService {
 
 
     @Override
-    public AdPlace addAdPlace(AdPlace adPlace) {
-        AdPlace saveAdPlace = adPlaceRepository.saveAndFlush(adPlace);
-
-        return saveAdPlace;
-    }
-
-    @Override
-    public AdPlace editAdPlace(AdPlace adPlace) {
+    public AdPlace saveAdPlace(AdPlace adPlace) {
         return adPlaceRepository.saveAndFlush(adPlace);
     }
 

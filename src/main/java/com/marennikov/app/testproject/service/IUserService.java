@@ -6,15 +6,13 @@ import java.util.List;
 
 public interface IUserService {
 
-    User addUser(User user);
-
-    User editUser(User user);
+    User saveUser(User user);
 
     Iterable<User> usersListWithDelete();
 
     User getById(Integer id);
 
-    List<User> userList(String activeStatus);
+    Iterable<User> userList(String activeStatus);
 
     User setDeleteStatus(User user);
 }

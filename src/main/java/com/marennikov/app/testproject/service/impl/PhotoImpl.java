@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class PhotoImpl implements IPhotoService {
 
-    @Autowired
     private IPhotoRepository photoRepository;
 
     @Autowired
@@ -21,13 +20,7 @@ public class PhotoImpl implements IPhotoService {
 
 
     @Override
-    public Photo addPhoto(Photo photo) {
-        Photo addPhoto = photoRepository.saveAndFlush(photo);
-        return addPhoto;
-    }
-
-    @Override
-    public Photo editPhoto(Photo photo) {
+    public Photo savePhoto(Photo photo) {
         return photoRepository.saveAndFlush(photo);
     }
 
