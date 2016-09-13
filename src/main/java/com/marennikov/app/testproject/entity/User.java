@@ -26,7 +26,7 @@ public class User {
     private String secondName;
 
     @Column(nullable = false)
-    private Integer role;
+    private String role;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
@@ -44,7 +44,7 @@ public class User {
             String surname,
             String firstName,
             String secondName,
-            Integer role,
+            String role,
             Municipality municipality,
             String activeStatus) {
         this.login = login;
@@ -105,11 +105,11 @@ public class User {
         this.password = password;
     }
 
-    public Integer getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
