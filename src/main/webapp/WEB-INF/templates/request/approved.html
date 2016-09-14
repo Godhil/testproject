@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="eu"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Согласованные заявки</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">/</a></li>
+            <li><a href="/users">Список Пользователей</a></li>
+            <li><a href="/municipalities">Списк Муниципальных образований</a></li>
+            <li><a href="/places">Список РМ</a></li>
+            <li><a href="/constructions">Список РК</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Заявки
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/requests">Заявки</a></li>
+                    <li><a href="/approval">Ожидают согласования</a></li>
+                    <li><a href="/approved">Согласованные заявки</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div th:if="${not #lists.isEmpty(requestList)}">
+        <table class="table table-striped">
+            <h2>Список Согласованных Заявок</h2>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Собственник РМ</th>
+                <th>Адрес РМ</th>
+                <th>Собственник РК</th>
+                <th>Тип РК</th>
+                <th>Статус РК</th>
+                <th>Версия Заявки</th>
+                <th>Статус заявки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="request:${requestList}">
+                <td th:text="${request.id}"></td>
+                <td th:text="${request.adPlaceId.owner}"></td>
+                <td th:text="${request.adPlaceId.address}"></td>
+                <td th:text="${request.adConstruction.owner}"></td>
+                <td th:text="${request.adConstruction.type}"></td>
+                <td th:text="${request.adConstruction.status}"></td>
+                <td th:text="${request.version}"></td>
+                <td th:text="${request.status}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
