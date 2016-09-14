@@ -43,8 +43,9 @@
             <div class="form-group">
                 <label>Статус:</label>
                 <select class="form-control" th:field="*{status}">
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
+                    <option value="Соответствует схеме">Соответствует схеме</option>
+                    <option value="Не установлена,но в схеме есть">Не установлена,но в схеме есть</option>
+                    <option value="Установлена, но в схеме нет">Установлена, но в схеме нет</option>
                 </select>
             </div>
             <div class="form-group">
