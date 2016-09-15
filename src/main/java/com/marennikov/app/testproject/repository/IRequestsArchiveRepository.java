@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IRequestsArchiveRepository extends JpaRepository<RequestArchive, Integer> {
 
-
     List<RequestArchive> findAllByActiveStatus(String activeStatus);
+
+    RequestArchive findOneByRequesterIdOrderByVersion(Integer id);
 }
