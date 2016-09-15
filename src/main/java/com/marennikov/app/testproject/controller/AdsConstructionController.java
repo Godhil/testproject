@@ -34,28 +34,32 @@ public class AdsConstructionController {
         return "adconstruction/constructions";
     }
 
-    //сохранение
+    //сохранение и отправка id для создания заявки
     @RequestMapping(value = "/constructions", method = RequestMethod.POST)
-    public String saveAdConstruction(AdConstruction adConstruction){
+    public String saveAdConstruction(AdConstruction adConstruction, Model model){
         adConstructionService.saveAdConstruction(adConstruction);
-        return "redirect:/constructions";
+
+        model.addAttribute("adPlaceId", adConstruction.getAdPlace().getId());
+        model.addAttribute("adConstructionId", adConstruction.getId());
+
+        return "redirect:/new/{adPlaceId}/{adConstructionId}";
     }
 
-    //Новая РК
-    @RequestMapping("construction")
-    public String newAdConstruction(Model model) {
-        model.addAttribute("adConstruction", new AdConstruction());
-        model.addAttribute("adPlaceList", adPlaceService.adPlaceList(null));
-        return "adconstruction/construction";
-    }
-
-    //Редактирование РК
+    //Создание РК через РМ
     @RequestMapping(value = "construction/{id}")
-    public String editAdConstruction(@PathVariable Integer id, Model model) {
-        model.addAttribute("adConstruction", adConstructionService.getById(id));
-        model.addAttribute("adPlaceList", adPlaceService.adPlaceList(null));
+    public String newAdConstruction(@PathVariable Integer id, Model model) {
+        model.addAttribute("adConstruction", new AdConstruction());
+        model.addAttribute("adPlaceList", adPlaceService.getById(id));
         return "adconstruction/construction";
     }
+//
+//    //Редактирование РК
+//    @RequestMapping(value = "construction/{id}")
+//    public String editAdConstruction(@PathVariable Integer id, Model model) {
+//        model.addAttribute("adConstruction", adConstructionService.getById(id));
+//        model.addAttribute("adPlaceList", adPlaceService.adPlaceList(null));
+//        return "adconstruction/construction";
+//    }
 
     //отключение(установить флаг "Delete")
     @RequestMapping(value = "/construction/delete/{id}", method = RequestMethod.POST)

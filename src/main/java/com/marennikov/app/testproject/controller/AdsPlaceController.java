@@ -36,9 +36,12 @@ public class AdsPlaceController {
 
     //сохранение
     @RequestMapping(value = "/places", method = RequestMethod.POST)
-    public String saveAdPlace(AdPlace adPlace){
+    public String saveAdPlace(AdPlace adPlace, Model model){
+
         adPlaceService.saveAdPlace(adPlace);
-        return "redirect:/places";
+        model.addAttribute("id", adPlace.getId());
+        System.out.println(adPlace.getId());
+        return "redirect:/construction/{id}";
     }
 
     //Новое РМ

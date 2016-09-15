@@ -36,6 +36,11 @@ public class UsersController {
     //сохранение
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String saveUser(User user){
+        if (user.getId() == null){
+            String pwd;
+            pwd = hash(user.getPassword());
+            user.setPassword(pwd);
+        }
         userService.saveUser(user);
         return "redirect:/users";
     }
@@ -63,4 +68,11 @@ public class UsersController {
         userService.setDeleteStatus(user);
         return "redirect:/users";
     }
+
+    private String hash(String str) {
+        int result = 12;
+        result = result * str.hashCode() + 2;
+        return String.valueOf(result);
+    }
+
 }
