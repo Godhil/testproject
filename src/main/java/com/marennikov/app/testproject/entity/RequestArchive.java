@@ -1,7 +1,6 @@
 package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "request_archive")
@@ -15,11 +14,13 @@ public class RequestArchive {
     @JoinColumn(nullable = false)
     private Request request;
 
-    @Column(nullable = false)
-    private Integer requester;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    private User requester;
 
-    @Column(nullable = false)
-    private Integer assignee;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn
+    private User assignee;
 
     @Column(nullable = false)
     private String createDate;
@@ -27,17 +28,19 @@ public class RequestArchive {
     @Column
     private String processingDate;
 
-    @Column(name = "version",  nullable = false)
+    @Column(nullable = false)
     private Integer version;
 
-    @Column(nullable = false)
-    private Integer adPlaceId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    private AdPlace adPlace;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    private AdConstruction adConstruction;
 
     @Column(nullable = false)
-    private Integer adConstructionId;
-
-    @Column(nullable = false)
-    private Boolean actual;
+    private String status;
 
     @Column
     private String rejected;
@@ -50,14 +53,14 @@ public class RequestArchive {
 
     public RequestArchive(
             Request request,
-            Integer requester,
-            Integer assignee,
+            User requester,
+            User assignee,
             String createDate,
             String processingDate,
             Integer version,
-            Integer adPlaceId,
-            Integer adConstructionId,
-            Boolean actual,
+            AdPlace adPlace,
+            AdConstruction adConstruction,
+            String status,
             String rejected,
             String activeStatus) {
         this.request = request;
@@ -66,9 +69,9 @@ public class RequestArchive {
         this.createDate = createDate;
         this.processingDate = processingDate;
         this.version = version;
-        this.adPlaceId = adPlaceId;
-        this.adConstructionId = adConstructionId;
-        this.actual = actual;
+        this.adPlace = adPlace;
+        this.adConstruction = adConstruction;
+        this.status = status;
         this.rejected = rejected;
         this.activeStatus = activeStatus;
     }
@@ -89,19 +92,19 @@ public class RequestArchive {
         this.request = request;
     }
 
-    public Integer getRequester() {
+    public User getRequester() {
         return requester;
     }
 
-    public void setRequester(Integer requester) {
+    public void setRequester(User requester) {
         this.requester = requester;
     }
 
-    public Integer getAssignee() {
+    public User getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(Integer assignee) {
+    public void setAssignee(User assignee) {
         this.assignee = assignee;
     }
 
@@ -129,28 +132,28 @@ public class RequestArchive {
         this.version = version;
     }
 
-    public Integer getAdPlaceId() {
-        return adPlaceId;
+    public AdPlace getAdPlace() {
+        return adPlace;
     }
 
-    public void setAdPlaceId(Integer adPlaceId) {
-        this.adPlaceId = adPlaceId;
+    public void setAdPlace(AdPlace adPlace) {
+        this.adPlace = adPlace;
     }
 
-    public Integer getAdConstructionId() {
-        return adConstructionId;
+    public AdConstruction getAdConstruction() {
+        return adConstruction;
     }
 
-    public void setAdConstructionId(Integer adConstructionId) {
-        this.adConstructionId = adConstructionId;
+    public void setAdConstructionId(AdConstruction adConstruction) {
+        this.adConstruction = adConstruction;
     }
 
-    public Boolean getActual() {
-        return actual;
+    public String getStatus() {
+        return status;
     }
 
-    public void setActual(Boolean actual) {
-        this.actual = actual;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getRejected() {
@@ -179,9 +182,9 @@ public class RequestArchive {
                 ", createDate='" + createDate + '\'' +
                 ", processingDate='" + processingDate + '\'' +
                 ", version=" + version +
-                ", adPlaceId=" + adPlaceId +
-                ", adConstructionId=" + adConstructionId +
-                ", actual=" + actual +
+                ", adPlace=" + adPlace +
+                ", adConstruction=" + adConstruction +
+                ", status=" + status +
                 ", rejected='" + rejected + '\'' +
                 ", activeStatus='" + activeStatus + '\'' +
                 '}';

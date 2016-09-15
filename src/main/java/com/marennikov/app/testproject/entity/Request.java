@@ -1,7 +1,6 @@
 package com.marennikov.app.testproject.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "request")
@@ -25,7 +24,7 @@ public class Request {
     @Column(nullable = false)
     private String createDate;
 
-    @Column(nullable = false)
+    @Column
     private String processingDate;
 
     @Column(nullable = false)
@@ -33,13 +32,13 @@ public class Request {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
-    private AdPlace adPlaceId;
+    private AdPlace adPlace;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     private AdConstruction adConstruction;
 
-    @Column(nullable = false)
+    @Column
     private Boolean actual;
 
     @Column
@@ -58,7 +57,7 @@ public class Request {
             String createDate,
             String processingDate,
             Integer version,
-            AdPlace adPlaceId,
+            AdPlace adPlace,
             AdConstruction adConstruction,
             Boolean actual,
             String rejected,
@@ -69,7 +68,7 @@ public class Request {
         this.createDate = createDate;
         this.processingDate = processingDate;
         this.version = version;
-        this.adPlaceId = adPlaceId;
+        this.adPlace = adPlace;
         this.adConstruction = adConstruction;
         this.actual = actual;
         this.rejected = rejected;
@@ -141,12 +140,12 @@ public class Request {
         this.version = version;
     }
 
-    public AdPlace getAdPlaceId() {
-        return adPlaceId;
+    public AdPlace getAdPlace() {
+        return adPlace;
     }
 
-    public void setAdPlaceId(AdPlace adPlaceId) {
-        this.adPlaceId = adPlaceId;
+    public void setAdPlace(AdPlace adPlace) {
+        this.adPlace = adPlace;
     }
 
     public AdConstruction getAdConstruction() {
@@ -183,7 +182,7 @@ public class Request {
                 ", createDate='" + createDate + '\'' +
                 ", processingDate='" + processingDate + '\'' +
                 ", version=" + version +
-                ", adPlaceId=" + adPlaceId +
+                ", adPlace=" + adPlace +
                 ", adConstruction=" + adConstruction +
                 ", actual=" + actual +
                 ", rejected='" + rejected + '\'' +
