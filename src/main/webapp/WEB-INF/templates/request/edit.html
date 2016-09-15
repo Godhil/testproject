@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="eu"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Заявка</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">/</a></li>
+            <li><a href="/users">Список Пользователей</a></li>
+            <li><a href="/municipalities">Списк Муниципальных образований</a></li>
+            <li><a href="/places">Список РМ</a></li>
+            <li><a href="/constructions">Список РК</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Заявки
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/requests">Заявки</a></li>
+                    <li><a href="/approval">Ожидают согласования</a></li>
+                    <li><a href="/approved">Согласованные заявки</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="col-xs-12">
+        <div class="input-group input-group-lg">
+            <div class="form-group">
+                <h2>Заявитель:</h2>
+                <p class="form-control"
+                   th:text="${request.requester.surname} +  ' ' + ${request.requester.firstName} + ' ' + ${request.requester.secondName}"></p>
+            </div>
+            <h4>Причина отклонения заявки (если есть:)</h4>
+            <div class="form-group">
+                <p th:text="${request.rejected}" class="form-control"></p>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label>Стутус Заявки:</label>
+                <p class="form-control" th:text="${request.status}"></p>
+            </div>
+            <div class="form-group">
+                <label>Версия Заявки:</label>
+                <p class="form-control" th:text="${request.version}"></p>
+            </div>
+
+            <h3>Данные Рекламного Места</h3>
+            <div class="form-group">
+                <label>Собственник РМ:</label>
+                <p th:text="${request.adPlace.owner}" class="form-control"></p>
+            </div>
+            <div class="form-group">
+                <label>Адрес РМ:</label>
+                <p th:text="${request.adPlace.address}" class="form-control"></p>
+            </div>
+            <br/>
+            <div class="form-group">
+                <a th:href="${'/placeEdit/'+{request.adPlace.id}}" class="btn btn-info">Редактировать данные рекламного
+                    места</a>
+            </div>
+            <br/>
+
+            <h3>Данные Рекламной Конструкции</h3>
+            <div class="form-group">
+                <label>Собственник РК:</label>
+                <p th:text="${request.adConstruction.owner}" class="form-control"></p>
+            </div>
+            <div class="form-group">
+                <label>Номер РК:</label>
+                <p th:text="${request.adConstruction.number}" class="form-control"></p>
+            </div>
+            <div class="form-group">
+                <label>Статус РК:</label>
+                <p th:text="${request.adConstruction.status}" class="form-control"></p>
+            </div>
+            <div class="form-group">
+                <label>Тип РК:</label>
+                <p th:text="${request.adConstruction.type}" class="form-control"></p>
+
+            </div>
+            <div class="form-group">
+                <label>Дата размещения РК:</label>
+                <p th:text="${request.adConstruction.date}" class="form-control"></p>
+            </div>
+            <div class="form-group">
+                <a th:href="${'/constructionEdit/'+{request.adConstruction.id}}" class="btn btn-info">Редактировать
+                    данные рекламной конструкции</a>
+            </div>
+        </div>
+        <form action="#" th:action="@{/requests}" th:object="${request}" method="post">
+            <div class="form-group">
+                <input type="hidden" th:field="*{id}" class="form-control">
+                <input type="hidden" th:field="*{version}" class="form-control">
+                <input type="hidden" th:field="*{status}" class="form-control">
+                <input type="hidden" th:field="*{requester.id}" class="form-control">
+                <input type="hidden" th:field="*{adPlace.id}" class="form-control">
+                <input type="hidden" th:field="*{adConstruction.id}" class="form-control">
+                <input type="hidden" th:field="*{rejected}" class="form-control">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+</div>
+</body>
+</html>
