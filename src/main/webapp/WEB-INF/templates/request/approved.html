@@ -50,8 +50,8 @@
             <tbody>
             <tr th:each="request:${requestList}">
                 <td th:text="${request.id}"></td>
-                <td th:text="${request.adPlaceId.owner}"></td>
-                <td th:text="${request.adPlaceId.address}"></td>
+                <td th:text="${request.adPlace.owner}"></td>
+                <td th:text="${request.adPlace.address}"></td>
                 <td th:text="${request.adConstruction.owner}"></td>
                 <td th:text="${request.adConstruction.type}"></td>
                 <td th:text="${request.adConstruction.status}"></td>
