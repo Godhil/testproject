@@ -1,8 +1,10 @@
 package com.marennikov.app.testproject.controller;
 
 import com.marennikov.app.testproject.entity.AdPlace;
+import com.marennikov.app.testproject.entity.Request;
 import com.marennikov.app.testproject.service.IAdPlaceService;
 import com.marennikov.app.testproject.service.IMunicipalityService;
+import com.marennikov.app.testproject.service.IRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ public class AdsPlaceController {
 
     private IMunicipalityService municipalityService;
 
+    private IRequestService requestService;
+
     @Autowired
     public void setAdPlaceService(IAdPlaceService adPlaceService){
         this.adPlaceService = adPlaceService;
@@ -27,6 +31,11 @@ public class AdsPlaceController {
         this.municipalityService = municipalityService;
     }
 
+    @Autowired
+    public void setRequestService(IRequestService requestService) {
+        this.requestService = requestService;
+    }
+
     //список РК, без отключенных
     @RequestMapping("places")
     public String adPlaceListWithOutDelete(Model model) {
@@ -34,14 +43,24 @@ public class AdsPlaceController {
         return "adplace/places";
     }
 
-    //сохранение
+    //сохранение при создании
     @RequestMapping(value = "/places", method = RequestMethod.POST)
     public String saveAdPlace(AdPlace adPlace, Model model){
 
         adPlaceService.saveAdPlace(adPlace);
         model.addAttribute("id", adPlace.getId());
-        System.out.println(adPlace.getId());
         return "redirect:/construction/{id}";
+    }
+
+    //сохранение при редактировании
+    @RequestMapping(value = "/placeEdit", method = RequestMethod.POST)
+    public String saveAfterEdit(
+            AdPlace adPlace,
+            Request request,
+            Model model) {
+        adPlaceService.saveAdPlace(adPlace);
+        model.addAttribute("requestId", requestService.getRequestByAdPlaceId(adPlace.getId()).getId());
+        return "redirect:/edit/{requestId}";
     }
 
     //Новое РМ
@@ -53,11 +72,12 @@ public class AdsPlaceController {
     }
 
     //Редактирование РМ
-    @RequestMapping(value = "place/{id}")
-    public String editAdPlace(@PathVariable Integer id, Model model) {
-        model.addAttribute("adPlace", adPlaceService.getById(id));
-        model.addAttribute("municipalityList", municipalityService.municipalityList(null));
-        return "adplace/place";
+    @RequestMapping(value = "placeEdit/{adPlaceId}")
+    public String editAdPlace(
+            @PathVariable Integer adPlaceId,
+            Model model) {
+        model.addAttribute("adPlace", adPlaceService.getById(adPlaceId));
+        return "adplace/edit";
     }
 
     //отключение(установить флаг "Delete")

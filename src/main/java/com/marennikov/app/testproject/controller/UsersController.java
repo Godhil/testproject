@@ -70,8 +70,7 @@ public class UsersController {
     }
 
     private String hash(String str) {
-        int result = 12;
-        result = result * str.hashCode() + 2;
+        int result = str.hashCode();
         return String.valueOf(result);
     }
 
