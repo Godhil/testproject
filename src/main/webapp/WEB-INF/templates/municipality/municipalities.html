@@ -14,10 +14,10 @@
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">/</a></li>
-            <li><a href="/users">Список Пользователей</a></li>
-            <li><a href="/municipalities">Списк Муниципальных образований</a></li>
-            <li><a href="/places">Список РМ</a></li>
-            <li><a href="/constructions">Список РК</a></li>
+            <li><a href="/user/users">Список Пользователей</a></li>
+            <li><a href="/municipality/municipalities">Списк Муниципальных образований</a></li>
+            <li><a href="/place/places">Список РМ</a></li>
+            <li><a href="/construction/constructions">Список РК</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Заявки
                     <span class="caret"></span></a>
@@ -33,7 +33,7 @@
 
 <div class="container">
 
-    <a href="/municipality" class="btn btn-info" role="button">Новое МО</a>
+    <a href="/municipality/municipality" class="btn btn-info" role="button">Новое МО</a>
 
     <div th:if="${not #lists.isEmpty(municipalityList)}">
         <table class="table table-striped">
@@ -48,33 +48,13 @@
             <tr th:each="municipality:${municipalityList}">
                 <td th:text="${municipality.id}"></td>
                 <td th:text="${municipality.name}"></td>
-                <td><a th:href="${'/municipality/'+{municipality.id}}" class="btn btn-info">Редактировать</a></td>
+                <td><a th:href="${'/municipality/municipality/'+{municipality.id}}" class="btn btn-info">Редактировать</a></td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Удалить</button>
-                    <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Вы уверены?</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="btn-group btn-group-justified">
-                                        <div class="btn-group">
-                                            <form action="#" th:action="@{'/municipality/delete/' + ${municipality.id}}" method="post">
-                                                <div>
-                                                    <button type="submit" class="btn btn-danger">Удалить</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <form action="#" th:action="@{'/municipality/municipality/delete/' + ${municipality.id}}" method="post">
+                        <div>
+                            <button type="submit" class="btn btn-danger">Удалить</button>
                         </div>
-                    </div>
+                    </form>
                 </td>
             </tr>
             </tbody>

@@ -9,5 +9,5 @@ public interface IRequestsArchiveRepository extends JpaRepository<RequestArchive
 
     List<RequestArchive> findAllByActiveStatus(String activeStatus);
 
-    RequestArchive findOneByRequesterIdOrderByVersion(Integer id);
+    RequestArchive findTopByRequestIdOrderByVersionDesc(Integer id);
 }

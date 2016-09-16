@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("construction")
 public class AdsConstructionController {
 
     private IAdConstructionService adConstructionService;
@@ -35,8 +36,9 @@ public class AdsConstructionController {
     public void setRequestService(IRequestService requestService) {
         this.requestService = requestService;
     }
+
     //список РК, без отключенных
-    @RequestMapping("constructions")
+    @RequestMapping("/constructions")
     public String adConstructionListWithOutDelete(Model model) {
         model.addAttribute("adConstructionList", adConstructionService.adConstructionList(null));
         return "adconstruction/constructions";
@@ -87,6 +89,6 @@ public class AdsConstructionController {
     public String setDelete(@PathVariable Integer id){
         AdConstruction adConstruction = adConstructionService.getById(id);
         adConstructionService.setDeleteStatus(adConstruction);
-        return "redirect:/constructions";
+        return "redirect:/construction/constructions";
     }
 }

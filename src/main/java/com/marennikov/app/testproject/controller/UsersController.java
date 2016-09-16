@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/user")
 public class UsersController {
 
     private IUserService userService;
@@ -42,7 +43,7 @@ public class UsersController {
             user.setPassword(pwd);
         }
         userService.saveUser(user);
-        return "redirect:/users";
+        return "redirect:/user/users";
     }
 
     //Новый пользователь
@@ -66,7 +67,7 @@ public class UsersController {
     public String setDelete(@PathVariable Integer id){
         User user = userService.getById(id);
         userService.setDeleteStatus(user);
-        return "redirect:/users";
+        return "redirect:/user/users";
     }
 
     private String hash(String str) {

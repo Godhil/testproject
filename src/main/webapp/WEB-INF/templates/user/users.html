@@ -14,10 +14,10 @@
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">/</a></li>
-            <li><a href="/users">Список Пользователей</a></li>
-            <li><a href="/municipalities">Списк Муниципальных образований</a></li>
-            <li><a href="/places">Список РМ</a></li>
-            <li><a href="/constructions">Список РК</a></li>
+            <li><a href="/user/users">Список Пользователей</a></li>
+            <li><a href="/municipality/municipalities">Списк Муниципальных образований</a></li>
+            <li><a href="/place/places">Список РМ</a></li>
+            <li><a href="/construction/constructions">Список РК</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Заявки
                     <span class="caret"></span></a>
@@ -33,7 +33,7 @@
 
 <div class="container">
 
-    <a href="/user" class="btn btn-info" role="button">Новый пользователь</a>
+    <a href="/user/user" class="btn btn-info" role="button">Новый пользователь</a>
 
     <div th:if="${not #lists.isEmpty(userList)}">
         <table class="table table-striped">
@@ -60,33 +60,13 @@
                 <td th:text="${user.secondName}"></td>
                 <td th:text="${user.role}"></td>
                 <td th:text="${user.municipality.name}"></td>
-                <td><a th:href="${'/user/'+{user.id}}" class="btn btn-info">Редактировать</a></td>
+                <td><a th:href="${'/user/user/'+{user.id}}" class="btn btn-info">Редактировать</a></td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Удалить</button>
-                    <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Вы уверены?</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="btn-group btn-group-justified">
-                                        <div class="btn-group">
-                                            <form action="#" th:action="@{'/user/delete/' + ${user.id}}" method="post">
-                                                <div>
-                                                    <button type="submit" class="btn btn-danger">Удалить</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <form action="#" th:action="@{'/user/user/delete/' + ${user.id}}" method="post">
+                        <div>
+                            <button type="submit" class="btn btn-danger">Удалить</button>
                         </div>
-                    </div>
+                    </form>
                 </td>
             </tr>
             </tbody>

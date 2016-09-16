@@ -14,10 +14,10 @@
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">/</a></li>
-            <li><a href="/users">Список Пользователей</a></li>
-            <li><a href="/municipalities">Списк Муниципальных образований</a></li>
-            <li><a href="/places">Список РМ</a></li>
-            <li><a href="/constructions">Список РК</a></li>
+            <li><a href="/user/users">Список Пользователей</a></li>
+            <li><a href="/municipality/municipalities">Списк Муниципальных образований</a></li>
+            <li><a href="/place/places">Список РМ</a></li>
+            <li><a href="/construction/constructions">Список РК</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Заявки
                     <span class="caret"></span></a>
@@ -31,7 +31,7 @@
     </div>
 </nav>
 
-<form action="#" th:action="@{/users}" th:object="${user}"  method="post">
+<form action="#" th:action="@{/user/users}" th:object="${user}"  method="post">
     <div class="col-xs-12">
         <div class="input-group input-group-lg">
             <div class="form-group">

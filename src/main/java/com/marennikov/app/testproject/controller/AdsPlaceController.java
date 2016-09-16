@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/place")
 public class AdsPlaceController {
 
     private IAdPlaceService adPlaceService;
@@ -37,7 +38,7 @@ public class AdsPlaceController {
     }
 
     //список РК, без отключенных
-    @RequestMapping("places")
+    @RequestMapping("/places")
     public String adPlaceListWithOutDelete(Model model) {
         model.addAttribute("adPlaceList", adPlaceService.adPlaceList(null));
         return "adplace/places";
@@ -49,7 +50,7 @@ public class AdsPlaceController {
 
         adPlaceService.saveAdPlace(adPlace);
         model.addAttribute("id", adPlace.getId());
-        return "redirect:/construction/{id}";
+        return "redirect:/construction/construction/{id}";
     }
 
     //сохранение при редактировании
@@ -64,7 +65,7 @@ public class AdsPlaceController {
     }
 
     //Новое РМ
-    @RequestMapping("place")
+    @RequestMapping("/place")
     public String newAdPlace(Model model) {
         model.addAttribute("adPlace", new AdPlace());
         model.addAttribute("municipalityList", municipalityService.municipalityList(null));
@@ -85,6 +86,6 @@ public class AdsPlaceController {
     public String setDelete(@PathVariable Integer id){
         AdPlace adPlace = adPlaceService.getById(id);
         adPlaceService.setDeleteStatus(adPlace);
-        return "redirect:/places";
+        return "redirect:/place/places";
     }
 }

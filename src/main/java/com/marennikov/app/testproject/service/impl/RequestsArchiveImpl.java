@@ -43,4 +43,9 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
         requestArchive.setActiveStatus("Delete");
         return requestsArchiveRepository.saveAndFlush(requestArchive);
     }
+
+    @Override
+    public RequestArchive getByRequesterIdWithLastVersion(Integer id) {
+        return requestsArchiveRepository.findTopByRequestIdOrderByVersionDesc(id);
+    }
 }

@@ -14,5 +14,15 @@ public interface IRequestService {
 
     List<Request> requestList(String activeStatus);
 
-    Request setDeleteStatus(Request request);
+    Request setDeleteActiveStatus(Request request);
+
+    Iterable<Request> requestListByRequesterIdNotApproved(Integer id, String status);
+
+    Iterable<Request> requestListByRequesterIdApproved(Integer id, String status);
+
+    Iterable<Request> requestListByStatus(String status);
+
+    Request getRequestByAdPlaceId(Integer id);
+
+    Request getRequestByAdConstructionId(Integer id);
 }

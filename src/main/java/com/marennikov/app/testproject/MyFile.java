@@ -76,11 +76,11 @@ public class MyFile {
         for(Photo photo : objects.getPhoto()) {
             photoService.savePhoto(photo);
         }
-
-        //requestArchive
-        for(RequestArchive requestArchive : objects.getRequestArchive()) {
-            requestsArchiveService.saveRequestArchive(requestArchive);
-        }
+//
+//        //requestArchive
+//        for(RequestArchive requestArchive : objects.getRequestArchive()) {
+//            requestsArchiveService.saveRequestArchive(requestArchive);
+//        }
     }
 
     private File file() {

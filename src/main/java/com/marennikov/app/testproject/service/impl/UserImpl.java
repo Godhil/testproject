@@ -44,5 +44,10 @@ public class UserImpl implements IUserService {
         return userRepository.saveAndFlush(user);
     }
 
+    @Override
+    public User userByLogin(String login) {
+        return userRepository.findOneByLogin(login);
+    }
+
 
 }

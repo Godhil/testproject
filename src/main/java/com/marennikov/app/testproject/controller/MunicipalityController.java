@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("municipality")
 public class MunicipalityController {
 
     private IMunicipalityService municipalityService;
@@ -44,7 +45,7 @@ public class MunicipalityController {
     @RequestMapping(value = "/municipalities", method = RequestMethod.POST)
     public String saveMunicipality(Municipality municipality){
         municipalityService.saveMunicipality(municipality);
-        return "redirect:/municipalities";
+        return "redirect:/municipality/municipalities";
     }
 
     //отключение(установить флаг "Delete")
@@ -52,6 +53,6 @@ public class MunicipalityController {
     public String setDelete(@PathVariable Integer id){
         Municipality municipality = municipalityService.getById(id);
         municipalityService.setDeleteStatus(municipality);
-        return "redirect:/municipalities";
+        return "redirect:/municipality/municipalities";
     }
 }

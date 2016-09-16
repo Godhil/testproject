@@ -39,8 +39,33 @@ public class RequestImpl implements IRequestService {
     }
 
     @Override
-    public Request setDeleteStatus(Request request) {
+    public Request setDeleteActiveStatus(Request request) {
         request.setActiveStatus("Delete");
         return requestsRepository.saveAndFlush(request);
+    }
+
+    @Override
+    public Iterable<Request> requestListByRequesterIdNotApproved(Integer id, String status) {
+        return requestsRepository.findAllByRequesterIdAndStatusNotLike(id, status);
+    }
+
+    @Override
+    public Iterable<Request> requestListByRequesterIdApproved(Integer id, String status) {
+        return requestsRepository.findAllByRequesterIdAndStatus(id, status);
+    }
+
+    @Override
+    public Iterable<Request> requestListByStatus(String status) {
+        return requestsRepository.findAllByStatus(status);
+    }
+
+    @Override
+    public Request getRequestByAdPlaceId(Integer id) {
+        return requestsRepository.findOneByAdPlaceId(id);
+    }
+
+    @Override
+    public Request getRequestByAdConstructionId(Integer id) {
+        return requestsRepository.findOneByAdConstructionId(id);
     }
 }

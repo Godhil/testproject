@@ -15,4 +15,6 @@ public interface IUserService {
     Iterable<User> userList(String activeStatus);
 
     User setDeleteStatus(User user);
+
+    User userByLogin(String login);
 }

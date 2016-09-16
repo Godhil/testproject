@@ -99,11 +99,6 @@ public class RequestsController {
     //Сохранение
     @RequestMapping(value = "/requests", method = RequestMethod.POST)
     public String saveRequest(Request request){
-
-        System.out.println(request.toString());
-        System.out.println(request.getAdPlace().toString());
-        System.out.println(request.getAdConstruction().toString());
-
         if (request.getVersion() == null){
             request.setVersion(1);
         } else {
@@ -112,6 +107,9 @@ public class RequestsController {
 
         request.setCreateDate(dateNow());
         requestsService.saveRequest(request);
+
+        saveInArchive(request);
+
         return "redirect:/requests";
     }
 
@@ -128,17 +126,7 @@ public class RequestsController {
         request.setProcessingDate(dateNow());
         requestsService.saveRequest(request);
 
-        requestArchive.setAssignee(request.getAssignee());
-        requestArchive.setVersion(request.getVersion());
-        requestArchive.setStatus(request.getStatus());
-        requestArchive.setAdConstructionId(request.getAdConstruction());
-        requestArchive.setAdPlace(request.getAdPlace());
-        requestArchive.setCreateDate(request.getCreateDate());
-        requestArchive.setProcessingDate(request.getProcessingDate());
-        requestArchive.setRejected(request.getRejected());
-        requestArchive.setRequester(request.getRequester());
-        requestArchive.setRequest(request);
-        requestsArchiveService.saveRequestArchive(requestArchive);
+        saveInArchive(request);
 
         return "redirect:/approval";
     }
@@ -176,5 +164,20 @@ public class RequestsController {
         System.out.println(reportDate);
 
         return reportDate;
+    }
+
+    private RequestArchive saveInArchive(Request request) {
+        RequestArchive requestArchive = new RequestArchive();
+        requestArchive.setAssignee(request.getAssignee());
+        requestArchive.setVersion(request.getVersion());
+        requestArchive.setStatus(request.getStatus());
+        requestArchive.setAdConstructionId(request.getAdConstruction());
+        requestArchive.setAdPlace(request.getAdPlace());
+        requestArchive.setCreateDate(request.getCreateDate());
+        requestArchive.setProcessingDate(request.getProcessingDate());
+        requestArchive.setRejected(request.getRejected());
+        requestArchive.setRequester(request.getRequester());
+        requestArchive.setRequest(request);
+        return requestsArchiveService.saveRequestArchive(requestArchive);
     }
 }

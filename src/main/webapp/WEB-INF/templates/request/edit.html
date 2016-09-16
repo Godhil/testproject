@@ -13,10 +13,10 @@
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">/</a></li>
-            <li><a href="/users">Список Пользователей</a></li>
-            <li><a href="/municipalities">Списк Муниципальных образований</a></li>
-            <li><a href="/places">Список РМ</a></li>
-            <li><a href="/constructions">Список РК</a></li>
+            <li><a href="/user/users">Список Пользователей</a></li>
+            <li><a href="/municipality/municipalities">Списк Муниципальных образований</a></li>
+            <li><a href="/place/places">Список РМ</a></li>
+            <li><a href="/construction/constructions">Список РК</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Заявки
                     <span class="caret"></span></a>
@@ -63,7 +63,7 @@
             </div>
             <br/>
             <div class="form-group">
-                <a th:href="${'/placeEdit/'+{request.adPlace.id}}" class="btn btn-info">Редактировать данные рекламного
+                <a th:href="${'/place/placeEdit/'+{request.adPlace.id}}" class="btn btn-info">Редактировать данные рекламного
                     места</a>
             </div>
             <br/>
@@ -91,7 +91,7 @@
                 <p th:text="${request.adConstruction.date}" class="form-control"></p>
             </div>
             <div class="form-group">
-                <a th:href="${'/constructionEdit/'+{request.adConstruction.id}}" class="btn btn-info">Редактировать
+                <a th:href="${'/construction/constructionEdit/'+{request.adConstruction.id}}" class="btn btn-info">Редактировать
                     данные рекламной конструкции</a>
             </div>
         </div>

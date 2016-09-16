@@ -14,10 +14,10 @@
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">/</a></li>
-            <li><a href="/users">Список Пользователей</a></li>
-            <li><a href="/municipalities">Списк Муниципальных образований</a></li>
-            <li><a href="/places">Список РМ</a></li>
-            <li><a href="/constructions">Список РК</a></li>
+            <li><a href="/user/users">Список Пользователей</a></li>
+            <li><a href="/municipality/municipalities">Списк Муниципальных образований</a></li>
+            <li><a href="/place/places">Список РМ</a></li>
+            <li><a href="/construction/constructions">Список РК</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Заявки
                     <span class="caret"></span></a>
@@ -42,7 +42,6 @@
                 <th>Адрес</th>
                 <th>Муниципальное образование</th>
                 <th></th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -51,7 +50,6 @@
                 <td th:text="${adPlace.owner}"></td>
                 <td th:text="${adPlace.address}"></td>
                 <td th:text="${adPlace.municipality.name}"></td>
-                <td><a th:href="${'/place/'+{adPlace.id}}" class="btn btn-info">Редактировать</a></td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Удалить</button>
                     <div class="modal fade" id="myModal" role="dialog">
@@ -64,7 +62,7 @@
                                 <div class="modal-body">
                                     <div class="btn-group btn-group-justified">
                                         <div class="btn-group">
-                                            <form action="#" th:action="@{'/place/delete/' + ${adPlace.id}}" method="post">
+                                            <form action="#" th:action="@{'/place/place/delete/' + ${adPlace.id}}" method="post">
                                                 <div>
                                                     <button type="submit" class="btn btn-danger">Удалить</button>
                                                 </div>
