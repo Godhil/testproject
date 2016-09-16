@@ -108,8 +108,6 @@ public class RequestsController {
         request.setCreateDate(dateNow());
         requestsService.saveRequest(request);
 
-        saveInArchive(request);
-
         return "redirect:/requests";
     }
 
