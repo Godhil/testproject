@@ -14,5 +14,7 @@ public interface IMunicipalityService {
 
     Municipality getById(Integer id);
 
+    Municipality getByName(String name);
+
     Municipality setDeleteStatus(Municipality municipality);
 }

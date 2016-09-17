@@ -41,6 +41,11 @@ public class MunicipalityImpl implements IMunicipalityService {
     }
 
     @Override
+    public Municipality getByName(String name) {
+        return municipalityRepository.findOneByName(name);
+    }
+
+    @Override
     public Municipality setDeleteStatus(Municipality municipality) {
         municipality.setActiveStatus("Delete");
         return municipalityRepository.saveAndFlush(municipality);

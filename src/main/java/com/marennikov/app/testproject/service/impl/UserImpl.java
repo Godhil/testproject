@@ -45,7 +45,7 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public User userByLogin(String login) {
+    public User getByLogin(String login) {
         return userRepository.findOneByLogin(login);
     }
 

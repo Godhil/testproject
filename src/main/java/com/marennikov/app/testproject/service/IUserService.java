@@ -16,5 +16,5 @@ public interface IUserService {
 
     User setDeleteStatus(User user);
 
-    User userByLogin(String login);
+    User getByLogin(String login);
 }
