@@ -52,6 +52,13 @@ public class RequestsController {
         this.requestsArchiveService = requestsArchiveService;
     }
 
+    //Данный класс нужно доработать, так как при реализации авторизации в приложении из базы
+    //данных поиск заявок необходимо осуществлять по ID муниципального образования
+    //авторизававшегося пользователя
+    //
+    //Так как в данный момент авторизация не реализована
+    //вместо ID муниципального образования везде используется ID пользователя равный 1
+
     //Список заявок инициатора, сюда id инициатора
     @RequestMapping("/requests")
     public String requestListByRequesterId(Integer id, Model model) {
@@ -82,6 +89,7 @@ public class RequestsController {
     }
 
     //Новая заявка
+    //В поле id необходимо указать id авторизовавшегося пользователя
     @RequestMapping("new/{adPlaceId}/{adConstructionId}")
     public String newRequest(
             @PathVariable Integer adPlaceId,
@@ -91,7 +99,7 @@ public class RequestsController {
         model.addAttribute("request", new Request());
         model.addAttribute("place", adPlaceService.getById(adPlaceId));
         model.addAttribute("construction", adConstructionService.getById(adConstructionId));
-        //сюда юзера который зашел в приложение
+
         model.addAttribute("user", userService.getById(1));
         return "request/new";
     }
@@ -104,7 +112,6 @@ public class RequestsController {
         } else {
             request.setVersion(request.getVersion() + 1);
         }
-
         request.setCreateDate(dateNow());
         requestsService.saveRequest(request);
 
