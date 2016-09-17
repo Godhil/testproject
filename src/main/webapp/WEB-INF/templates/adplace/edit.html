@@ -38,16 +38,16 @@
                 <input type="hidden" th:field="*{id}">
             </div>
             <div class="form-group">
-                <label>Владелец РМ:</label>
-                <input type="text" th:field="*{owner}" class="form-control" placeholder="Введите ФИО владельца" >
+                <label>Собственник РМ:</label>
+                <input type="text" th:field="*{owner}" class="form-control" placeholder="Введите ФИО владельца" required>
             </div>
             <div class="form-group">
                 <label>Адрес РМ:</label>
-                <input type="text" th:field="*{address}" class="form-control" placeholder="Введите адрес">
+                <input type="text" th:field="*{address}" class="form-control" placeholder="Введите адрес" required>
             </div>
             <div class="form-group">
                 <label>Муниципальное Образование:</label>
-                <select class="form-control" th:field="*{municipality.id}">
+                <select class="form-control" th:field="*{municipality.id}" required>
                     <option th:value="*{municipality.id}"
                             th:text="*{municipality.name}"></option>
                 </select>

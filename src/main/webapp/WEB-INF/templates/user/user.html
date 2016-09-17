@@ -39,34 +39,35 @@
             </div>
             <div class="form-group">
                 <label>Логин:</label>
-                <input type="text" th:field="*{login}" class="form-control" placeholder="Введите логин" >
+                <input type="text" th:field="*{login}" class="form-control" placeholder="Введите логин" required>
             </div>
             <div class="form-group">
                 <label>Пароль:</label>
-                <input type="text" th:field="*{password}" class="form-control" placeholder="Введите пароль">
+                <input type="text" th:field="*{password}" class="form-control" placeholder="Введите пароль" required>
             </div>
             <div class="form-group">
                 <label>Фамилия:</label>
-                <input type="text" th:field="*{surname}" class="form-control"  placeholder="Введите фамилию">
+                <input type="text" th:field="*{surname}" class="form-control"  placeholder="Введите фамилию" required>
             </div>
             <div class="form-group">
                 <label>Имя:</label>
-                <input type="text" th:field="*{firstName}" class="form-control" placeholder="Введите имя">
+                <input type="text" th:field="*{firstName}" class="form-control" placeholder="Введите имя" required>
             </div>
             <div class="form-group">
                 <label>Отчество:</label>
-                <input type="text" th:field="*{secondName}" class="form-control" placeholder="Введите отчество">
+                <input type="text" th:field="*{secondName}" class="form-control" placeholder="Введите отчество" required>
             </div>
             <div class="form-group">
                 <label>Роль:</label>
-                <select class="form-control" th:field="*{role}">
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
+                <select class="form-control" th:field="*{role}" required>
+                    <option value="OPERATOR">Оператор</option>
+                    <option value="REDACTOR">Редактор</option>
+                    <option value="ADMIN">Администратор</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Муниципальное Образование:</label>
-                <select class="form-control" th:field="*{municipality.id}">
+                <select class="form-control" th:field="*{municipality.id}" required>
                     <option th:each="municipality:${municipalityList}"
                             th:value="${municipality.id}"
                             th:text="${municipality.name}"></option>
