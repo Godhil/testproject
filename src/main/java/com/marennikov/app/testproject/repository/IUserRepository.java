@@ -10,4 +10,5 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
     List<User> findAllByActiveStatus(String activeStatus);
 
     User findOneByLogin(String login);
+
 }
