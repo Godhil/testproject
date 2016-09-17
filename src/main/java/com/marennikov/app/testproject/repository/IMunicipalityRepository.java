@@ -8,4 +8,6 @@ import java.util.List;
 public interface IMunicipalityRepository extends JpaRepository<Municipality, Integer> {
 
     List<Municipality> findAllByActiveStatus(String activeStatus);
+
+    Municipality findOneByName(String name);
 }
