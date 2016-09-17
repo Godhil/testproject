@@ -13,6 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/user")
 public class UsersController {
 
+    private User itemById;
+
+    private User itemByLogin;
+
     private IUserService userService;
 
     private IMunicipalityService municipalityService;
@@ -42,8 +46,28 @@ public class UsersController {
             pwd = hash(user.getPassword());
             user.setPassword(pwd);
         }
-        userService.saveUser(user);
-        return "redirect:/user/users";
+
+        itemByLogin = userService.getByLogin(user.getLogin());
+
+        if (user.getId() != null) {
+
+            itemById = userService.getById(user.getId());
+
+            if ((itemById.getLogin().equals(user.getLogin())) ||
+                    (itemByLogin == null)) {
+
+                userService.saveUser(user);
+                return "redirect:/user/users";
+
+            } else return "redirect:/user/user/" + user.getId();
+
+        } else if (itemByLogin == null) {
+
+            userService.saveUser(user);
+            return "redirect:/user/users";
+        }
+
+        return "redirect:/user/user";
     }
 
     //Новый пользователь
