@@ -10,10 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import javax.sql.DataSource;
 
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+//
 //    @Autowired
 //    private DataSource dataSource;
 //
@@ -22,46 +22,46 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        auth
 //                .jdbcAuthentication()
 //                .dataSource(dataSource)
-//                .withDefaultSchema()
-//                .withUser("user").password("password").roles("OPERATOR").and()
-//                .withUser("admin").password("password").roles("USER", "ADMIN");
+//                .usersByUsernameQuery("select * from user where login=?")
+//                .authoritiesByUsernameQuery("select role from user where login=?");
 //    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-
-        http
-                .authorizeRequests()
-                    .antMatchers("/css/**", "/founts/**", "/js/**", "/", "/login").permitAll()
-
-                    .antMatchers(
-                            "/requests",
-                            "/place/**",
-                            "/construction/**",
-                            "/new/**", "/send/**", "/edit/**"
-                            ).hasAnyRole("OPERATOR", "ADMIN")
-                    .antMatchers("/approved", "/approve").hasAnyRole("OPERATOR", "REDACTOR", "ADMIN")
-                    .antMatchers("/view/**", "/approval").hasAnyRole("REDACTOR", "ADMIN")
-                    .antMatchers("/**").hasRole("ADMIN")
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin()
-                    .loginPage("/login")
-                    .loginProcessingUrl("/j_spring_security_check")
-                    .usernameParameter("j_username")
-                    .passwordParameter("j_password")
-                    .permitAll()
-                    .and()
-                .httpBasic();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("redactor").password("1234").roles("REDACTOR").and()
-                .withUser("operator").password("1234").roles("OPERATOR").and()
-                .withUser("admin").password("1234").roles("ADMIN");
-    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//
+//        http
+//                .authorizeRequests()
+//                    .antMatchers("/css/**", "/founts/**", "/js/**", "/", "/login").permitAll()
+//
+//                    .antMatchers(
+//                            "/requests",
+//                            "/place/**",
+//                            "/construction/**",
+//                            "/new/**", "/send/**", "/edit/**"
+//                            ).hasAnyRole("OPERATOR", "ADMIN")
+//                    .antMatchers("/approved", "/approve").hasAnyRole("OPERATOR", "REDACTOR", "ADMIN")
+//                    .antMatchers("/view/**", "/approval").hasAnyRole("REDACTOR", "ADMIN")
+//                    .antMatchers("/**").hasRole("ADMIN")
+//                    .anyRequest().authenticated()
+//                    .and()
+//                .formLogin()
+//                    .loginPage("/login")
+//                    .loginProcessingUrl("/j_spring_security_check")
+//                    .usernameParameter("j_username")
+//                    .passwordParameter("j_password")
+//                    .permitAll()
+//                    .and()
+//                .csrf().disable()
+//                .httpBasic();
+//    }
+//
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .inMemoryAuthentication()
+//                .withUser("redactor").password("1234").roles("REDACTOR").and()
+//                .withUser("operator").password("1234").roles("OPERATOR").and()
+//                .withUser("admin").password("1234").roles("ADMIN");
+//    }
 }
 
