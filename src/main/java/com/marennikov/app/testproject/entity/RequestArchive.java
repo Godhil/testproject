@@ -39,16 +39,16 @@ public class RequestArchive {
     
     @Column(nullable = false)
     private String adConstructionOwner;
-
+    
     @Column(nullable = false)
-    private String adConstructionNumber;
-
+    private Integer adConstructionNumber;;
+    
     @Column(nullable = false)
     private String adConstructionStatus;
-
+    
     @Column(nullable = false)
     private String adConstructionType;
-
+    
     @Column(nullable = false)
     private String status;
 
@@ -62,20 +62,20 @@ public class RequestArchive {
     }
 
     public RequestArchive(
-            Request request,
-            User requester,
-            User assignee,
-            String createDate,
-            String processingDate,
-            Integer version,
-            String adPlaceOwner,
-            String adPlaceAddress,
-            String adConstructionOwner,
-            String adConstructionNumber,
-            String adConstructionStatus,
-            String adConstructionType,
-            String status,
-            String rejected,
+            Request request, 
+            User requester, 
+            User assignee, 
+            String createDate, 
+            String processingDate, 
+            Integer version, 
+            String adPlaceOwner, 
+            String adPlaceAddress, 
+            String adConstructionOwner, 
+            Integer adConstructionNumber,
+            String adConstructionStatus, 
+            String adConstructionType, 
+            String status, 
+            String rejected, 
             String activeStatus) {
         this.request = request;
         this.requester = requester;
@@ -174,11 +174,11 @@ public class RequestArchive {
         this.adConstructionOwner = adConstructionOwner;
     }
 
-    public String getAdConstructionNumber() {
+    public Integer getAdConstructionNumber() {
         return adConstructionNumber;
     }
 
-    public void setAdConstructionNumber(String adConstructionNumber) {
+    public void setAdConstructionNumber(Integer adConstructionNumber) {
         this.adConstructionNumber = adConstructionNumber;
     }
 
@@ -235,7 +235,7 @@ public class RequestArchive {
                 ", adPlaceOwner='" + adPlaceOwner + '\'' +
                 ", adPlaceAddress='" + adPlaceAddress + '\'' +
                 ", adConstructionOwner='" + adConstructionOwner + '\'' +
-                ", adConstructionNumber='" + adConstructionNumber + '\'' +
+                ", adConstructionNumber=" + adConstructionNumber +
                 ", adConstructionStatus='" + adConstructionStatus + '\'' +
                 ", adConstructionType='" + adConstructionType + '\'' +
                 ", status='" + status + '\'' +
