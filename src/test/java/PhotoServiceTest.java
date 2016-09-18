@@ -58,7 +58,7 @@ public class PhotoServiceTest extends Assert {
 
         Photo actualPhoto = photoService.getById(2);
         actualPhoto.setPath(actualPath);
-        photoService.editPhoto(actualPhoto);
+        photoService.savePhoto(actualPhoto);
 
         Photo expectedPhoto = photoService.getById(2);
 
@@ -111,14 +111,14 @@ public class PhotoServiceTest extends Assert {
     private void checkAndAdd() {
         List<Photo> checkList =(List<Photo>) photoService.photoListWithDelete();
         if(checkList.size() == 0) {
-            municipalityService.addMunicipality(TestData.municipality());
-            userService.addUser(TestData.user());
-            adPlaceService.addAdPlace(TestData.adPlace());
-            adConstructionService.addAdConstruction(TestData.adConstruction());
-            requestService.addRequest(TestData.request());
-            photoService.addPhoto(TestData.photo());
-            photoService.addPhoto(TestData.deletePhoto());
-            photoService.addPhoto(TestData.willBeDeletePhoto());
+            municipalityService.saveMunicipality(TestData.municipality());
+            userService.saveUser(TestData.user());
+            adPlaceService.saveAdPlace(TestData.adPlace());
+            adConstructionService.saveAdConstruction(TestData.adConstruction());
+            requestService.saveRequest(TestData.request());
+            photoService.savePhoto(TestData.photo());
+            photoService.savePhoto(TestData.deletePhoto());
+            photoService.savePhoto(TestData.willBeDeletePhoto());
         }
     }
 }

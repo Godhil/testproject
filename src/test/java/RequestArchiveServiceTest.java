@@ -58,7 +58,7 @@ public class RequestArchiveServiceTest extends Assert {
 
         RequestArchive actualRequestAchive = requestsArchiveService.getById(2);
         actualRequestAchive.setVersion(actualVesion);
-        requestsArchiveService.editRequestArhive(actualRequestAchive);
+        requestsArchiveService.saveRequestArchive(actualRequestAchive);
 
         RequestArchive expectedRequestAchive = requestsArchiveService.getById(2);
 
@@ -115,14 +115,14 @@ public class RequestArchiveServiceTest extends Assert {
         List<RequestArchive> checkList =
                 (List<RequestArchive>) requestsArchiveService.requestsArchiveListWithDelete();
         if(checkList.size() == 0) {
-            municipalityService.addMunicipality(TestData.municipality());
-            userService.addUser(TestData.user());
-            adPlaceService.addAdPlace(TestData.adPlace());
-            adConstructionService.addAdConstruction(TestData.adConstruction());
-            requestService.addRequest(TestData.request());
-            requestsArchiveService.addRequestArchive(TestData.requestArchive());
-            requestsArchiveService.addRequestArchive(TestData.deleteRequestArchive());
-            requestsArchiveService.addRequestArchive(TestData.willBeDeleteRequestArchive());
+            municipalityService.saveMunicipality(TestData.municipality());
+            userService.saveUser(TestData.user());
+            adPlaceService.saveAdPlace(TestData.adPlace());
+            adConstructionService.saveAdConstruction(TestData.adConstruction());
+            requestService.saveRequest(TestData.request());
+            requestsArchiveService.saveRequestArchive(TestData.requestArchive());
+            requestsArchiveService.saveRequestArchive(TestData.deleteRequestArchive());
+            requestsArchiveService.saveRequestArchive(TestData.willBeDeleteRequestArchive());
         }
     }
 }

@@ -4,6 +4,7 @@ import com.marennikov.app.testproject.service.IAdConstructionService;
 import com.marennikov.app.testproject.service.IAdPlaceService;
 import com.marennikov.app.testproject.service.IMunicipalityService;
 import data.TestData;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -63,7 +64,7 @@ public class AdConstructionServiceTest extends Assert {
 
         AdConstruction actualAdConstruction = adConstructionService.getById(2);
         actualAdConstruction.setOwner(actualOwner);
-        adConstructionService.editAdConstruction(actualAdConstruction);
+        adConstructionService.saveAdConstruction(actualAdConstruction);
 
         AdConstruction expectedAdConstruction = adConstructionService.getById(2);
 
@@ -98,6 +99,7 @@ public class AdConstructionServiceTest extends Assert {
         assertEquals(expectedAdConstructionList.size(), TestData.listSizeWithOutDelete);
     }
 
+    @After
     @Test
     public void setDeleteActiveStatusForAdConstructionTest() throws Exception {
 
@@ -106,7 +108,8 @@ public class AdConstructionServiceTest extends Assert {
         checkAndAdd();
 
         AdConstruction adConstruction = adConstructionService.getById(3);
-        System.out.println(adConstruction.getActiveStatus());
+
+        assertNotNull(adConstruction);
         adConstructionService.setDeleteStatus(adConstruction);
 
         AdConstruction expectedAdConstruction = adConstructionService.getById(3);
@@ -120,11 +123,11 @@ public class AdConstructionServiceTest extends Assert {
         List<AdConstruction> checkList =
                 (List<AdConstruction>) adConstructionService.adConstructionListWithDelete();
         if (checkList.size() == 0) {
-            municipalityService.addMunicipality(TestData.municipality());
-            adPlaceService.addAdPlace(TestData.adPlace());
-            adConstructionService.addAdConstruction(TestData.adConstruction());
-            adConstructionService.addAdConstruction(TestData.deleteAdConstruction());
-            adConstructionService.addAdConstruction(TestData.willBeDeleteAdConstruction());
+            municipalityService.saveMunicipality(TestData.municipality());
+            adPlaceService.saveAdPlace(TestData.adPlace());
+            adConstructionService.saveAdConstruction(TestData.adConstruction());
+            adConstructionService.saveAdConstruction(TestData.deleteAdConstruction());
+            adConstructionService.saveAdConstruction(TestData.willBeDeleteAdConstruction());
         }
     }
 }

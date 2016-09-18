@@ -38,7 +38,7 @@ public class TestData {
         user.setSurname("User1");
         user.setFirstName("User1");
         user.setSecondName("User1");
-        user.setRole(1);
+        user.setRole("User");
         user.setMunicipality(municipality());
         return user;
     }
@@ -51,7 +51,7 @@ public class TestData {
         user.setSurname("User2");
         user.setFirstName("User2");
         user.setSecondName("User2");
-        user.setRole(1);
+        user.setRole("User");
         user.setMunicipality(municipality());
         user.setActiveStatus("Delete");
         return user;
@@ -65,7 +65,7 @@ public class TestData {
         user.setSurname("User3");
         user.setFirstName("User3");
         user.setSecondName("User3");
-        user.setRole(1);
+        user.setRole("User");
         user.setMunicipality(municipality());
         return user;
     }
@@ -140,7 +140,7 @@ public class TestData {
         request.setCreateDate("07/01/2016");
         request.setRequester(user());
         request.setStatus("New");
-        request.setAdPlaceId(adPlace());
+        request.setAdPlace(adPlace());
         request.setAdConstruction(adConstruction());
         request.setAssignee(user());
         request.setProcessingDate("08/01/2016");
@@ -156,7 +156,7 @@ public class TestData {
         request.setCreateDate("08/02/2016");
         request.setRequester(user());
         request.setStatus("Reject");
-        request.setAdPlaceId(adPlace());
+        request.setAdPlace(adPlace());
         request.setAdConstruction(adConstruction());
         request.setAssignee(user());
         request.setProcessingDate("08/01/2016");
@@ -173,7 +173,7 @@ public class TestData {
         request.setCreateDate("08/02/2016");
         request.setRequester(user());
         request.setStatus("Reject");
-        request.setAdPlaceId(adPlace());
+        request.setAdPlace(adPlace());
         request.setAdConstruction(adConstruction());
         request.setAssignee(user());
         request.setProcessingDate("08/01/2016");
@@ -212,15 +212,15 @@ public class TestData {
         RequestArchive requestArchive = new RequestArchive();
         requestArchive.setId(1);
         requestArchive.setCreateDate("08/02/2016");
-        requestArchive.setRequester(1);
+        requestArchive.setRequester(user());
         requestArchive.setRequest(request());
-        requestArchive.setAdPlaceId(3);
-        requestArchive.setAdConstructionId(3);
-        requestArchive.setAssignee(1);
+        requestArchive.setAdPlace(adPlace());
+        requestArchive.setAdConstructionId(adConstruction());
+        requestArchive.setAssignee(user());
         requestArchive.setProcessingDate("08/03/2016");
         requestArchive.setVersion(1);
         requestArchive.setRejected(null);
-        requestArchive.setActual(true);
+        requestArchive.setStatus("true");
         return requestArchive;
     }
 
@@ -228,15 +228,15 @@ public class TestData {
         RequestArchive requestArchive = new RequestArchive();
         requestArchive.setId(2);
         requestArchive.setCreateDate("08/02/2016");
-        requestArchive.setRequester(1);
+        requestArchive.setRequester(user());
         requestArchive.setRequest(request());
-        requestArchive.setAdPlaceId(3);
-        requestArchive.setAdConstructionId(3);
-        requestArchive.setAssignee(1);
+        requestArchive.setAdPlace(adPlace());
+        requestArchive.setAdConstructionId(adConstruction());
+        requestArchive.setAssignee(user());
         requestArchive.setProcessingDate("08/03/2016");
         requestArchive.setVersion(44);
         requestArchive.setRejected("Rejected");
-        requestArchive.setActual(false);
+        requestArchive.setStatus("false");
         requestArchive.setActiveStatus("Delete");
         return requestArchive;
     }
@@ -244,15 +244,15 @@ public class TestData {
         RequestArchive requestArchive = new RequestArchive();
         requestArchive.setId(3);
         requestArchive.setCreateDate("08/02/2016");
-        requestArchive.setRequester(1);
+        requestArchive.setRequester(user());
         requestArchive.setRequest(request());
-        requestArchive.setAdPlaceId(3);
-        requestArchive.setAdConstructionId(3);
-        requestArchive.setAssignee(1);
+        requestArchive.setAdPlace(adPlace());
+        requestArchive.setAdConstructionId(adConstruction());
+        requestArchive.setAssignee(user());
         requestArchive.setProcessingDate("08/03/2016");
         requestArchive.setVersion(44);
         requestArchive.setRejected("Rejected");
-        requestArchive.setActual(false);
+        requestArchive.setStatus("false");
         return requestArchive;
     }
 }

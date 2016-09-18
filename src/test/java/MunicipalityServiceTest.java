@@ -68,7 +68,7 @@ public class MunicipalityServiceTest extends Assert{
 
         Municipality actualMunicipality = municipalityService.getById(2);
         actualMunicipality.setName(actualName);
-        municipalityService.editMunicipality(actualMunicipality);
+        municipalityService.saveMunicipality(actualMunicipality);
 
         Municipality expectedMunicipality = municipalityService.getById(2);
 
@@ -97,9 +97,9 @@ public class MunicipalityServiceTest extends Assert{
     private void checkAndAdd() {
         List<Municipality> checkList = (List<Municipality>) municipalityService.municipalityListWithDelete();
         if (checkList.size() == 0) {
-            municipalityService.addMunicipality(TestData.municipality());
-            municipalityService.addMunicipality(TestData.deleteMunicipality());
-            municipalityService.addMunicipality(TestData.willBeDeleteMunicipality());
+            municipalityService.saveMunicipality(TestData.municipality());
+            municipalityService.saveMunicipality(TestData.deleteMunicipality());
+            municipalityService.saveMunicipality(TestData.willBeDeleteMunicipality());
         }
     }
 }

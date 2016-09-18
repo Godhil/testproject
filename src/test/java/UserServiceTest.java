@@ -55,7 +55,7 @@ public class UserServiceTest extends Assert {
 
         checkAndAdd();
 
-        List<User> expectedList = userService.userList(null);
+        List<User> expectedList =(List<User>) userService.userList(null);
 
 
         assertNotNull(expectedList);
@@ -71,7 +71,7 @@ public class UserServiceTest extends Assert {
 
         User actualUser = userService.getById(2);
         actualUser.setFirstName(actualName);
-        userService.editUser(actualUser);
+        userService.saveUser(actualUser);
 
         User expectedUser = userService.getById(2);
 
@@ -100,10 +100,10 @@ public class UserServiceTest extends Assert {
 
         List<User> checkList = (List<User>) userService.usersListWithDelete();
         if (checkList.size() == 0) {
-            municipalityService.addMunicipality(TestData.municipality());
-            userService.addUser(TestData.user());
-            userService.addUser(TestData.deleteUser());
-            userService.addUser(TestData.willBeDeleteUser());
+            municipalityService.saveMunicipality(TestData.municipality());
+            userService.saveUser(TestData.user());
+            userService.saveUser(TestData.deleteUser());
+            userService.saveUser(TestData.willBeDeleteUser());
         }
     }
 }

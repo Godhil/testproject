@@ -47,7 +47,7 @@ public class AdPlaceServiceTest extends Assert{
 
         AdPlace actualAdPlace = adPlaceService.getById(2);
         actualAdPlace.setAddress(actualAddress);
-        adPlaceService.editAdPlace(actualAdPlace);
+        adPlaceService.saveAdPlace(actualAdPlace);
 
         AdPlace expectedAdPlace = adPlaceService.getById(2);
 
@@ -85,7 +85,10 @@ public class AdPlaceServiceTest extends Assert{
 
         String actualActiveStatus = "Delete";
 
+        checkAndAdd();
+
         AdPlace adPlace = adPlaceService.getById(3);
+        assertNotNull(adPlace);
         adPlaceService.setDeleteStatus(adPlace);
 
         AdPlace expectedAdplace = adPlaceService.getById(3);
@@ -98,10 +101,10 @@ public class AdPlaceServiceTest extends Assert{
     private void checkAndAdd() {
         List<AdPlace> checkList = (List<AdPlace>) adPlaceService.adPlaceListWithDelete();
         if (checkList.size() == 0) {
-            municipalityService.addMunicipality(TestData.municipality());
-            adPlaceService.addAdPlace(TestData.adPlace());
-            adPlaceService.addAdPlace(TestData.deleteAdPlace());
-            adPlaceService.addAdPlace(TestData.willBeDeleteAdPlace());
+            municipalityService.saveMunicipality(TestData.municipality());
+            adPlaceService.saveAdPlace(TestData.adPlace());
+            adPlaceService.saveAdPlace(TestData.deleteAdPlace());
+            adPlaceService.saveAdPlace(TestData.willBeDeleteAdPlace());
         }
     }
 

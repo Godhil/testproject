@@ -79,7 +79,7 @@ public class RequestServiceTest extends Assert {
 
         Request actualRequest = requestService.getById(2);
         actualRequest.setActiveStatus(actualStatus);
-        requestService.editRequest(actualRequest);
+        requestService.saveRequest(actualRequest);
 
         Request expectedRequest = requestService.getById(2);
 
@@ -95,7 +95,7 @@ public class RequestServiceTest extends Assert {
         checkAndAdd();
 
         Request request = requestService.getById(3);
-        requestService.setDeleteStatus(request);
+        requestService.setDeleteActiveStatus(request);
 
         Request expectedRequest = requestService.getById(3);
 
@@ -108,13 +108,13 @@ public class RequestServiceTest extends Assert {
 
         List<Request> checkList =(List<Request>) requestService.requestsListWithDelete();
         if(checkList.size() == 0) {
-            municipalityService.addMunicipality(TestData.municipality());
-            userService.addUser(TestData.user());
-            adPlaceService.addAdPlace(TestData.adPlace());
-            adConstructionService.addAdConstruction(TestData.adConstruction());
-            requestService.addRequest(TestData.request());
-            requestService.addRequest(TestData.deleteRequest());
-            requestService.addRequest(TestData.willBeDeleteRequest());
+            municipalityService.saveMunicipality(TestData.municipality());
+            userService.saveUser(TestData.user());
+            adPlaceService.saveAdPlace(TestData.adPlace());
+            adConstructionService.saveAdConstruction(TestData.adConstruction());
+            requestService.saveRequest(TestData.request());
+            requestService.saveRequest(TestData.deleteRequest());
+            requestService.saveRequest(TestData.willBeDeleteRequest());
         }
     }
 
