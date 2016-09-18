@@ -31,13 +31,23 @@ public class RequestArchive {
     @Column(nullable = false)
     private Integer version;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false)
-    private AdPlace adPlace;
+    @Column(nullable = false)
+    private String adPlaceOwner;
+    
+    @Column(nullable = false)
+    private String adPlaceAddress;
+    
+    @Column(nullable = false)
+    private String adConstructionOwner;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false)
-    private AdConstruction adConstruction;
+    @Column(nullable = false)
+    private String adConstructionNumber;
+
+    @Column(nullable = false)
+    private String adConstructionStatus;
+
+    @Column(nullable = false)
+    private String adConstructionType;
 
     @Column(nullable = false)
     private String status;
@@ -58,8 +68,12 @@ public class RequestArchive {
             String createDate,
             String processingDate,
             Integer version,
-            AdPlace adPlace,
-            AdConstruction adConstruction,
+            String adPlaceOwner,
+            String adPlaceAddress,
+            String adConstructionOwner,
+            String adConstructionNumber,
+            String adConstructionStatus,
+            String adConstructionType,
             String status,
             String rejected,
             String activeStatus) {
@@ -69,8 +83,12 @@ public class RequestArchive {
         this.createDate = createDate;
         this.processingDate = processingDate;
         this.version = version;
-        this.adPlace = adPlace;
-        this.adConstruction = adConstruction;
+        this.adPlaceOwner = adPlaceOwner;
+        this.adPlaceAddress = adPlaceAddress;
+        this.adConstructionOwner = adConstructionOwner;
+        this.adConstructionNumber = adConstructionNumber;
+        this.adConstructionStatus = adConstructionStatus;
+        this.adConstructionType = adConstructionType;
         this.status = status;
         this.rejected = rejected;
         this.activeStatus = activeStatus;
@@ -132,20 +150,52 @@ public class RequestArchive {
         this.version = version;
     }
 
-    public AdPlace getAdPlace() {
-        return adPlace;
+    public String getAdPlaceOwner() {
+        return adPlaceOwner;
     }
 
-    public void setAdPlace(AdPlace adPlace) {
-        this.adPlace = adPlace;
+    public void setAdPlaceOwner(String adPlaceOwner) {
+        this.adPlaceOwner = adPlaceOwner;
     }
 
-    public AdConstruction getAdConstruction() {
-        return adConstruction;
+    public String getAdPlaceAddress() {
+        return adPlaceAddress;
     }
 
-    public void setAdConstructionId(AdConstruction adConstruction) {
-        this.adConstruction = adConstruction;
+    public void setAdPlaceAddress(String adPlaceAddress) {
+        this.adPlaceAddress = adPlaceAddress;
+    }
+
+    public String getAdConstructionOwner() {
+        return adConstructionOwner;
+    }
+
+    public void setAdConstructionOwner(String adConstructionOwner) {
+        this.adConstructionOwner = adConstructionOwner;
+    }
+
+    public String getAdConstructionNumber() {
+        return adConstructionNumber;
+    }
+
+    public void setAdConstructionNumber(String adConstructionNumber) {
+        this.adConstructionNumber = adConstructionNumber;
+    }
+
+    public String getAdConstructionStatus() {
+        return adConstructionStatus;
+    }
+
+    public void setAdConstructionStatus(String adConstructionStatus) {
+        this.adConstructionStatus = adConstructionStatus;
+    }
+
+    public String getAdConstructionType() {
+        return adConstructionType;
+    }
+
+    public void setAdConstructionType(String adConstructionType) {
+        this.adConstructionType = adConstructionType;
     }
 
     public String getStatus() {
@@ -182,9 +232,13 @@ public class RequestArchive {
                 ", createDate='" + createDate + '\'' +
                 ", processingDate='" + processingDate + '\'' +
                 ", version=" + version +
-                ", adPlace=" + adPlace +
-                ", adConstruction=" + adConstruction +
-                ", status=" + status +
+                ", adPlaceOwner='" + adPlaceOwner + '\'' +
+                ", adPlaceAddress='" + adPlaceAddress + '\'' +
+                ", adConstructionOwner='" + adConstructionOwner + '\'' +
+                ", adConstructionNumber='" + adConstructionNumber + '\'' +
+                ", adConstructionStatus='" + adConstructionStatus + '\'' +
+                ", adConstructionType='" + adConstructionType + '\'' +
+                ", status='" + status + '\'' +
                 ", rejected='" + rejected + '\'' +
                 ", activeStatus='" + activeStatus + '\'' +
                 '}';
