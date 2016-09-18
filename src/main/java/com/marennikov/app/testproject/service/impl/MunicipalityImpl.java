@@ -26,7 +26,7 @@ public class MunicipalityImpl implements IMunicipalityService {
     }
 
     @Override
-    public Iterable<Municipality> municipalityListWithDelete() {
+    public List<Municipality> municipalityListWithDelete() {
         return municipalityRepository.findAll();
     }
 

@@ -8,7 +8,7 @@ public interface IAdPlaceService {
 
     AdPlace saveAdPlace(AdPlace adPlace);
 
-    Iterable<AdPlace> adPlaceListWithDelete();
+    List<AdPlace> adPlaceListWithDelete();
 
     AdPlace getById(Integer id);
 

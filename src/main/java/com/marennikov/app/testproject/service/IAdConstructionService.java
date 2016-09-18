@@ -9,7 +9,7 @@ public interface IAdConstructionService {
 
     AdConstruction saveAdConstruction(AdConstruction adConstruction);
 
-    Iterable<AdConstruction> adConstructionListWithDelete();
+    List<AdConstruction> adConstructionListWithDelete();
 
     List<AdConstruction> adConstructionList(String activeStatus);
 

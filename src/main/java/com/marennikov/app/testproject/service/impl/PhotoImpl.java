@@ -25,7 +25,7 @@ public class PhotoImpl implements IPhotoService {
     }
 
     @Override
-    public Iterable<Photo> photoListWithDelete() {
+    public List<Photo> photoListWithDelete() {
         return photoRepository.findAll();
     }
 

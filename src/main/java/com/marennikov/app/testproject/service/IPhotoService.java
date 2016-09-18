@@ -8,7 +8,7 @@ public interface IPhotoService {
 
     Photo savePhoto(Photo photo);
 
-    Iterable<Photo> photoListWithDelete();
+    List<Photo> photoListWithDelete();
 
     Photo getById(Integer id);
 

@@ -24,7 +24,7 @@ public class RequestsArchiveImpl implements IRequestsArchiveService {
     }
 
     @Override
-    public Iterable<RequestArchive> requestsArchiveListWithDelete() {
+    public List<RequestArchive> requestsArchiveListWithDelete() {
         return requestsArchiveRepository.findAll();
     }
 

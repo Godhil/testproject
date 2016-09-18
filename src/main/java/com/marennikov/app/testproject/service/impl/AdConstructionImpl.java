@@ -24,7 +24,7 @@ public class AdConstructionImpl implements IAdConstructionService {
     }
 
     @Override
-    public Iterable<AdConstruction> adConstructionListWithDelete() {
+    public List<AdConstruction> adConstructionListWithDelete() {
         return adConstructionRepository.findAll();
     }
 

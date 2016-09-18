@@ -24,7 +24,7 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public Iterable<User> usersListWithDelete() {
+    public List<User> usersListWithDelete() {
         return userRepository.findAll();
     }
 
@@ -34,7 +34,7 @@ public class UserImpl implements IUserService {
     }
 
     @Override
-    public Iterable<User> userList(String activeStatus) {
+    public List<User> userList(String activeStatus) {
         return userRepository.findAllByActiveStatus(activeStatus);
     }
 

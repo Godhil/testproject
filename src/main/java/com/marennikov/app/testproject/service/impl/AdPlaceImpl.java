@@ -25,7 +25,7 @@ public class AdPlaceImpl implements IAdPlaceService {
     }
 
     @Override
-    public Iterable<AdPlace> adPlaceListWithDelete() {
+    public List<AdPlace> adPlaceListWithDelete() {
         return adPlaceRepository.findAll();
     }
 

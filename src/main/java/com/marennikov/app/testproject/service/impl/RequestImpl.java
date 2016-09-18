@@ -24,7 +24,7 @@ public class RequestImpl implements IRequestService {
     }
 
     @Override
-    public Iterable<Request> requestsListWithDelete() {
+    public List<Request> requestsListWithDelete() {
         return requestsRepository.findAll();
     }
 
@@ -45,17 +45,17 @@ public class RequestImpl implements IRequestService {
     }
 
     @Override
-    public Iterable<Request> requestListByRequesterIdNotApproved(Integer id, String status) {
+    public List<Request> requestListByRequesterIdNotApproved(Integer id, String status) {
         return requestsRepository.findAllByRequesterIdAndStatusNotLike(id, status);
     }
 
     @Override
-    public Iterable<Request> requestListByRequesterIdApproved(Integer id, String status) {
-        return requestsRepository.findAllByRequesterIdAndStatus(id, status);
+    public List<Request> requestListByRequesterIdApproved(Integer id, String status) {
+        return requestsRepository.findAllByStatus(id, status);
     }
 
     @Override
-    public Iterable<Request> requestListByStatus(String status) {
+    public List<Request> requestListByStatus(String status) {
         return requestsRepository.findAllByStatus(status);
     }
 

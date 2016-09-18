@@ -8,7 +8,7 @@ public interface IRequestService {
 
     Request saveRequest(Request request);
 
-    Iterable<Request> requestsListWithDelete();
+    List<Request> requestsListWithDelete();
 
     Request getById(Integer id);
 
@@ -16,11 +16,11 @@ public interface IRequestService {
 
     Request setDeleteActiveStatus(Request request);
 
-    Iterable<Request> requestListByRequesterIdNotApproved(Integer id, String status);
+    List<Request> requestListByRequesterIdNotApproved(Integer id, String status);
 
-    Iterable<Request> requestListByRequesterIdApproved(Integer id, String status);
+    List<Request> requestListByRequesterIdApproved(Integer id, String status);
 
-    Iterable<Request> requestListByStatus(String status);
+    List<Request> requestListByStatus(String status);
 
     Request getRequestByAdPlaceId(Integer id);
 

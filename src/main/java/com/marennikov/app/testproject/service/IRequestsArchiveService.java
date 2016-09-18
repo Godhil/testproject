@@ -8,7 +8,7 @@ public interface IRequestsArchiveService {
 
     RequestArchive saveRequestArchive(RequestArchive requestArchive);
 
-    Iterable<RequestArchive> requestsArchiveListWithDelete();
+    List<RequestArchive> requestsArchiveListWithDelete();
 
     List<RequestArchive> requestArchiveList(String activeStatus);
 

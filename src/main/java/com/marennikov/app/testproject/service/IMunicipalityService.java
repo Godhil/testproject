@@ -8,7 +8,7 @@ public interface IMunicipalityService {
 
     Municipality saveMunicipality(Municipality municipality);
 
-    Iterable<Municipality> municipalityListWithDelete();
+    List<Municipality> municipalityListWithDelete();
 
     List<Municipality> municipalityList(String activeStatus);
 

@@ -8,11 +8,11 @@ public interface IUserService {
 
     User saveUser(User user);
 
-    Iterable<User> usersListWithDelete();
+    List<User> usersListWithDelete();
 
     User getById(Integer id);
 
-    Iterable<User> userList(String activeStatus);
+    List<User> userList(String activeStatus);
 
     User setDeleteStatus(User user);
 
