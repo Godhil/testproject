@@ -4,7 +4,7 @@ import com.marennikov.app.testproject.entity.*;
 
 import java.util.List;
 
-public class ClassForParseJsonFile {
+public class ParseJsonFixtures {
 
     private List<Municipality> municipality;
 

@@ -4,17 +4,27 @@
       "id": 1,
       "name": "Первое МО",
       "activeStatus": null
+    },
+    {
+      "id": 1,
+      "name": "Второе МО",
+      "activeStatus": null
+    },
+    {
+      "id": 1,
+      "name": "Третье МО",
+      "activeStatus": null
     }
   ],
   "user": [
     {
       "id": 1,
-      "login": "Qwerty",
-      "password": "123456",
+      "login": "Ivanov",
+      "password": "1234",
       "surname": "Иванов",
       "firstName": "Иван",
       "secondName": "Иванович",
-      "role": "User",
+      "role": "OPERATOR",
       "municipality": {
         "id": 1,
         "name": "Первое МО",
@@ -24,12 +34,12 @@
     },
     {
       "id": 2,
-      "login": "Asdfg",
-      "password": "123456",
-      "surname": "Васильев",
-      "firstName": "Василий",
-      "secondName": "Васильевич",
-      "role": "Admin",
+      "login": "Petrov",
+      "password": "12345",
+      "surname": "Петров",
+      "firstName": "Петр",
+      "secondName": "Петрович",
+      "role": "REDACTOR",
       "municipality": {
         "id": 1,
         "name": "Первое МО",
@@ -39,12 +49,12 @@
     },
     {
       "id": 3,
-      "login": "Wop",
+      "login": "Pupkin",
       "password": "123456",
-      "surname": "Wop",
-      "firstName": "Pop",
-      "secondName": "WOW",
-      "role": "Admin",
+      "surname": "Пупкин",
+      "firstName": "Василий",
+      "secondName": "Генадьевич",
+      "role": "ADMIN",
       "municipality": {
         "id": 1,
         "name": "Первое МО",
@@ -56,8 +66,8 @@
   "adPlace": [
     {
       "id": 1,
-      "address": "Lenina 25",
-      "owner": "Lenin V.I.",
+      "address": "Ленина 25",
+      "owner": "Ленин В.И.",
       "municipality": {
         "id": 1,
         "name": "Первое МО",
@@ -69,15 +79,15 @@
   "adConstruction": [
     {
       "id": 1,
-      "owner": "Loshkin A.A.",
+      "owner": "Лошкин А.А.",
       "number": 1,
-      "type": "Banner",
-      "status": "Empty",
+      "type": "Вывеска",
+      "status": "Не установлена,но в схеме есть",
       "date": "01/01/2016",
       "adPlace": {
         "id": 1,
-        "address": "Lenina 25",
-        "owner": "Lenin V.I.",
+        "address": "Ленина 25",
+        "owner": "Ленин В.И.",
         "municipality": {
           "id": 1,
           "name": "Первое МО",
@@ -94,12 +104,12 @@
       "status": "Reject",
       "requester": {
         "id": 1,
-        "login": "Qwerty",
+        "login": "Ivanov",
         "password": "123456",
-        "surname": "Ivanov",
-        "firstName": "Ivan",
-        "secondName": "Ivanovich",
-        "role": "User",
+        "surname": "Иванов",
+        "firstName": "Иван",
+        "secondName": "Иванович",
+        "role": "OPERATOR",
         "municipality": {
           "id": 1,
           "name": "Первое МО",
@@ -109,12 +119,12 @@
       },
       "assignee": {
         "id": 2,
-        "login": "Asdfg",
+        "login": "Petrov",
         "password": "123456",
-        "surname": "Pupkin",
-        "firstName": "Vasilii",
-        "secondName": "Vasilievich",
-        "role": "Admin",
+        "surname": "Петров",
+        "firstName": "Петр",
+        "secondName": "Петрович",
+        "role": "REDACTOR",
         "municipality": {
           "id": 1,
           "name": "Первое МО",
@@ -127,8 +137,8 @@
       "version": 1,
       "adPlace": {
         "id": 1,
-        "address": "Lenina 25",
-        "owner": "Lenin V.I.",
+        "address": "Ленина 25",
+        "owner": "Ленин В.И.",
         "municipality": {
           "id": 1,
           "name": "Первое МО",
@@ -138,15 +148,15 @@
       },
       "adConstruction": {
         "id": 1,
-        "owner": "Loshkin A.A.",
+        "owner": "Лошкин А.А.",
         "number": 1,
-        "type": "Banner",
-        "status": "Empty",
+        "type": "Вывеска",
+        "status": "Не установлена,но в схеме есть",
         "date": "01/01/2016",
         "adPlace": {
           "id": 1,
-          "address": "Lenina 25",
-          "owner": "Lenin V.I.",
+          "address": "Ленина 25",
+          "owner": "Ленин В.И.",
           "municipality": {
             "id": 1,
             "name": "Первое МО",
@@ -156,7 +166,7 @@
         },
         "activeStatus": null
       },
-      "actual": false,
+      "actual": true,
       "rejected": "Все плохо",
       "activeStatus": null
     }
@@ -170,12 +180,12 @@
         "status": "Reject",
         "requester": {
           "id": 1,
-          "login": "Qwerty",
+          "login": "Ivanov",
           "password": "123456",
-          "surname": "Ivanov",
-          "firstName": "Ivan",
-          "secondName": "Ivanovich",
-          "role": "User",
+          "surname": "Иванов",
+          "firstName": "Иван",
+          "secondName": "Иванович",
+          "role": "OPERATOR",
           "municipality": {
             "id": 1,
             "name": "Первое МО",
@@ -185,12 +195,12 @@
         },
         "assignee": {
           "id": 2,
-          "login": "Asdfg",
+          "login": "Petrov",
           "password": "123456",
-          "surname": "Pupkin",
-          "firstName": "Vasilii",
-          "secondName": "Vasilievich",
-          "role": "Admin",
+          "surname": "Петров",
+          "firstName": "Петр",
+          "secondName": "Петрович",
+          "role": "REDACTOR",
           "municipality": {
             "id": 1,
             "name": "Первое МО",
@@ -203,8 +213,8 @@
         "version": 1,
         "adPlace": {
           "id": 1,
-          "address": "Lenina 25",
-          "owner": "Lenin V.I.",
+          "address": "Ленина 25",
+          "owner": "Ленин В.И.",
           "municipality": {
             "id": 1,
             "name": "Первое МО",
@@ -214,15 +224,15 @@
         },
         "adConstruction": {
           "id": 1,
-          "owner": "Loshkin A.A.",
+          "owner": "Лошкин А.А.",
           "number": 1,
-          "type": "Banner",
-          "status": "Empty",
+          "type": "Вывеска",
+          "status": "Не установлена,но в схеме есть",
           "date": "01/01/2016",
           "adPlace": {
             "id": 1,
-            "address": "Lenina 25",
-            "owner": "Lenin V.I.",
+            "address": "Ленина 25",
+            "owner": "Ленин В.И.",
             "municipality": {
               "id": 1,
               "name": "Первое МО",
@@ -245,12 +255,12 @@
         "status": "Reject",
         "requester": {
           "id": 1,
-          "login": "Qwerty",
+          "login": "Ivanov",
           "password": "123456",
-          "surname": "Ivanov",
-          "firstName": "Ivan",
-          "secondName": "Ivanovich",
-          "role": "User",
+          "surname": "Иванов",
+          "firstName": "Иван",
+          "secondName": "Иванович",
+          "role": "OPERATOR",
           "municipality": {
             "id": 1,
             "name": "Первое МО",
@@ -260,12 +270,12 @@
         },
         "assignee": {
           "id": 2,
-          "login": "Asdfg",
+          "login": "Petrov",
           "password": "123456",
-          "surname": "Pupkin",
-          "firstName": "Vasilii",
-          "secondName": "Vasilievich",
-          "role": "Admin",
+          "surname": "Петров",
+          "firstName": "Петр",
+          "secondName": "Петрович",
+          "role": "REDACTOR",
           "municipality": {
             "id": 1,
             "name": "Первое МО",
@@ -278,8 +288,8 @@
         "version": 1,
         "adPlace": {
           "id": 1,
-          "address": "Lenina 25",
-          "owner": "Lenin V.I.",
+          "address": "Ленина 25",
+          "owner": "Ленин В.И.",
           "municipality": {
             "id": 1,
             "name": "Первое МО",
@@ -289,15 +299,15 @@
         },
         "adConstruction": {
           "id": 1,
-          "owner": "Loshkin A.A.",
+          "owner": "Лошкин А.А.",
           "number": 1,
-          "type": "Banner",
-          "status": "Empty",
+          "type": "Вывеска",
+          "status": "Не установлена,но в схеме есть",
           "date": "01/01/2016",
           "adPlace": {
             "id": 1,
-            "address": "Lenina 25",
-            "owner": "Lenin V.I.",
+            "address": "Ленина 25",
+            "owner": "Ленин В.И.",
             "municipality": {
               "id": 1,
               "name": "Первое МО",

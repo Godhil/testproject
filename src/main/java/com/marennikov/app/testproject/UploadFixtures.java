@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 import java.io.*;
 
 @Component
-public class MyFile {
+public class UploadFixtures {
 
     @Autowired
     private IMunicipalityService municipalityService;
@@ -30,9 +30,6 @@ public class MyFile {
     @Autowired
     private IPhotoService photoService;
 
-    @Autowired
-    private IRequestsArchiveService requestsArchiveService;
-
     @PostConstruct
     public void main() {
         try {
@@ -45,7 +42,7 @@ public class MyFile {
     private void addData() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
-        ClassForParseJsonFile objects = mapper.readValue(file(), ClassForParseJsonFile.class);
+        ParseJsonFixtures objects = mapper.readValue(getFile(), ParseJsonFixtures.class);
 
         //municipality
         for(Municipality municipality : objects.getMunicipality()) {
@@ -76,16 +73,10 @@ public class MyFile {
         for(Photo photo : objects.getPhoto()) {
             photoService.savePhoto(photo);
         }
-//
-//        //requestArchive
-//        for(RequestArchive requestArchive : objects.getRequestArchive()) {
-//            requestsArchiveService.saveRequestArchive(requestArchive);
-//        }
     }
 
-    private File file() {
+    private File getFile() {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("myFile.json").getFile());
-        return file;
+        return new File(classLoader.getResource("fixtures.json").getFile());
     }
 }
