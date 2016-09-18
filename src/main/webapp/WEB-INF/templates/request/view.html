@@ -17,8 +17,8 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">МО и Пользователи
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/user/users">Муниципальные Образования</a></li>
-                    <li><a href="/municipality/municipalities">Пользователи</a></li>
+                    <li><a href="/municipality/municipalities">Муниципальные Образования</a></li>
+                    <li><a href="/user/users">Пользователи</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -206,33 +206,29 @@
                     <h3>Данные Рекламного Места</h3>
                     <div class="form-group">
                         <label>Собственник РМ:</label>
-                        <p th:text="${fromArchive.adPlace.owner}" class="form-control"></p>
+                        <p th:text="${fromArchive.adPlaceOwner}" class="form-control"></p>
                     </div>
                     <div class="form-group">
                         <label>Адрес РМ:</label>
-                        <p th:text="${fromArchive.adPlace.address}" class="form-control"></p>
+                        <p th:text="${fromArchive.adPlaceAddress}" class="form-control"></p>
                     </div>
 
                     <h3>Данные Рекламной Конструкции</h3>
                     <div class="form-group">
                         <label>Собственник РК:</label>
-                        <p th:text="${fromArchive.adConstruction.owner}" class="form-control"></p>
+                        <p th:text="${fromArchive.adConstructionOwner}" class="form-control"></p>
                     </div>
                     <div class="form-group">
                         <label>Номер РК:</label>
-                        <p th:text="${fromArchive.adConstruction.number}" class="form-control"></p>
+                        <p th:text="${fromArchive.adConstructionNumber}" class="form-control"></p>
                     </div>
                     <div class="form-group">
                         <label>Статус РК:</label>
-                        <p th:text="${fromArchive.adConstruction.status}" class="form-control"></p>
+                        <p th:text="${fromArchive.adConstructionStatus}" class="form-control"></p>
                     </div>
                     <div class="form-group">
                         <label>Тип РК:</label>
-                        <p th:text="${fromArchive.adConstruction.type}" class="form-control"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Тип РК:</label>
-                        <p th:text="${fromArchive.adConstruction.type}" class="form-control"></p>
+                        <p th:text="${fromArchive.adConstructionType}" class="form-control"></p>
                     </div>
 
                     <h3>Причина отклонения заявки (если есть:)</h3>
