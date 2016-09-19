@@ -82,10 +82,6 @@
                         <label>Тип РК:</label>
                         <p th:text="${request.adConstruction.type}" class="form-control"></p>
                     </div>
-                    <div class="form-group">
-                        <label>Тип РК:</label>
-                        <p th:text="${request.adConstruction.type}" class="form-control"></p>
-                    </div>
 
                     <h3>Причина отклонения заявки (если есть:)</h3>
                     <div class="form-group">
@@ -104,37 +100,10 @@
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h4 class="modal-title">Вы уверены?</h4>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-footer">
                                         <div class="btn-group btn-group-justified">
                                             <div class="btn-group">
-                                                <form action="#" th:action="@{'/approve'}" th:object="${request}"
-                                                      method="post">
-                                                    <div>
-                                                        <input type="hidden" th:field="*{id}">
-                                                        <input type="hidden" th:field="*{rejected}" th:value="''">
-                                                        <input type="hidden" th:field="*{status}"
-                                                               th:value="'Согласовано'">
-                                                        <input type="hidden" th:field="*{version}"
-                                                               th:value="${request.version}">
-                                                        <input type="hidden" th:field="*{adConstruction.id}"
-                                                               th:value="${request.adConstruction.id}">
-                                                        <input type="hidden" th:field="*{adPlace.id}"
-                                                               th:value="${request.adPlace.id}">
-                                                        <input type="hidden" th:field="*{requester.id}"
-                                                               th:value="${request.requester.id}">
-
-                                                        <input type="hidden" th:field="*{createDate}"
-                                                               th:value="${request.createDate}">
-                                                        <input type="hidden" th:field="*{status}"
-                                                               th:value="${request.status}">
-
-
-                                                        <button type="submit" class="btn btn-success">Согласовать
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="btn-group">
+                                                <button th:href="${'/approve/'+{request.id}}" class="btn btn-success">Согласовать</button>
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
                                                     Отмена
                                                 </button>
@@ -151,7 +120,7 @@
                         <div class="modal fade" id="rejectModal" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form action="#" th:action="@{'/approve'}" th:object="${request}" method="post">
+                                    <form action="#" th:action="@{'/reject'}" th:object="${request}" method="post">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Вы уверены?</h4>
@@ -165,15 +134,19 @@
                                             <input type="hidden" th:field="*{requester.id}">
 
                                             <input type="hidden" th:field="*{createDate}">
-                                            <input type="hidden" th:field="*{status}">
 
                                             <label>Причина отклонения заявки:</label>
                                             <input class="form-control input-sm" th:field="*{rejected}" required>
                                         </div>
+
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-danger">Отклонить</button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена
-                                            </button>
+                                            <div class="btn-group btn-group-justified">
+                                                <div class="btn-group">
+                                                    <button type="submit" class="btn btn-danger">Отклонить</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -185,64 +158,62 @@
             </div>
         </div>
         <div class="col-lg-6" style="background-color:#cccccc;">
-
             <div class="col-xs-12">
-                <div class="input-group input-group-lg" >
+                <div class="input-group input-group-lg">
                     <div th:if="${(fromArchive)}">
-                    <div class="form-group">
-                        <p>Информация из архива</p>
-                        <h2>Заявитель:</h2>
-                        <p class="form-control"
-                           th:text="${fromArchive.requester.surname} +  ' ' + ${fromArchive.requester.firstName} + ' ' + ${fromArchive.requester.secondName}"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Стутус Заявки:</label>
-                        <p class="form-control" th:text="${fromArchive.status}"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Версия Заявки:</label>
-                        <p class="form-control" th:text="${fromArchive.version}"></p>
-                    </div>
-                    <h3>Данные Рекламного Места</h3>
-                    <div class="form-group">
-                        <label>Собственник РМ:</label>
-                        <p th:text="${fromArchive.adPlaceOwner}" class="form-control"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Адрес РМ:</label>
-                        <p th:text="${fromArchive.adPlaceAddress}" class="form-control"></p>
-                    </div>
+                        <div class="form-group">
+                            <p>Информация из архива</p>
+                            <h2>Заявитель:</h2>
+                            <p class="form-control"
+                               th:text="${fromArchive.requester.surname} +  ' ' + ${fromArchive.requester.firstName} + ' ' + ${fromArchive.requester.secondName}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Стутус Заявки:</label>
+                            <p class="form-control" th:text="${fromArchive.status}"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Версия Заявки:</label>
+                            <p class="form-control" th:text="${fromArchive.version}"></p>
+                        </div>
+                        <h3>Данные Рекламного Места</h3>
+                        <div class="form-group">
+                            <label>Собственник РМ:</label>
+                            <p th:text="${fromArchive.adPlaceOwner}" class="form-control"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Адрес РМ:</label>
+                            <p th:text="${fromArchive.adPlaceAddress}" class="form-control"></p>
+                        </div>
 
-                    <h3>Данные Рекламной Конструкции</h3>
-                    <div class="form-group">
-                        <label>Собственник РК:</label>
-                        <p th:text="${fromArchive.adConstructionOwner}" class="form-control"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Номер РК:</label>
-                        <p th:text="${fromArchive.adConstructionNumber}" class="form-control"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Статус РК:</label>
-                        <p th:text="${fromArchive.adConstructionStatus}" class="form-control"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Тип РК:</label>
-                        <p th:text="${fromArchive.adConstructionType}" class="form-control"></p>
-                    </div>
+                        <h3>Данные Рекламной Конструкции</h3>
+                        <div class="form-group">
+                            <label>Собственник РК:</label>
+                            <p th:text="${fromArchive.adConstructionOwner}" class="form-control"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Номер РК:</label>
+                            <p th:text="${fromArchive.adConstructionNumber}" class="form-control"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Статус РК:</label>
+                            <p th:text="${fromArchive.adConstructionStatus}" class="form-control"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Тип РК:</label>
+                            <p th:text="${fromArchive.adConstructionType}" class="form-control"></p>
+                        </div>
 
-                    <h3>Причина отклонения заявки (если есть:)</h3>
-                    <div class="form-group">
-                        <p th:text="${fromArchive.rejected}" class="form-control"></p>
+                        <h3>Причина отклонения заявки (если есть:)</h3>
+                        <div class="form-group">
+                            <p th:text="${fromArchive.rejected}" class="form-control"></p>
+                        </div>
+                        <br/>
+                        <br/>
                     </div>
-                    <br/>
-                    <br/>
-                </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

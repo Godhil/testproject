@@ -1,8 +1,6 @@
 package com.marennikov.app.testproject.controller;
 
-import com.marennikov.app.testproject.entity.Request;
-import com.marennikov.app.testproject.entity.RequestArchive;
-import com.marennikov.app.testproject.entity.User;
+import com.marennikov.app.testproject.entity.*;
 import com.marennikov.app.testproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,10 +71,10 @@ public class RequestsController {
         return "request/waitapproval";
     }
 
-    //Список согласованных заявок, сюда id инициатора, не инициатора а минуципального образования
+    //Список согласованных заявок, сюда id минуципального образования
     @RequestMapping(value = "/approved")
-    public String approvedRequests(Integer id, Model model) {
-        model.addAttribute("requestList", requestsService.requestListByRequesterIdApproved(1, "Согласовано"));
+    public String approvedRequests(Model model) {
+        model.addAttribute("requestList", requestsService.requestListByStatus("Согласовано"));
         return "request/approved";
     }
 
@@ -118,25 +116,6 @@ public class RequestsController {
         return "redirect:/requests";
     }
 
-    //Согласование заявки, сюда id редактора
-    @RequestMapping(value = "/approve", method = RequestMethod.POST)
-    public String approvalRequest(
-            Integer userId,
-            Request request,
-            RequestArchive requestArchive){
-
-        request.setAssignee(userService.getById(1));
-        int actualVersion = request.getVersion() + 1;
-        request.setVersion(actualVersion);
-        request.setProcessingDate(dateNow());
-        requestsService.saveRequest(request);
-
-        saveInArchive(request);
-
-        return "redirect:/approval";
-    }
-
-
     //отключение(установить флаг "Delete")
     @RequestMapping(value = "/request/delete/{id}", method = RequestMethod.POST)
     public String setDelete(@PathVariable Integer id){
@@ -153,6 +132,43 @@ public class RequestsController {
         request.setProcessingDate(dateNow());
         requestsService.saveRequest(request);
         return "redirect:/requests";
+    }
+
+    @RequestMapping( value = "/reject", method = RequestMethod.POST)
+    public String reject(
+                         Integer userId,
+                         Request request) {
+
+        request.setAssignee(userService.getById(1));
+        request.setVersion(request.getVersion() + 1);
+        request.setProcessingDate(dateNow());
+        request.setStatus("Отклонена");
+        request.setProcessingDate(dateNow());
+        requestsService.saveRequest(request);
+
+        saveInArchive(request);
+
+        return "redirect:/approval";
+    }
+
+    //Согласование заявки, сюда id редактора
+    @RequestMapping("/approve/{id}")
+    public String approval(
+            @PathVariable Integer id,
+            Integer userId) {
+
+        Request request = requestsService.getById(id);
+        request.setAssignee(userService.getById(1));
+        request.setVersion(request.getVersion() + 1);
+        request.setProcessingDate(dateNow());
+        request.setRejected("");
+        request.setStatus("Согласовано");
+        request.setProcessingDate(dateNow());
+        requestsService.saveRequest(request);
+
+        saveInArchive(request);
+
+        return "redirect:/approval";
     }
 
     @RequestMapping("/edit/{id}")
@@ -172,17 +188,25 @@ public class RequestsController {
     }
 
     private RequestArchive saveInArchive(Request request) {
+        AdPlace adPlace = adPlaceService.getById(request.getAdPlace().getId());
+        AdConstruction adConstruction = adConstructionService.getById(request.getAdConstruction().getId());
+
         RequestArchive requestArchive = new RequestArchive();
         requestArchive.setAssignee(request.getAssignee());
         requestArchive.setVersion(request.getVersion());
         requestArchive.setStatus(request.getStatus());
-        requestArchive.setAdConstructionId(request.getAdConstruction());
-        requestArchive.setAdPlace(request.getAdPlace());
+        requestArchive.setAdPlaceOwner(adPlace.getOwner());
+        requestArchive.setAdPlaceAddress(adPlace.getAddress());
+        requestArchive.setAdConstructionOwner(adConstruction.getOwner());
+        requestArchive.setAdConstructionNumber(adConstruction.getNumber());
+        requestArchive.setAdConstructionStatus(adConstruction.getStatus());
+        requestArchive.setAdConstructionType(adConstruction.getType());
         requestArchive.setCreateDate(request.getCreateDate());
         requestArchive.setProcessingDate(request.getProcessingDate());
         requestArchive.setRejected(request.getRejected());
         requestArchive.setRequester(request.getRequester());
         requestArchive.setRequest(request);
+
         return requestsArchiveService.saveRequestArchive(requestArchive);
     }
 }
