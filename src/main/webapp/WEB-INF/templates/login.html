@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Вход</title>
-    <meta  charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -40,17 +40,19 @@
 
 
 <div class="container">
-    <h1>Login page</h1>
-    <p th:if="${loginError}">Wrong user or password</p>
     <form th:action="@{/j_spring_security_check}" method="post">
-        <label for="j_username">Username</label>:
-        <input type="text" id="j_username" name="j_username" /> <br />
-        <label for="j_password">Password</label>:
-        <input type="password" id="j_password" name="j_password" /> <br />
-        <input type="submit" value="Log in" />
+        <div class="col-xs-12">
+            <div class="input-group input-group-lg">
+                <div class="form-group">
+                    <label for="j_username">Логин</label>:
+                    <input type="text" id="j_username" name="j_username"/> <br/>
+                    <label for="j_password">Пароль</label>:
+                    <input type="password" id="j_password" name="j_password"/> <br/>
+                    <input type="submit" class="btn btn-success" value="Войти"/>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
-
-
 </body>
 </html>
