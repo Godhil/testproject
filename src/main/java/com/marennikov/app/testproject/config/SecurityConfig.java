@@ -39,8 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/construction/**",
                             "/new/**", "/send/**", "/edit/**"
                             ).hasAnyRole("OPERATOR", "ADMIN")
-                    .antMatchers("/approved", "/approve").hasAnyRole("OPERATOR", "REDACTOR", "ADMIN")
-                    .antMatchers("/view/**", "/approval").hasAnyRole("REDACTOR", "ADMIN")
+                    .antMatchers("/approved", "/approve", "/approval").hasAnyRole("OPERATOR", "REDACTOR", "ADMIN")
+                    .antMatchers("/view/**", "/approval", "/reject", "/approve/**").hasAnyRole("REDACTOR", "ADMIN")
                     .antMatchers("/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
@@ -55,7 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutUrl("/logout")
                     .logoutSuccessUrl("/")
                     .invalidateHttpSession(true)
-                .   and()
+                    .and()
+                .exceptionHandling()
+                    .accessDeniedPage("/")
+                    .and()
                 .csrf().disable()
                 .httpBasic();
     }
